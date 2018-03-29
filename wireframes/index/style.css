@@ -1,0 +1,7 @@
+.profilePic{
+    height: 100px;
+    width: 100px;
+    background-image: url('assets/pics/me.jpg');
+    background-position: center;
+    background-size: cover
+}
