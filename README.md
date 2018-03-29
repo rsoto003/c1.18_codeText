@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # React Starter
 
 > This repo contains boilerplate code to aid in the creation of a new React app with Redux. Follow the below setup instructions to get started.
@@ -21,3 +22,6 @@
 >    - `npm run bundle`
 > 
 > **NOTE:** *After bundling you can not directly run your app locally. You must run your app from the root directory of a server.*
+=======
+# c1.18_messagewingman
+>>>>>>> 304f7f5a8d35d3bda395c756fdc1231428826e53
