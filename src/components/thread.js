@@ -6,7 +6,7 @@ export default () => {
     const threads = postData.map( (item, index) => {
         console.log(item)
         return (
-            <div>
+            <div key={index}>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
 
@@ -25,7 +25,7 @@ export default () => {
     }) 
 
     return (
-        <div className="col-8 justify-content-start mt-5 ">
+        <div className="col-m-12 col-sm-9 justify-content-start mt-5 ">
             {threads}
             {/* <h3>What does this mean?</h3>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis sit sapiente corporis, fugiat ea, cupiditate doloribus amet dolorem ducimus pariatur aperiam fugit facilis quidem id quaerat. Earum officia voluptatum delectus.
