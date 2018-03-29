@@ -1,5 +1,6 @@
 import React from 'react';
 import '../assets/css/app.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../assets/images/logo.svg';
 
 const App = () => (
