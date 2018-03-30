@@ -1,15 +1,23 @@
 import React from 'react';
 import '../assets/css/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from '../assets/images/logo.svg';
+import Navbar from './navbar'
+import Sidebar from './sidebar'
+import Thread from './thread'
 
-const App = () => (
-    <div>
-        <div className="app">
-            <img src={logo} className="logo rotate"/>
-            <h1>Welcome to React</h1>
+const Main = () => {
+    return(
+        <div>
+            <Navbar/>
+            <div className="container">
+                <div className="row">
+                    <Sidebar/>
+                    <Thread/>
+                </div>
+            </div>
         </div>
-    </div>
-);
+    )
 
-export default App;
+};
+
+export default Main;
