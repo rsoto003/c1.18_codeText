@@ -1,7 +1,55 @@
-.profilePic{
-    height: 100px;
-    width: 100px;
-    background-image: url('assets/pics/me.jpg');
-    background-position: center;
-    background-size: cover
+.login_box {
+    height: 30px;
+    width: 110px;
+    background-color: darkgrey;
+    margin-left: 84%;
+    margin-top: -7%;
+    text-align: center;
+    font-size: 13px;
+    line-height: 30px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+h3 {
+    color: black;
+    font-size: 9px;
+    margin-left: 68%;
+    display: inline-block;
+}
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 2%;
+}
+
+.context {
+    height: 90px;
+    width: 254px;
+    background-color: darkgrey;
+    text-align: center;
+    margin-left: 35%;
+    vertical-align: middle;
+    line-height: 90px;
+    font-size: 44px;
+}
+
+.account {
+    text-align: center;
+    margin-top: 2%;
+    margin-left: 41%;
+    margin-bottom: 2%;
+}
+
+.signup {
+    text-align: center;
+    background-color: darkgrey;
+    height: 35px;
+    width: 189px;
+    margin-bottom: 2%;
+    margin-left: 39%;
+    line-height: 35px;
+    font-size: 13px;
+    vertical-align: middle;
 }
