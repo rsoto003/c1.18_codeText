@@ -14,7 +14,6 @@ const App = () => {
                     <Sidebar/>
 
                     <Thread/>
-
                 </div>
             </div>
         </div>
