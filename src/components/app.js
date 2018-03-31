@@ -5,7 +5,7 @@ import Navbar from './navbar'
 import Sidebar from './sidebar'
 import Thread from './thread'
 
-const Main = () => {
+const App = () => {
     return(
         <div>
             <Navbar/>
@@ -20,4 +20,4 @@ const Main = () => {
 
 };
 
-export default Main;
+export default App;
