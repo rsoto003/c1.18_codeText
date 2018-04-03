@@ -1,22 +1,24 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
+
 
 export default ()=> {
     return (
         <div className="col-3 d-none d-sm-block">
             <div className="row mt-5 mx-auto">
-                <a href="newPost.html">Post something!</a>
+                <Link to="/newPost">Post something!</Link>
             </div>
             <div className="row mt-5 mx-auto">
-                <a href="#">Following</a>
+                <Link to="/following">Following</Link>
             </div>
             <div className="row mt-5 mx-auto">
-                <a href="#">Likes</a>
+                <Link to="/likes">Likes</Link>
             </div>
             <div className="row mt-5 mx-auto">
-                <a href="#">Comments</a>
+                <Link to="/comments">Comments</Link>
             </div>
             <div className="row mt-5 mx-auto">
-                <a href="#">Help</a>
+                <Link to="/help">Help</Link>
             </div>
         </div>
     )
