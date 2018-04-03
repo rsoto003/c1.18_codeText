@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './navbar'
 import Sidebar from './sidebar'
 import Thread from './thread'
+import NewPost from './newPost'
 
 const App = () => {
     return(
@@ -17,7 +18,8 @@ const App = () => {
             <div className="container">
                 <div className="row">
                     <Sidebar/>
-                    <Route exact path="/" component={Thread} > </Route>
+                    <Route exact path="/" component={Thread} />
+                    <Route path='/newPost' component={NewPost}/>
                 </div>
             </div>
         </div>

@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 export default () => {
     return (
         <div className="col-8 mt-2" >
