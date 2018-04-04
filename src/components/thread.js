@@ -25,6 +25,7 @@ class Thread extends Component{
         this.updateInput=this.updateInput.bind(this)
         this.onSubmit=this.onSubmit.bind(this)
     }
+
     onSubmit(event){
         event.preventDefault()
         const submittedComment={
@@ -38,6 +39,7 @@ class Thread extends Component{
             comments:  newCommentState
         })
     }
+
     updateInput(event){
         this.setState({
             textInput: event.target.value
@@ -46,11 +48,11 @@ class Thread extends Component{
 
     render(){
         console.log(this.state)
-        const Comments = postData[this.props.threadID].comments.map( (item, index) => {
+        const Comments = this.state.comments.map( (item, index) => {
             return(
                 <div key={index} >
-                    <span><i className="fas fa-user-circle mr-2"></i>{postData[this.props.threadID].comments[index].name}</span>
-                    <p><small>{postData[this.props.threadID].comments[index].comment}</small></p>
+                    <span><i className="fas fa-user-circle mr-2"></i>{this.state.comments[index].name}</span>
+                    <p><small>{this.state.comments[index].comment}</small></p>
                 </div>
             )
         } )
