@@ -23,10 +23,20 @@ class Thread extends Component{
             textInput:''
         }
         this.updateInput=this.updateInput.bind(this)
+        this.onSubmit=this.onSubmit.bind(this)
     }
     onSubmit(event){
         event.preventDefault()
-
+        const submittedComment={
+            name:'you',
+            comment:this.state.textInput
+        }
+        const newCommentState= this.state.comments.slice();
+        newCommentState.push(submittedComment);
+        this.setState({
+            textInput:'',
+            comments:  newCommentState
+        })
     }
     updateInput(event){
         this.setState({
@@ -35,7 +45,7 @@ class Thread extends Component{
     }
 
     render(){
-
+        console.log(this.state)
         const Comments = postData[this.props.threadID].comments.map( (item, index) => {
             return(
                 <div key={index} >
