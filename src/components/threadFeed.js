@@ -10,7 +10,7 @@ export default () => {
         let postDesc = item.description.slice(0,200)
         return (
             <div key={index}>
-                <h3>{item.title}</h3>
+                <h4>{item.title}</h4>
                 <p><small className="text-muted" > {item.author} - post ID: {item.id} </small></p>
                 <p>{postDesc}</p>
                 <Link to={`/thread/${item.id}`}> <p> View More </p> </Link>

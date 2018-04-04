@@ -13,7 +13,6 @@ import NewPost from './newPost';
 import Thread from './thread';
 
 const UniqueThread = ({ match }) => {
-    console.log(match)
     return(
         <Thread threadID={match.params.threadID} />
     )
