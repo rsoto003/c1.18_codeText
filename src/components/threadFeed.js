@@ -2,7 +2,12 @@ import React from 'react';
 import postData from '../data/threadItems';
 import { Link } from 'react-router-dom';
 
-
+const blockStyle={
+    display:'block'
+}
+const inlineBlockStyle={
+    display:'inline-block'
+}
 
 export default () => {
 
@@ -16,8 +21,8 @@ export default () => {
                 <h4>{item.title}</h4>
                 <p><small className="text-muted" > {item.author} - post ID: {item.id} </small></p>
                 <p>{postDesc}</p>
-                <Link to={`/thread/${item.id}`}> <p> View More </p> </Link>
-                <small className="text-muted">Comments</small>
+                <Link style={inlineBlockStyle} to={`/thread/${item.id}`}> <p> View More </p> </Link>
+                <small style={blockStyle} className="text-muted">Comments</small>
                 <div className="row">
                     <div className="col">
                         <span><i className="fas fa-user-circle mr-2"></i>{item.comments[0].name}</span>
