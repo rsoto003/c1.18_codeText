@@ -61,12 +61,15 @@ h3 {
 }
 .post-box {
     box-sizing: content-box;
-    margin-top: 2%;
+    /* margin-top: 2%; */
     line-height: 1.5em;
     overflow: hidden;
     text-overflow: ellipsis;
-    box-shadow: 0 7px 6px -6px #777;
+    box-shadow: 0 7px 6px -6px #ccc;
+    margin-bottom: 20px;
+    padding: 10px;
 }
+
 footer {
     padding: 20px;
     margin-top: 40px;
