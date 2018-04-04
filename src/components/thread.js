@@ -8,7 +8,6 @@ import postData from '../data/threadItems'
 const textAreaStyle={
     fontSize: '13px',
     height: '55px',
-    // width:'100%',
     marginBottom:'2px'
 }
 const formStyle={
@@ -47,7 +46,6 @@ class Thread extends Component{
     }
 
     render(){
-        console.log(this.state)
         const Comments = this.state.comments.map( (item, index) => {
             return(
                 <div key={index} >
@@ -69,8 +67,7 @@ class Thread extends Component{
                             <textarea style={textAreaStyle} id="comment" className="form-control" value={this.state.textInput} onChange={this.updateInput} ></textarea>
                             <button className="btn btn-danger btn-sm" >Add a comment</button>
                         </form>
-
-
+                        
                 </div>
         )
     }
