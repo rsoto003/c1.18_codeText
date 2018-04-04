@@ -2,7 +2,7 @@ export default [
     {
         id:0,
         author: 'og poster',
-        title: 'Help me! Save me!',
+        title: 'Waiting for database and server to be done so front end can communicate',
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum deleniti accusantium obcaecati eveniet soluta nihil, architecto, eius autem placeat, voluptatibus ducimus officia sed doloribus delectus nemo quam. Laudantium, atque non Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum deleniti accusantium obcaecati eveniet soluta nihil, architecto, eius autem placeat, voluptatibus ducimus officia sed doloribus delectus nemo quam. Laudantium, atque non .",
         comments:[
             {
