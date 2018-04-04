@@ -10,13 +10,28 @@ const inlineBlockStyle={
     display:'inline-block'
 }
 
-const JSBIN_URL = 'http://jsbin.com/oembed?url=https://jsbin.com/goxeyi/6/edit?html,output';
+const iframeStyle={
+    width: '100%',
+    height: '200px'
+}
+
+const JSBIN_URL = 'http://jsbin.com/oembed?url=http://jsbin.com/goxeyi/6/edit?html,output';
+
+
+function Jsbin(){
+    // let jsbin=null;
+    // axios.get(JSBIN_URL).then( (res) => {
+    //     console.log(res.data.url)
+    //     jsbin=res.data.url;
+    // })
+    // console.log(jsbin)
+    return (
+        <iframe style={iframeStyle} src={'http://jsbin.com/goxeyi/6/edit?html,output'} frameBorder="0"></iframe>
+    )
+}
 
 export default () => {
 
-    axios.get(JSBIN_URL).then( (res) => {
-        console.log(res)
-    })
 
     const threads = postData.map( (item, index) => {
         let postDesc = item.description.slice(0,200)
@@ -30,6 +45,7 @@ export default () => {
                 <p>{postDesc}</p>
 
                 <Link style={inlineBlockStyle} to={`/thread/${item.id}`}> <p> View More </p> </Link>
+                {Jsbin()}
 
                 <small style={blockStyle} className="text-muted">Comments</small>
                 <div className="row">
