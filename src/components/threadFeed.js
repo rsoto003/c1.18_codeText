@@ -8,6 +8,9 @@ export default () => {
 
     const threads = postData.map( (item, index) => {
         let postDesc = item.description.slice(0,200)
+        if(item.description.length > 200){
+            postDesc+= '...'
+        }
         return (
             <div key={index}>
                 <h4>{item.title}</h4>

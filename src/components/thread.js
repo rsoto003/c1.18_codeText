@@ -24,7 +24,7 @@ export default ( props ) => {
                     <p><small>{postData[props.threadID].comments[0].comment}</small></p>
                     <form className="form-group" >
                         <textarea style={textAreaStyle} id="comment" className="form-control"></textarea>
-                        <button className="btn btn-danger" >Add a comment</button>
+                        <button className="btn btn-danger btn-sm" >Add a comment</button>
                     </form>
 
                 </div>
