@@ -7,14 +7,13 @@ import { Link } from 'react-router-dom';
 export default () => {
 
     const threads = postData.map( (item, index) => {
-        console.log(item.id)
         let postDesc = item.description.slice(0,200)
         return (
             <div key={index}>
                 <h3>{item.title}</h3>
                 <p><small className="text-muted" > {item.author} - post ID: {item.id} </small></p>
                 <p>{postDesc}</p>
-                <Link to={`/${item.id}`} > <p> View More </p> </Link>
+                <Link to={`/thread/${item.id}`}> <p> View More </p> </Link>
                 <small className="text-muted">Comments</small>
                 <div className="row">
                     <div className="col">
