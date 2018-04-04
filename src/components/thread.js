@@ -60,7 +60,9 @@ class Thread extends Component{
                     <h2>{postData[this.props.threadID].title}</h2>
                     <p><small className='text-muted' >Author: {postData[this.props.threadID].author} </small></p>
                     <p>{postData[this.props.threadID].description}</p>
+                    {/* <iframe src={postData[props.threadID].jsbin} frameborder="0"></iframe> */}
                     <div className="dropdown-divider mb-5"></div>
+                    
                         {Comments}
 
                         <form style={formStyle} className="form-group" onSubmit={this.onSubmit} >

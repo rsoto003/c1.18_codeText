@@ -17,7 +17,7 @@ export default [
         author: 'og poster',
         title: 'RANDMON CONTENT WHEEEE',
         description: 'someone help me understand what this means?!?! LMAO NFADJKNAJKKK RAWR XD',
-        jsbin: 'http://jsbin.com/sogunar/edit?html,output',
+        jsbin: 'http://jsbin.com/sogunar/1/edit?html,output',
         comments:[
             {
                 name: 'John Doe',
@@ -30,7 +30,7 @@ export default [
         author: 'og poster',
         title: 'RANDMON CONTENT WHEEEE',
         description: 'someone help me understand what this means?!?! LMAO NFADJKNAJKKK RAWR XD',
-        jsbin:null,
+        jsbin:'jsbin.com',
         comments:[
             {
                 name: 'John Doe',
