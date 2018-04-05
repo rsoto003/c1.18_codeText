@@ -1,7 +1,7 @@
 import React from 'react';
 import postData from '../data/threadItems';
 import { Link } from 'react-router-dom';
-import axios from 'axios'
+
 import jsbinPIC from '../assets/images/jsbin.png';
 
 const blockStyle={

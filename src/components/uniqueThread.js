@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import postData from '../data/threadItems'
 
-// I'm sure there's a more efficient way to grab data from postData rather than grabbing at a certain index.
-// It feels really barbarian
 
 const textAreaStyle={
     fontSize: '13px',
@@ -65,12 +63,14 @@ class Thread extends Component{
                     <p>{postData[this.props.threadID].description}</p>
                     {/* <iframe src={postData[props.threadID].jsbin} frameborder="0"></iframe> */}
                     <div className="dropdown-divider mb-5"></div>
-                    <iframe style={iframeStyle} src="http://embed.plnkr.co/teHPZ7pSiWX570mDWXDZ/" frameBorder="0"></iframe>
-                        {Comments}
-                        <form style={formStyle} className="form-group" onSubmit={this.onSubmit} >
-                            <textarea style={textAreaStyle} id="comment" className="form-control" value={this.state.textInput} onChange={this.updateInput} ></textarea>
-                            <button className="btn btn-danger btn-sm" >Add a comment</button>
-                        </form>     
+
+                    <iframe src={postData[this.props.threadID].jsbin} style={iframeStyle} sandbox="allow-scripts allow-same-origin"></iframe>
+
+                    {Comments}
+                    <form style={formStyle} className="form-group" onSubmit={this.onSubmit} >
+                        <textarea style={textAreaStyle} id="comment" className="form-control" value={this.state.textInput} onChange={this.updateInput} ></textarea>
+                        <button className="btn btn-danger btn-sm" >Add a comment</button>
+                    </form>     
                 </div>
         )
     }

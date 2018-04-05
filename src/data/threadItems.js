@@ -4,7 +4,8 @@ export default {
         author: 'og poster',
         title: 'Waiting for database and server to be done so front end can communicate',
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum deleniti accusantium obcaecati eveniet soluta nihil, architecto, eius autem placeat, voluptatibus ducimus officia sed doloribus delectus nemo quam. Laudantium, atque non Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum deleniti accusantium obcaecati eveniet soluta nihil, architecto, eius autem placeat, voluptatibus ducimus officia sed doloribus delectus nemo quam. Laudantium, atque non .",
-        jsbin:'http://jsbin.com/goxeyi/6/edit?html,output',
+        jsbin: 'https://jsbin.com/goxeyi/6/edit?html,output',
+        // jsbin:'https://codesandbox.io/s/lz04yqr79',
         comments:[
             {
                 name: 'John Doe',
@@ -17,7 +18,7 @@ export default {
         author: 'og poster',
         title: 'RANDMON CONTENT WHEEEE',
         description: 'someone help me understand what this means?!?! LMAO NFADJKNAJKKK RAWR XD',
-        jsbin: 'http://jsbin.com/sogunar/1/edit?html,output',
+        jsbin: 'https://jsbin.com/sogunar/1/edit?html,output',
         comments:[
             {
                 name: 'John Doe',
@@ -30,7 +31,7 @@ export default {
         author: 'og poster',
         title: 'RANDMON CONTENT WHEEEE',
         description: 'someone help me understand what this means?!?! LMAO NFADJKNAJKKK RAWR XD',
-        jsbin:'http://jsbin.com/zijokep/edit?html,js,output',
+        jsbin:'https://jsbin.com/zijokep/edit?html,js,output',
         comments:[
             {
                 name: 'John Doe',
