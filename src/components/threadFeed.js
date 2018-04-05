@@ -18,7 +18,7 @@ const iframeStyle={
 
 const jsbinStyle={
     width:'35px',
-    display:'block',
+    display:'inline-block',
     cursor: 'pointer',
 }
 
@@ -36,7 +36,6 @@ function Jsbin(index){
 export default () => {
 
     const threads = Object.keys(postData).map( (key,index) => {
-        console.log(postData[key])
         let postDesc = postData[key].description.slice(0,200)
         if(postData[key].description.length > 200){
             postDesc+= '...'
@@ -48,9 +47,9 @@ export default () => {
                 <p><small className="text-muted" > {postData[key].author} - post ID: {postData[key].id} </small></p>
                 <p>{postDesc}</p>
 
-                <a href={postData[key].jsbin}><img style={jsbinStyle} src={jsbinPIC} alt="jsbinPicture"/></a>
+                <a style={inlineBlockStyle} target="_blank" href={postData[key].jsbin}><img style={jsbinStyle} src={jsbinPIC} alt="jsbinPicture"/></a>
 
-                <Link style={inlineBlockStyle} to={`/thread/${postData[key].id}`}> <p> View More </p> </Link>
+                <Link style={blockStyle} to={`/thread/${postData[key].id}`}> <p> View More </p> </Link>
                 {/* <iframe style={iframeStyle} src={jsbin_URL} frameborder="0"></iframe> */}
                 {/* {Jsbin(index)} */}
 

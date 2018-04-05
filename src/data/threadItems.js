@@ -30,7 +30,7 @@ export default {
         author: 'og poster',
         title: 'RANDMON CONTENT WHEEEE',
         description: 'someone help me understand what this means?!?! LMAO NFADJKNAJKKK RAWR XD',
-        jsbin:'jsbin.com',
+        jsbin:'http://jsbin.com/zijokep/edit?html,js,output',
         comments:[
             {
                 name: 'John Doe',

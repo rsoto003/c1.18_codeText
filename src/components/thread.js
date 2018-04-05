@@ -13,6 +13,10 @@ const textAreaStyle={
 const formStyle={
     width:'100%'
 }
+const iframeStyle={
+    width: '100%',
+    height: '400px'
+}
 
 class Thread extends Component{
     constructor(props){
@@ -62,7 +66,7 @@ class Thread extends Component{
                     <p>{postData[this.props.threadID].description}</p>
                     {/* <iframe src={postData[props.threadID].jsbin} frameborder="0"></iframe> */}
                     <div className="dropdown-divider mb-5"></div>
-                    
+                    <iframe style={iframeStyle} src="http://embed.plnkr.co/teHPZ7pSiWX570mDWXDZ/" frameBorder="0"></iframe>
                         {Comments}
 
                         <form style={formStyle} className="form-group" onSubmit={this.onSubmit} >
