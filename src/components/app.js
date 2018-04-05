@@ -4,27 +4,24 @@ import {Route} from 'react-router-dom'
 
 import '../assets/css/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-
-import Navbar from './navbar'
-import Sidebar from './sidebar'
-import AllThreads from './allthreads'
-import NewPost from './newPost'
+import AllThreads from './allthreads';
+import Navbar from './navbar';
+import NewPost from './newPost';
+import Sidebar from './sidebar';
 
 const App = () => {
-    return(
-        <div>
-            <Navbar/>
-            <div className="container">
-                <div className="row">
-                    <Sidebar/>
-                    <Route exact path="/" component={AllThreads} />
-                    <Route path='/newPost' component={NewPost}/>
+    return (
+            <div>
+                <Navbar/>
+                <div className="container">
+                    <div className="row">
+                        <Sidebar/>
+                        <Route exact path="/" component={AllThreads} />
+                        <Route path='/newPost' component={NewPost}/>
+                    </div>
                 </div>
             </div>
-        </div>
     )
-
-};
+}
 
 export default App;

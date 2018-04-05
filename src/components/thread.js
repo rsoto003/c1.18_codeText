@@ -11,7 +11,6 @@ class Thread extends Component {
                     <h3>{this.props.data.title}</h3>
                     <p><small className="text-muted" > {this.props.data.author} - post ID: {this.props.data.id} </small></p>
                     <p>{this.props.data.description}</p>
-    
                     <small className="text-muted">Comments</small>
                     <div className="row">
                         <div className="col">
