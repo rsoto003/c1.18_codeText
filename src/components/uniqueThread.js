@@ -1,31 +1,3 @@
-import React, { Component } from 'react';
-
-class Thread extends Component {
-        constructor(props){
-            super(props);
-        }
-
-        render(){
-            return (
-                <div key={this.props.key}>
-                    <h3>{this.props.data.title}</h3>
-                    <p><small className="text-muted" > {this.props.data.author} - post ID: {this.props.data.id} </small></p>
-                    <p>{this.props.data.description}</p>
-                    <small className="text-muted">Comments</small>
-                    <div className="row">
-                        <div className="col">
-                            <span><i className="fas fa-user-circle mr-2"></i>{this.props.data.comments[0].name}</span>
-                            <p><small>{this.props.data.comments[0].comment}</small></p>
-                        </div>
-                    </div>
-                    <div className="dropdown-divider mb-5"></div>
-                </div>
-            )
-        }
-}
-
-export default Thread;
-
 import React, {Component} from 'react';
 import postData from '../data/threadItems'
 
@@ -49,7 +21,7 @@ class Thread extends Component{
     constructor(props){
         super(props)
         this.state={
-            comments: postData[props.threadID].comments,
+            comments: postData[this.props.threadID].comments || '',
             textInput:''
         }
         this.updateInput=this.updateInput.bind(this)
@@ -95,15 +67,13 @@ class Thread extends Component{
                     <div className="dropdown-divider mb-5"></div>
                     <iframe style={iframeStyle} src="http://embed.plnkr.co/teHPZ7pSiWX570mDWXDZ/" frameBorder="0"></iframe>
                         {Comments}
-
                         <form style={formStyle} className="form-group" onSubmit={this.onSubmit} >
                             <textarea style={textAreaStyle} id="comment" className="form-control" value={this.state.textInput} onChange={this.updateInput} ></textarea>
                             <button className="btn btn-danger btn-sm" >Add a comment</button>
-                        </form>
-                        
+                        </form>     
                 </div>
         )
     }
 };
 
-export default Thread
+export default Thread;

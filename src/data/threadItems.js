@@ -1,7 +1,3 @@
-export default [
-    {
-        id:1,
-        timestamp: 1522811757027, //will be most recent
 export default {
     1522892314240:{
         id:1522892314240,
@@ -16,9 +12,6 @@ export default {
             }
         ]
     },
-    {
-        id:2,
-        timestamp: 5522811757027, //will be last
     1522892314242:{
         id:1522892314242,
         author: 'og poster',
@@ -32,9 +25,6 @@ export default {
             }
         ]
     },
-    {
-        id:3,
-        timestamp: 3352281175707, //will be second to last
     1522892314243:{
         id:1522892314243,
         author: 'og poster',
@@ -48,9 +38,6 @@ export default {
             }
         ]
     },
-    {
-        id:4,
-        timestamp: 1522811757050, //will be second most recent
     1522892314244:{
         id:1522892314244,
         author: 'og poster',
