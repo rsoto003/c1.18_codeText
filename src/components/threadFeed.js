@@ -3,6 +3,7 @@ import postData from '../data/threadItems';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import jsbinPIC from '../assets/images/jsbin.png';
+import UpVote from './upvote'; // Hanna
 
 const blockStyle={
     display:'block'
@@ -34,7 +35,6 @@ function Jsbin(index){
 }
 
 export default () => {
-
     const threads = Object.keys(postData).map( (key,index) => {
         let postDesc = postData[key].description.slice(0,200)
         if(postData[key].description.length > 200){
@@ -42,7 +42,10 @@ export default () => {
         }
         const jsbin_URL = postData[key].jsbin;
         return (
+            
             <div key={index}>
+            
+                <UpVote className="col-m-1 col-sm-1 justify-content-start mt-5"/>
                 <h4>{postData[key].title}</h4>
                 <p><small className="text-muted" > {postData[key].author} - post ID: {postData[key].id} </small></p>
                 <p>{postDesc}</p>
