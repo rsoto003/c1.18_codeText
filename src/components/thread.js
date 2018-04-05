@@ -1,34 +1,28 @@
-import React from 'react';
-import postData from '../data/threadItems';
+import React, { Component } from 'react';
 
-export default () => {
+class Thread extends Component {
+        constructor(props){
+            super(props);
+        }
 
-    const threads = postData.map( (item, index) => {
-        console.log(item)
-        return (
-            <div key={index}>
-                <h3>{item.title}</h3>
-                <p><small className="text-muted" > {item.author} - post ID: {item.id} </small></p>
-                <p>{item.description}</p>
-
-                <small className="text-muted">Comments</small>
-                <div className="row">
-                    <div className="col">
-                        <span><i className="fas fa-user-circle mr-2"></i>{item.comments[0].name}</span>
-                        <p><small>{item.comments[0].comment}</small></p>
+        render(){
+            return (
+                <div key={this.props.key}>
+                    <h3>{this.props.data.title}</h3>
+                    <p><small className="text-muted" > {this.props.data.author} - post ID: {this.props.data.id} </small></p>
+                    <p>{this.props.data.description}</p>
+    
+                    <small className="text-muted">Comments</small>
+                    <div className="row">
+                        <div className="col">
+                            <span><i className="fas fa-user-circle mr-2"></i>{this.props.data.comments[0].name}</span>
+                            <p><small>{this.props.data.comments[0].comment}</small></p>
+                        </div>
                     </div>
-                
-                
+                    <div className="dropdown-divider mb-5"></div>
                 </div>
-                <div className="dropdown-divider mb-5"></div>
-            </div>
-        )
-    }) 
-
-    return (
-        <div className="col-m-12 col-sm-9 justify-content-start mt-5 ">
-            {threads}
-            
-        </div>
-    )
+            )
+        }
 }
+
+export default Thread;

@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Navbar from './navbar'
 import Sidebar from './sidebar'
-import Thread from './thread'
+import AllThreads from './allthreads'
 import NewPost from './newPost'
 
 const App = () => {
@@ -18,7 +18,7 @@ const App = () => {
             <div className="container">
                 <div className="row">
                     <Sidebar/>
-                    <Route exact path="/" component={Thread} />
+                    <Route exact path="/" component={AllThreads} />
                     <Route path='/newPost' component={NewPost}/>
                 </div>
             </div>
