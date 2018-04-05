@@ -15,6 +15,7 @@
     "url": "https://github.com/rsoto003/c1.18_context"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.0.0",
     "react": "^16.2.0",
