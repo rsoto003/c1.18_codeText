@@ -6,9 +6,14 @@ export default ()=> {
     return (
         <div className="col-3 d-none d-sm-block">
             <div className="row mt-5 mx-auto">
-                <Link to="/newPost">Post something!</Link>
+                <Link to="/newPost">Post a question!</Link>
             </div>
-            <div className="row mt-5 mx-auto">
+
+            {/* ------------------------------------------- */}
+            {/* Everything below isn't part of our MVP or feature set yet*/}
+
+
+            {/* <div className="row mt-5 mx-auto">
                 <Link to="/following">Following</Link>
             </div>
             <div className="row mt-5 mx-auto">
@@ -19,7 +24,7 @@ export default ()=> {
             </div>
             <div className="row mt-5 mx-auto">
                 <Link to="/help">Help</Link>
-            </div>
+            </div> */}
         </div>
     )
 }
