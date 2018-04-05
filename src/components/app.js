@@ -4,12 +4,12 @@ import {Route} from 'react-router-dom';
 
 import '../assets/css/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import Navbar from './navbar';
-import Sidebar from './sidebar';
-import ThreadFeed from './threadFeed';
 import NewPost from './newPost';
-import Thread from './thread';
+import Sidebar from './sidebar';
+import Thread from './uniqueThread';
+// import ThreadFeed from './threadFeed';
+import AllThreads from './allthreads'
 
 const UniqueThread = ({ match }) => {
     return(
@@ -24,14 +24,14 @@ const App = () => {
             <div className="container">
                 <div className="row">
                     <Sidebar/>
-                    <Route exact path="/" component={ThreadFeed} />
+                    {/* <Route exact path="/" component={ThreadFeed} /> */}
+                    <Route exact path="/" component={AllThreads} />
                     <Route path='/newPost' component={NewPost}/>
-                    <Route path='/thread/:threadID' component={UniqueThread} />
+                    <Route path='/thread/:threadID' component={UniqueThread}  />
                 </div>
             </div>
         </div>
     )
-
-};
+}
 
 export default App;

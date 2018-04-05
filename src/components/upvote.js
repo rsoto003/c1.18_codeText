@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faCaretUp from '@fortawesome/fontawesome-free-solid/faCaretUp'
 import '../assets/css/app.css';
 
 class UpVote extends Component{
@@ -31,13 +33,11 @@ class UpVote extends Component{
         return(
 
             <div className="voteBox">                                           
-                <div className="glyphicon glyphicon-triangle-top" onClick={this.handleAddVote}> Add </div> 
-
-                {/* <input type="number" name="" value={this.state.value} onChange={(event) => this.state.value}/>  */}
+                <div className="addVote" onClick={this.handleAddVote}> <FontAwesomeIcon icon={faCaretUp}/></div>                 
 
                 <div>{this.state.value}</div>
 
-                <div className="glyphicon glyphicon-triangle-bottom" onClick={this.handleDeleteVote}> Delete </div>
+                <div className="deleteVote" onClick={this.handleDeleteVote}> <i className="fas fa-chevron-square-down"></i></div>
             </div>
         )
     }
