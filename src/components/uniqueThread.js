@@ -5,7 +5,7 @@ import postData from '../data/threadItems'
 // It feels really barbarian
 
 const textAreaStyle={
-    fontSize: '13px',
+    fontSize: '14px',
     height: '55px',
     marginBottom:'2px'
 }
