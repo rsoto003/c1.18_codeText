@@ -1,9 +1,14 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 5000;
+const keys = require('./config/keys');
+
+
+mongoose.connect(keys.mongoURI);
 
 app.get('/', (req, res) => {
-    console.log('i am listening');
+    console.log('i am listening on the mf server');
     res.send({
         hello: 'this works',
         test: 'is working',
