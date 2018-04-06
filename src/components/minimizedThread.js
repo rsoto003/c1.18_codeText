@@ -8,6 +8,9 @@ import UpVote from './upvote'
 const blockStyle={
     display:'block'
 }
+const inlineBlock={
+    display:'inline-block'
+}
 const aTag={
     display:'inline-block',
     float: 'right'
@@ -65,7 +68,7 @@ export default (props) => {
             <div className="col-1 ">
                 <UpVote />
             </div>
-            <div className="col-m-8 col-sm-8 justify-content-start ">
+            <div className="col-m-12 col-sm-11 justify-content-start ">
                 {/* <UpVote className="col-m-1 col-sm-1 justify-content-start mt-5"/> */}
                 <h4>{props.data.title}</h4>
                 <p><small className="text-muted" > {props.data.author} - post ID: {props.data.id} </small></p>
@@ -73,7 +76,7 @@ export default (props) => {
                 
                 <a style={aTag} target="_blank" href={props.data.jsbin}><img style={jsbinStyle} src={jsbinPIC} alt="jsbinPicture"/></a>
 
-                <Link style={blockStyle} to={`/thread/${props.data.id}`}> <p> View More </p> </Link>
+                <Link style={inlineBlock} to={`/thread/${props.data.id}`}> <p> View More </p> </Link>
                 <small style={blockStyle} className="text-muted">Comments ({props.data.comments.length})</small>
                 {Comments}
                 <div className="dropdown-divider mb-5"></div>

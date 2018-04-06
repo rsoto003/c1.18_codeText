@@ -1,14 +1,11 @@
 import React from 'react';
-// import {Link} from 'react-router-dom';
 import {Route} from 'react-router-dom';
-
 import '../assets/css/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './navbar';
 import NewPost from './newPost';
 import Sidebar from './sidebar';
 import Thread from './uniqueThread';
-// import ThreadFeed from './threadFeed';
 import AllThreads from './allthreads'
 
 const UniqueThread = ({ match }) => {
