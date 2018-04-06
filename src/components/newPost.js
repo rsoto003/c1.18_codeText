@@ -52,7 +52,19 @@ class NewPost extends Component{
         this.setState({
             descriptionState: newDescriptionState
         })
+
+        jsbinIsValid(event)
     
+    }
+    jsbinIsValid(event){
+        
+        let isSpace = false;
+
+        for( var i =0; i< this.state.jsbinLink.length; i++ ){
+            
+        }
+
+
     }
 
 
