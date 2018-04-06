@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import postData from '../data/threadItems';
 import MinimizedThread from './minimizedThread'
+
 class AllThreads extends Component {
     constructor(props){
         super(props);
@@ -14,7 +15,6 @@ class AllThreads extends Component {
     } 
 
     render(){
-        console.log(postData);
         const sortedPosts = this.sortThread(postData);
         const threads = sortedPosts.map((item, index) => {
             console.log(item);
