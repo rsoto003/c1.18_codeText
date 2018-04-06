@@ -16,7 +16,7 @@ class UpVote extends Component{
     }
 
     handleAddVote(){        
-        console.log('handleAddVote: ', this);       
+        console.log('handleAddVote: ', this.state.value);       
 
         this.setState({
            value: this.state.value + 1
@@ -24,7 +24,7 @@ class UpVote extends Component{
     }
 
     handleDeleteVote(){        
-        console.log('handledeleteVote: ', this);           
+        console.log('handledeleteVote: ', this.state.value);           
         
         this.setState({
             value: this.state.value - 1
@@ -42,11 +42,11 @@ class UpVote extends Component{
         return(
 
             <div className="voteBox">                                           
-                <div className="addVote fa-2x" onClick={this.handleAddVote}> <FontAwesomeIcon icon={faCaretUp} /></div>                 
+                <div className="addVote fa-3x" onClick={this.handleAddVote}> <FontAwesomeIcon icon={faCaretUp} /></div>                 
 
-                <div>{this.state.value}</div>
+                <div className="voteNum">{this.state.value}</div>
 
-                <div className="deleteVote fa-2x" onClick={this.handleDeleteVote}> <FontAwesomeIcon icon={faCaretDown} /></div>
+                <div className="deleteVote fa-3x" onClick={this.handleDeleteVote}> <FontAwesomeIcon icon={faCaretDown} /></div>
             </div>
         )
     }

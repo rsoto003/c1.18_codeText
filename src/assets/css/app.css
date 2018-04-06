@@ -1,3 +1,14 @@
 .voteBox {
     text-align: center;
 }
+
+.voteNum {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #A0A0A0;
+    line-height: 1em;
+}
+
+.addVote, .deleteVote{
+    color: #A0A0A0;
+}
