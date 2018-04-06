@@ -78,9 +78,8 @@ class NewPost extends Component{
         const subString = jsbinLink.substring( ( dotComPos+4 ),( jsbinLink.length ) )
         console.log(subString);
         // http://jsbin.com/qatakap/1/edit?html,output
-        console.log(`http://jsbin.com${subString}`)
         axios.get ( `https://jsbin.com/oembed?url=http://jsbin.com${subString}`).then( (res)=>{
-            console.log(res)
+            console.log(res.request)
         })
 
 
