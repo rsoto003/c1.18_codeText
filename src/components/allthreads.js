@@ -15,7 +15,6 @@ class AllThreads extends Component {
     } 
 
     render(){
-        console.log(postData);
         const sortedPosts = this.sortThread(postData);
         const threads = sortedPosts.map((item, index) => {
             console.log(item);
