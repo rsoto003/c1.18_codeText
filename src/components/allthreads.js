@@ -10,14 +10,12 @@ class AllThreads extends Component {
     sortThread(object){
         const objectKeyArray = Object.keys(object); 
         const sortedThreads = objectKeyArray.sort();
-        console.log(sortedThreads);
         return sortedThreads;
     } 
 
     render(){
         const sortedPosts = this.sortThread(postData);
         const threads = sortedPosts.map((item, index) => {
-            console.log(item);
             return (
                 <MinimizedThread data={postData[item]} key={index}/>
             )
