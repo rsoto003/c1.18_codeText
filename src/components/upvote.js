@@ -1,7 +1,4 @@
 import React, {Component} from 'react';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faCaretUp from '@fortawesome/fontawesome-free-solid/faCaretUp';
-import faCaretDown from '@fortawesome/fontawesome-free-solid/faCaretDown';
 import '../assets/css/app.css';
 
 class UpVote extends Component{
@@ -42,11 +39,11 @@ class UpVote extends Component{
         return(
 
             <div className="voteBox">                                           
-                <div className="addVote fa-3x" onClick={this.handleAddVote}> <FontAwesomeIcon icon={faCaretUp} /></div>                 
+                <div className="addVote fa-3x" onClick={this.handleAddVote}> <i className="fas fa-angle-up"></i></div>                 
 
                 <div className="voteNum">{this.state.value}</div>
 
-                <div className="deleteVote fa-3x" onClick={this.handleDeleteVote}> <FontAwesomeIcon icon={faCaretDown} /></div>
+                <div className="deleteVote fa-3x" onClick={this.handleDeleteVote}> <i className="fas fa-angle-down"></i> </div>
             </div>
         )
     }
