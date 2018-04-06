@@ -53,17 +53,23 @@ class NewPost extends Component{
             descriptionState: newDescriptionState
         })
 
-        jsbinIsValid(event)
+        this.jsbinIsValid(event)
     
     }
     jsbinIsValid(event){
-        
+        const jsbinLink = this.state.JSBINLink
         let isSpace = false;
-
-        for( var i =0; i< this.state.jsbinLink.length; i++ ){
-            
+        for( var i =0; i< jsbinLink.length; i++ ){
+            if (jsbinLink[i] === ' ' ){
+                isSpace = true
+            }
         }
+        console.log('isSpace: ',  isSpace);
+        const dotComPos = jsbinLink.indexOf('.com')
+        const subString = jsbinLink.substring( ( dotComPos+4 ),( jsbinLink.length ) )
+        console.log(subString)
 
+        
 
     }
 
