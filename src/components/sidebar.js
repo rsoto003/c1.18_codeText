@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 
 export default ()=> {
     return (
-        <div className="col-3 d-none d-sm-block">
+        <div className="col-2 d-none d-sm-block">
             <div className="row mt-5 mx-auto">
                 <Link to="/newPost">Post a question!</Link>
             </div>
