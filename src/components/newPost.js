@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-
+import axios from 'axios';
 
 
 class NewPost extends Component{
@@ -77,7 +77,11 @@ class NewPost extends Component{
         const dotComPos = jsbinLink.indexOf('.com')
         const subString = jsbinLink.substring( ( dotComPos+4 ),( jsbinLink.length ) )
         console.log(subString);
-
+        // http://jsbin.com/qatakap/1/edit?html,output
+        console.log(`http://jsbin.com${subString}`)
+        axios.get ( `https://jsbin.com/oembed?url=http://jsbin.com${subString}`).then( (res)=>{
+            console.log(res)
+        })
 
 
 
