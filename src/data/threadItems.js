@@ -2,7 +2,7 @@ export default {
     1522892314240:{
         id:1522892314240,
         author: 'og poster',
-        title: 'Waiting for database and server to be done so front end can communicate',
+        title: 'When you see this message, slack the group. april 5th, 5:25pm',
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum deleniti accusantium obcaecati eveniet soluta nihil, architecto, eius autem placeat, voluptatibus ducimus officia sed doloribus delectus nemo quam. Laudantium, atque non Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum deleniti accusantium obcaecati eveniet soluta nihil, architecto, eius autem placeat, voluptatibus ducimus officia sed doloribus delectus nemo quam. Laudantium, atque non .",
         jsbin: 'https://jsbin.com/goxeyi/6/edit?html,output',
         // jsbin:'https://codesandbox.io/s/lz04yqr79',
@@ -16,7 +16,7 @@ export default {
     1522892314242:{
         id:1522892314242,
         author: 'og poster',
-        title: 'RANDMON CONTENT WHEEEE',
+        title: 'Make sure you are pushing every 15 minutes',
         description: 'someone help me understand what this means?!?! LMAO NFADJKNAJKKK RAWR XD',
         jsbin: 'https://jsbin.com/sogunar/1/edit?html,output',
         comments:[
