@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faCaretUp from '@fortawesome/fontawesome-free-solid/faCaretUp';
 import faCaretDown from '@fortawesome/fontawesome-free-solid/faCaretDown';
@@ -11,10 +11,12 @@ class UpVote extends Component{
         this.state= {
             value: 0
         }
+        this.handleAddVote = this.handleAddVote.bind(this);
+        this.handleDeleteVote = this.handleDeleteVote.bind(this);
     }
 
     handleAddVote(){        
-        console.log('handleAddVote: ', this.state);       
+        console.log('handleAddVote: ', this);       
 
         this.setState({
            value: this.state.value + 1
@@ -22,11 +24,17 @@ class UpVote extends Component{
     }
 
     handleDeleteVote(){        
-        console.log('handledeleteVote: ', this.state);        
+        console.log('handledeleteVote: ', this);           
         
         this.setState({
             value: this.state.value - 1
         });
+
+        if(this.state.value < 1) {
+            this.setState({
+                value: 0
+            });
+        } 
     }
 
     render(){
@@ -34,11 +42,11 @@ class UpVote extends Component{
         return(
 
             <div className="voteBox">                                           
-                <a className="addVote" onClick={this.handleAddVote}> <FontAwesomeIcon icon={faCaretUp}/></a>                 
+                <div className="addVote fa-2x" onClick={this.handleAddVote}> <FontAwesomeIcon icon={faCaretUp} /></div>                 
 
                 <div>{this.state.value}</div>
 
-                <div className="deleteVote" onClick={this.handleDeleteVote}> <FontAwesomeIcon icon={faCaretDown}/></div>
+                <div className="deleteVote fa-2x" onClick={this.handleDeleteVote}> <FontAwesomeIcon icon={faCaretDown} /></div>
             </div>
         )
     }

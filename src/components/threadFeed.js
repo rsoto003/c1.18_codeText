@@ -3,7 +3,7 @@ import postData from '../data/threadItems';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import jsbinPIC from '../assets/images/jsbin.png';
-import UpVote from './upvote'; // Hanna
+import UpVote from './upvote'; 
 
 const blockStyle={
     display:'block'
