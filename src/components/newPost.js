@@ -14,6 +14,10 @@ class NewPost extends Component{
             },
             descriptionState:{
                 display: {display:'none'}
+            },
+            jsbinState: {
+                display: {display:'none'},
+                // isSpace: '',
             }
         }
         this.titleInputChange = this.titleInputChange.bind(this);
@@ -58,18 +62,24 @@ class NewPost extends Component{
     }
     jsbinIsValid(event){
         const jsbinLink = this.state.JSBINLink
+        const newJsbinState = {...this.state.jsbinState}
         let isSpace = false;
         for( var i =0; i< jsbinLink.length; i++ ){
             if (jsbinLink[i] === ' ' ){
                 isSpace = true
+                newJsbinState.display = isSpace ? {display:'block'} : {display:'none'}
+                this.setState({
+                    jsbinState: newJsbinState
+                })
+                event.preventDefault();
             }
         }
-        console.log('isSpace: ',  isSpace);
         const dotComPos = jsbinLink.indexOf('.com')
         const subString = jsbinLink.substring( ( dotComPos+4 ),( jsbinLink.length ) )
-        console.log(subString)
+        console.log(subString);
 
-        
+
+
 
     }
 
@@ -98,6 +108,7 @@ class NewPost extends Component{
                                     <span className="input-group-text" id="inputGroup-sizing-default" >JSBIN</span>
                                 </div>
                                 <input onChange={this.linkInputChange} type="text" className="form-control" id="jsbinLink" placeholder="attach a JSBIN link?" value={this.state.JSBINLink}/>
+                                <div style={this.state.jsbinState.display} className="alert alert-warning" role="alert"> remove spaces in your link! </div>
                             </div>
                             <button className="float-right mt-2 btn btn-primary" >Submit post</button>
                     </form>
