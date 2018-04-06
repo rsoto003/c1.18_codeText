@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import postData from '../data/threadItems';
 import MinimizedThread from './minimizedThread'
+
 class AllThreads extends Component {
     constructor(props){
         super(props);

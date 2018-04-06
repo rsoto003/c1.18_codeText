@@ -57,6 +57,7 @@ class Thread extends Component{
         } )
 
         return(
+            
                 <div className="col-m-12 col-sm-9 justify-content-start mt-5 ">
                     <h2>{postData[this.props.threadID].title}</h2>
                     <p><small className='text-muted' >Author: {postData[this.props.threadID].author} </small></p>
