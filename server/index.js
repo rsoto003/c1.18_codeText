@@ -4,7 +4,6 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const keys = require('./config/keys');
 
-
 mongoose.connect(keys.mongoURI);
 
 app.get('/', (req, res) => {
@@ -27,3 +26,6 @@ app.get('/', (req, res) => {
 
 
 app.listen(PORT);
+
+
+
