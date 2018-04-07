@@ -17,7 +17,8 @@ class NewPost extends Component{
             },
             jsbinState: {
                 display: {display:'none'},
-                // isSpace: '',
+                isSpace: false,
+                isJsin: true
             }
         }
         this.titleInputChange = this.titleInputChange.bind(this);
@@ -64,25 +65,40 @@ class NewPost extends Component{
         const jsbinLink = this.state.JSBINLink
         const newJsbinState = {...this.state.jsbinState}
         let isSpace = false;
+        let isJsbin = true;
         for( var i =0; i< jsbinLink.length; i++ ){
             if (jsbinLink[i] === ' ' ){
                 isSpace = true
                 newJsbinState.display = isSpace ? {display:'block'} : {display:'none'}
-                this.setState({
-                    jsbinState: newJsbinState
-                })
+
                 event.preventDefault();
+            } 
+        }if (jsbinLink.length > 0){
+
+            if (jsbinLink.indexOf('jsbin.com/')===-1){
+                isJsbin=false;
+                this.setState
+                event.preventDefault();
+            } else {
+                const dotComPos = jsbinLink.indexOf('.com')
+                const subString = jsbinLink.substring( ( dotComPos+4 ),( jsbinLink.length ) )
+                console.log(subString);
+
+                // http://jsbin.com/qatakap/1/edit?html,output
+
+                axios.get ( `https://jsbin.com/oembed?url=http://jsbin.com${subString}`).then( (res)=>{
+                    console.log(res.request)
+                })
+    
             }
+            newJsbinState.display = isJsbin ? {display:'none'} : {display:'block'} ;
+
         }
-        const dotComPos = jsbinLink.indexOf('.com')
-        const subString = jsbinLink.substring( ( dotComPos+4 ),( jsbinLink.length ) )
-        console.log(subString);
-        // http://jsbin.com/qatakap/1/edit?html,output
-        axios.get ( `https://jsbin.com/oembed?url=http://jsbin.com${subString}`).then( (res)=>{
-            console.log(res.request)
+
+
+        this.setState({
+            jsbinState: newJsbinState
         })
-
-
 
     }
 
@@ -111,7 +127,7 @@ class NewPost extends Component{
                                     <span className="input-group-text" id="inputGroup-sizing-default" >JSBIN</span>
                                 </div>
                                 <input onChange={this.linkInputChange} type="text" className="form-control" id="jsbinLink" placeholder="attach a JSBIN link?" value={this.state.JSBINLink}/>
-                                <div style={this.state.jsbinState.display} className="alert alert-warning" role="alert"> remove spaces in your link! </div>
+                                <div style={this.state.jsbinState.display} className="alert alert-warning" role="alert"> This JSBIN link is not valid! </div>
                             </div>
                             <button className="float-right mt-2 btn btn-primary" >Submit post</button>
                     </form>
