@@ -4,7 +4,7 @@ import userData from '../data/profiles'
 const usersArray=[]
 const users = Object.keys(userData).map( (item, index) => {
     usersArray.push(userData[item])
-    console.log(usersArray)
+    // console.log(usersArray)
     return(
         <tr key={index}>
             <th scope="row"> {index+1} </th>
@@ -15,20 +15,46 @@ const users = Object.keys(userData).map( (item, index) => {
     )
 } )
 
+
 const upvoteOrder = ()=>{
-    const upvoteArray=usersArray;
+    const upvoteArray=usersArray.slice();
     let highest = null;
-
-    for ( let i=0; i<upvoteArray.length; i++){
-        for ( let j =0; j<upvotes.length; j++){
-            highest = (upvoteArray[i].upvotes > upvoteArray[j].upvotes) ? upvoteArray[i] : upvoteArray[j];
-            
+    const output=[];
+    let isOrdered=false;
+    
+    while ( upvoteArray.length !== 1 ){
+        let highestIndex = null;
+        let reorder = false;
+        for ( let i =0; i<upvoteArray.length; i++){
+            highest = upvoteArray[0];
+            if ( highest.upvotes < upvoteArray[i].upvotes ){
+                highest = upvoteArray[i];
+                upvoteArray.splice(i,1);
+                reorder = true;
+                highestIndex = i;
+            }
         }
+        if (reorder === false){
+            upvoteArray.splice(0,1)
+        }
+        
+        output.push(highest)
+
     }
-
-
+    console.log(output)
+    return output
 }
-upvoteOrder()
+const upvoteUser = upvoteOrder().map( (item, index) => {
+    return (
+        <tr key={index}>
+            <th scope="row" >{index+1}</th>
+            <td>{item.firstName} {item.lastName}</td>
+            <td>{item.upvotes}</td>
+            <td>{item.comments}</td>
+        </tr>
+    )
+})
+
 
 export default () => {
 
@@ -43,7 +69,7 @@ export default () => {
                         <th scope="col" >Upvotes</th>
                         <th scope="col" >Comments</th>
                     </tr>
-                    {users}
+                    {upvoteUser}
                 </thead>
             </table>
         </div>

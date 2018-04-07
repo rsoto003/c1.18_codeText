@@ -1,5 +1,5 @@
 export default {
-    username:{
+    username1:{
         firstName: 'Ryan',
         lastName: 'Soto',
         comments: 26,
