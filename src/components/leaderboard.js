@@ -16,27 +16,19 @@ const users = Object.keys(userData).map( (item, index) => {
 } )
 
 const upvoteOrder = ()=>{
-    const upvoteArray = usersArray;
-    let selected = null;
-    let compared = null;
-    let isOrdered = false;
+    const upvoteArray=usersArray;
+    let highest = null;
 
-    while (isOrdered === false){
-        for( var i = 0; i<usersArray.length; i++){
-            selected = upvoteArray[i]
-            for(var j =0; i<usersArray.length; j++){
-                if( selected < upvoteArray[j] ){
-                    compared = upvoteArray[j];
-                    upvoteArray[j]=selected;
-                    upvoteArray[i]=compared;
-                }
-            }
+    for ( let i=0; i<upvoteArray.length; i++){
+        for ( let j =0; j<upvotes.length; j++){
+            highest = (upvoteArray[i].upvotes > upvoteArray[j].upvotes) ? upvoteArray[i] : upvoteArray[j];
+            
         }
     }
 
 
-
 }
+upvoteOrder()
 
 export default () => {
 
