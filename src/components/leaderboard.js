@@ -14,9 +14,29 @@ const users = Object.keys(userData).map( (item, index) => {
         </tr>
     )
 } )
-// const upvoteOrder = usersArray.map( (item,index) => {
 
-// })
+const upvoteOrder = ()=>{
+    const upvoteArray = usersArray;
+    let selected = null;
+    let compared = null;
+    let isOrdered = false;
+
+    while (isOrdered === false){
+        for( var i = 0; i<usersArray.length; i++){
+            selected = upvoteArray[i]
+            for(var j =0; i<usersArray.length; j++){
+                if( selected < upvoteArray[j] ){
+                    compared = upvoteArray[j];
+                    upvoteArray[j]=selected;
+                    upvoteArray[i]=compared;
+                }
+            }
+        }
+    }
+
+
+
+}
 
 export default () => {
 
