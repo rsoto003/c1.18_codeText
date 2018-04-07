@@ -4,30 +4,21 @@ import userData from '../data/profiles'
 const usersArray=[]
 const users = Object.keys(userData).map( (item, index) => {
     usersArray.push(userData[item])
-    // console.log(usersArray)
-    return(
-        <tr key={index}>
-            <th scope="row"> {index+1} </th>
-            <td>{userData[item].firstName} {userData[item].lastName}</td>
-            <td>{userData[item].upvotes} </td>
-            <td>{userData[item].comments}  </td>
-        </tr>
-    )
 } )
 
 
-const upvoteOrder = ()=>{
+const Order = (orderSelect)=>{
     const upvoteArray=usersArray.slice();
-    let highest = null;
     const output=[];
     let isOrdered=false;
-    
-    while ( upvoteArray.length !== 1 ){
+    // debugger;
+    while ( upvoteArray.length !== 0 ){
+        let highest = null;
         let highestIndex = null;
         let reorder = false;
         for ( let i =0; i<upvoteArray.length; i++){
             highest = upvoteArray[0];
-            if ( highest.upvotes < upvoteArray[i].upvotes ){
+            if ( highest[orderSelect] < upvoteArray[i][orderSelect] ){
                 highest = upvoteArray[i];
                 upvoteArray.splice(i,1);
                 reorder = true;
@@ -44,7 +35,7 @@ const upvoteOrder = ()=>{
     console.log(output)
     return output
 }
-const upvoteUser = upvoteOrder().map( (item, index) => {
+const upvoteUser =Order('upvotes').map( (item, index) => {
     return (
         <tr key={index}>
             <th scope="row" >{index+1}</th>
