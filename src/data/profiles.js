@@ -1,8 +1,7 @@
 export default {
-    username:{
+    username1:{
         firstName: 'Ryan',
         lastName: 'Soto',
-        email: 'ryansotoloveswomen@gmail.com',
         comments: 26,
         upvotes: 100,
     },
