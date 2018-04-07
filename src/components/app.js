@@ -6,7 +6,8 @@ import Navbar from './navbar';
 import NewPost from './newPost';
 import Sidebar from './sidebar';
 import Thread from './uniqueThread';
-import AllThreads from './allthreads'
+import AllThreads from './allthreads';
+import Leaderboard from './leaderboard';
 
 const UniqueThread = ({ match }) => {
     return(
@@ -25,6 +26,7 @@ const App = () => {
                     <Route exact path="/" component={AllThreads} />
                     <Route path='/newPost' component={NewPost}/>
                     <Route path='/thread/:threadID' component={UniqueThread}  />
+                    <Route path='/leaderboard' component={Leaderboard} />
                 </div>
             </div>
         </div>
