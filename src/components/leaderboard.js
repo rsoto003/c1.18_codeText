@@ -6,9 +6,26 @@ class Leaderboard extends Component{
     constructor(props){
         super(props)
         this.state={
-            order: 'upvotes'
+            order: 'upvotes',
+            upvotes:{
+                // selected: true,
+                style:{
+                    color: '#007bff',
+                    cursor: 'pointer'
+                }
+            },
+            comments:{
+                // selected: false,
+                style:{
+                    color: 'black',
+                    cursor: 'pointer'
+                }
+                
+            }
         }
 
+        this.upvoteClick=this.upvoteClick.bind(this);
+        this.commentClick=this.commentClick.bind(this);
     }
 
     Order = (orderSelect)=>{
@@ -43,6 +60,41 @@ class Leaderboard extends Component{
         return output
     }
 
+    upvoteClick(){
+        const newUpvoteState = this.state.upvotes;
+        newUpvoteState.style= {
+            color: '#007bff',
+            cursor: 'pointer'
+        }
+        const newCommentState = this.state.comments;
+        newCommentState.style={
+            color:'black',
+            cursor:'pointer'
+        }
+        this.setState({
+            upvotes: {newUpvoteState},
+            comments: {newCommentState}
+        })
+
+
+    }
+    commentClick(){
+        const newCommentState = this.state.comments;
+        newCommentState.style= {
+            color: '#007bff',
+            cursor: 'pointer'
+        }
+        const newUpvoteState = this.state.upvotes;
+        newUpvoteState.style={
+            color:'black',
+            cursor:'pointer'
+        }
+        this.setState({
+            upvotes: {newUpvoteState},
+            comments: {newCommentState}
+        })
+    }
+
     render(){
 
         
@@ -58,18 +110,20 @@ class Leaderboard extends Component{
         })
 
         return(
-            <div className="col-9 mt-2" >
+            <div className="col-sm-12 col-md-9 mt-2" >
                 <h1 className="text-center"> Leaderboards </h1>
                 <table className="table table-hover table-striped">
                     <thead>
                         <tr>
                             <th scope="col" >#</th>
                             <th scope="col" >Name</th>
-                            <th scope="col" >Upvotes</th>
-                            <th scope="col" >Comments</th>
+                            <th scope="col" style={this.state.upvotes.style} onClick={this.upvoteClick} >Upvotes</th>
+                            <th scope="col" style={this.state.comments.style} onClick={this.commentClick} >Comments</th>
                         </tr>
-                        {upvoteUser}
                     </thead>
+                    <tbody>
+                        {upvoteUser}
+                    </tbody>
                 </table>
             </div>
         )
