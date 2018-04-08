@@ -36,27 +36,31 @@ class Leaderboard extends Component{
         const upvoteArray=usersArray.slice();
         const output=[];
         let isOrdered=false;
+           
         while ( upvoteArray.length !== 0 ){
+            
             let highest = null;
             let highestIndex = null;
             let reorder = false;
+            highest = upvoteArray[0];
+
             for ( let i =0; i<upvoteArray.length; i++){
-                highest = upvoteArray[0];
-                if ( highest[orderSelect] < upvoteArray[i][orderSelect] ){
+                if ( highest[orderSelect] <= upvoteArray[i][orderSelect] ){
                     highest = upvoteArray[i];
-                    upvoteArray.splice(i,1);
+                    // upvoteArray.splice(i,1);
                     reorder = true;
                     highestIndex = i;
                 }
             }
             if (reorder === false){
                 upvoteArray.splice(0,1)
+            } else {
+                upvoteArray.splice(highestIndex,1)
             }
             
             output.push(highest)
     
         }
-        console.log(output)
         return output
     }
 
@@ -72,8 +76,9 @@ class Leaderboard extends Component{
             cursor:'pointer'
         }
         this.setState({
-            upvotes: {newUpvoteState},
-            comments: {newCommentState}
+            upvotes: newUpvoteState,
+            comments: newCommentState,
+            order: 'upvotes'
         })
 
 
@@ -89,9 +94,11 @@ class Leaderboard extends Component{
             color:'black',
             cursor:'pointer'
         }
+        console.log(newCommentState)
         this.setState({
-            upvotes: {newUpvoteState},
-            comments: {newCommentState}
+            upvotes: newUpvoteState,
+            comments: newCommentState,
+            order: 'comments'
         })
     }
 
