@@ -47,7 +47,6 @@ class Leaderboard extends Component{
             for ( let i =0; i<upvoteArray.length; i++){
                 if ( highest[orderSelect] <= upvoteArray[i][orderSelect] ){
                     highest = upvoteArray[i];
-                    // upvoteArray.splice(i,1);
                     reorder = true;
                     highestIndex = i;
                 }

@@ -28,5 +28,23 @@ export default {
         lastName: 'Yami',
         comments: 1,
         'upvotes': 102
+    },
+    username6:{
+        firstName: 'Nolan',
+        lastName: 'Or something',
+        comments: 12,
+        'upvotes': 70
+    },
+    username7:{
+        firstName: 'Parker',
+        lastName: 'Is a cool guy',
+        comments: 42,
+        'upvotes': 69
+    },
+    username8:{
+        firstName: 'Jeff',
+        lastName: 'likes men',
+        comments:   96,
+        'upvotes': 42
     }
 }
