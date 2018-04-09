@@ -34,6 +34,21 @@ var Instructor = mongoose.model('Instructors', InstructorSchema);
 
 //     console.log("These are all of our instructors", instructors);
 // })
+let TestUserSchema = {
+    userName: String,
+    email: String,
+    comment: String
+}
+let TestUser = mongoose.model('TestUser', TestUserSchema);
+
+let testRyan = new TestUser({userName: 'testRyan', email: 'testRyan@gmail.com', comment: 'hello everyone' });
+testRyan.save();
+
+TestUser.find(function(err, TestUser){
+    if(err) return console.error(err);
+
+    console.log('these are all of the test users', TestUser);
+});
 
 app.get('/', (req, res) => {
     console.log('i am listening on the mf server');
