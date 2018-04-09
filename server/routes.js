@@ -6,7 +6,9 @@ module.NewPost = function(app){
     })
 }
 
-app.get('/newPost', Users.titleInputChange);
+app.get('/newPost', function(req, res){
+    console.log('new')
+});
 
 app.get('/newPost', Users.descriptionInputChange);
 //maybe only need onSubmit for newPost route

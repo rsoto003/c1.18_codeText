@@ -3,12 +3,19 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 5000;
 const keys = require('./config/keys');
-const routes = require('./routes');
+// const routes = require('./routes');
 
 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+
+//testing routing
+app.get('/hello', (req, res) => {
+    res.send('<h1>hello there</h1>');
+    console.log('listening on hello, lol');
+})
 
 
 mongoose.connect(keys.mongoURI, function(error) {
@@ -69,7 +76,7 @@ app.get('/', (req, res) => {
         }
     });
 })
-app(routes);
+// app(routes);
 
 app.listen(PORT);
 
