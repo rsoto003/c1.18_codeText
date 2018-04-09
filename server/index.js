@@ -3,6 +3,15 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 5000;
 const keys = require('./config/keys');
+
+const router = express.Router();
+const AddPost = require('../models/addPost');
+
+router.get('/', function(req, res, next){
+    AddPost.find(null, function(err, posts){
+        
+    })
+})
 // const routes = require('./routes');
 
 
@@ -12,10 +21,11 @@ app.use(express.urlencoded({ extended: false }));
 
 
 //testing routing
-app.get('/hello', (req, res) => {
-    res.send('<h1>hello there</h1>');
-    console.log('listening on hello, lol');
-})
+// app.get('/hello', (req, res) => {
+//     res.send('<h1>hello there</h1>');
+//     console.log('listening on hello, lol');
+// })
+
 
 
 mongoose.connect(keys.mongoURI, function(error) {
@@ -30,6 +40,7 @@ var InstructorSchema = {
     name: String,
     age: Number
 }
+
 
 var Instructor = mongoose.model('Instructors', InstructorSchema);
 
