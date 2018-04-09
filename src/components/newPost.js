@@ -105,7 +105,7 @@ class NewPost extends Component{
 
     render(){
         return (
-            <div className="col-8 mt-2" >
+            <div className="col-md-9 col-sm-12 mt-2" >
                 <div className="text-center" >
                     <h1>New Post</h1>
                 </div>
