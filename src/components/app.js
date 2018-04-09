@@ -9,6 +9,7 @@ import Thread from './uniqueThread';
 import AllThreads from './allthreads';
 import Leaderboard from './leaderboard';
 
+
 const UniqueThread = ({ match }) => {
     return(
         <Thread threadID={match.params.threadID} />
@@ -23,7 +24,7 @@ const App = () => {
                 <div className="row">
                     <Sidebar/>
                     {/* <Route exact path="/" component={ThreadFeed} /> */}
-                    <Route exact path="/" component={AllThreads} />
+                    <Route path="/home/:sort?" component={AllThreads} />
                     <Route path='/newPost' component={NewPost}/>
                     <Route path='/thread/:threadID' component={UniqueThread}  />
                     <Route path='/leaderboard' component={Leaderboard} />

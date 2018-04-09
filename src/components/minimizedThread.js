@@ -42,6 +42,10 @@ export default (props) => {
     if(props.data.description.length > 200){
         postDesc+= '...'
     }
+    let postTitle = props.data.title.slice(0,100)
+    if(props.data.title.length > 100){
+        postTitle+= '...'
+    }
     const jsbin_URL = props.data.jsbin;
 
     const commentArray = [];
@@ -70,7 +74,7 @@ export default (props) => {
             </div>
             <div className="col-m-12 col-sm-11 justify-content-start ">
                 {/* <UpVote className="col-m-1 col-sm-1 justify-content-start mt-5"/> */}
-                <h4>{props.data.title}</h4>
+                <h4>{postTitle}</h4>
                 <p><small className="text-muted" > {props.data.author} - post ID: {props.data.id} </small></p>
                 <p>{postDesc}</p>
                 
