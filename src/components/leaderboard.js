@@ -93,7 +93,6 @@ class Leaderboard extends Component{
             color:'black',
             cursor:'pointer'
         }
-        console.log(newCommentState)
         this.setState({
             upvotes: newUpvoteState,
             comments: newCommentState,
@@ -123,8 +122,8 @@ class Leaderboard extends Component{
                         <tr>
                             <th scope="col" >#</th>
                             <th scope="col" >Name</th>
-                            <th scope="col" style={this.state.upvotes.style} onClick={this.upvoteClick} >Upvotes</th>
-                            <th scope="col" style={this.state.comments.style} onClick={this.commentClick} >Comments</th>
+                            <th scope="col"> <span  style={this.state.upvotes.style} onClick={this.upvoteClick}  >Upvotes</span></th>
+                            <th scope="col"> <span style={this.state.comments.style} onClick={this.commentClick} >Comments</span></th>
                         </tr>
                     </thead>
                     <tbody>
