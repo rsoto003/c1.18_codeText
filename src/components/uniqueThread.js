@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import postData from '../data/threadItems'
+import postData from '../data/threadItems';
+import upvoteComments from './upvotecomments';
 
 
 const textAreaStyle={
@@ -57,16 +58,18 @@ class Thread extends Component{
         } )
 
         return(
-            
-                <div className="col-m-12 col-sm-9 justify-content-start mt-5 ">
+        
+
+                <div className="col-m-12 col-sm-9 justify-content-start mt-5 "
                     <h2>{postData[this.props.threadID].title}</h2>
                     <p><small className='text-muted' >Author: {postData[this.props.threadID].author} </small></p>
                     <p>{postData[this.props.threadID].description}</p>
                     {/* <iframe src={postData[props.threadID].jsbin} frameborder="0"></iframe> */}
-                    <div className="dropdown-divider mb-5"></div>
+                               <div className="dropdown-divider mb-5"></div>
 
                     <iframe src={postData[this.props.threadID].jsbin} style={iframeStyle} sandbox="allow-scripts allow-same-origin"></iframe>
 
+                     
                     {Comments}
                     <form style={formStyle} className="form-group" onSubmit={this.onSubmit} >
                         <textarea style={textAreaStyle} id="comment" className="form-control" value={this.state.textInput} onChange={this.updateInput} ></textarea>
