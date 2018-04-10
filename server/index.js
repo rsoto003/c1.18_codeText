@@ -10,6 +10,11 @@ const PostModel = require('./models/post');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // let dbUrl = 'mongodb://localhost/addPost';
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 mongoose.connect(keys.mongoURI, function(err, res){
     if(err){
