@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-
+import {Link} from 'react-router-dom'
 class ProfileDropdown extends Component{
     constructor(props){
         super(props)
@@ -58,7 +58,7 @@ class ProfileDropdown extends Component{
                         <input  type="text" className="form-control mt-2 mb-2" placeholder="username" />
                         <input type="text" className="form-control mb-2" placeholder="password" />
 
-                        <p><a href="#">Sign up!</a><button className='btn btn-sm btn-primary float-right' >Submit</button></p>
+                        <p><Link to="/register" >Sign up!</Link><button className='btn btn-sm btn-primary float-right' >Submit</button></p>
                     </form>
 
                 </div>
