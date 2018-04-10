@@ -2,7 +2,7 @@ import React from 'react';
 import {Route} from 'react-router-dom';
 import '../assets/css/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbar from './navbar';
+import Navbar from './navigation/navbar';
 import NewPost from './newPost';
 import Sidebar from './sidebar';
 import Thread from './uniqueThread';
