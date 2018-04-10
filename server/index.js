@@ -74,6 +74,26 @@ var InstructorSchema = {
     age: Number
 }
 
+/* new post schema */
+/*
+{
+    "_id": {
+        "$oid": "5acd0f13734d1d55c3198d89"
+    },
+    "title": "this is the title",
+    "description": "this is the description",
+    "file": "this is the file",
+    "timeStamp": 1523387073852,
+    "commentLength": 1,
+    "rating": 4.5,
+    "comments": [
+        {
+            "name": "Hannah",
+            "comment": "HEEEELLLLOOOOooooOOOoooOOOO"
+        }
+    ]
+}
+*/
 
 
 
