@@ -11,6 +11,14 @@ class ProfileDropdown extends Component{
 
     }
 
+    componentDidUpdate(){
+        if ( this.state.toggle ){
+            document.addEventListener('click', this.toggleMenu)
+        } else {
+            document.removeEventListener('click', this.toggleMenu)
+        }
+    }
+
     toggleMenu(){
         console.log(this.state)
         const newToggleState = this.state.toggle ? false : true;
@@ -20,6 +28,7 @@ class ProfileDropdown extends Component{
             dropdownDisplay: newDropdownDisplay
         })
     }
+
 
     render(){
         const pointer = {cursor: 'pointer'};
