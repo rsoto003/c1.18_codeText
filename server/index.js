@@ -7,9 +7,9 @@ const keys = require('./config/keys');
 const router = express.Router();
 const AddPost = require('./models/addPost');
 
-let dbUrl = 'mongodb://localhost/addPost';
+let dbUrl = 'mongodb://localhost:5000/addPost';
 
-// let dbUrl = 'https://mlab.com/databases/codetext-dev/collections/testusers';
+
 
 mongoose.connect(dbUrl, function(err, res){
     if(err){
@@ -27,7 +27,7 @@ router.get('/', function(req, res, next){
         })
     })
 })
-// const routes = require('./routes');
+
 
 module.exports = router;
 
@@ -75,33 +75,14 @@ let TestUserSchema = {
 }
 let TestUser = mongoose.model('TestUser', TestUserSchema);
 
-let testRyan = new TestUser({userName: 'testRyan', email: 'testRyan@gmail.com', comment: 'hello everyone' });
-testRyan.save();
+let testWill = new TestUser({userName: 'testWill', email: 'testWIll@gmail.com', comment: 'hello everyoasdafasdfadsfa' });
+testWill.save();
 
 TestUser.find(function(err, TestUser){
     if(err) return console.error(err);
 
     console.log('these are all of the test users', TestUser);
 });
-
-app.get('/', (req, res) => {
-    console.log('i am listening on the mf server');
-    res.send({
-        hello: 'this works',
-        test: 'is working',
-        dataNeeded: {
-            userID: '2342',
-            post: {
-                postID: "123",
-                comments: {
-                    commentID: "4123",
-                    comment: "this makes no sense"
-                }
-            }
-        }
-    });
-})
-// app(routes);
 
 app.listen(PORT);
 
