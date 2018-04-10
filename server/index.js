@@ -26,8 +26,20 @@ mongoose.connect(keys.mongoURI, function(err, res){
 
 
 app.get('/', function(req, res, next){
-    console.log('got request');
-    PostModel.find().then(data=> {
+    console.log('got request: field  = '+req.query.field);
+    const sortMapping = {
+        newest: { timeStamp: 1},
+        oldest: { timeStamp: -1},
+        popular: { timeStamp: 1},
+        comments: {timeStamp: 1},
+        hot: {timeStamp: 1}
+    }
+    if(req.query.field && sortMapping[req.query.field]){
+        var sortObj = sortMapping[req.query.field];
+    } else {
+        sortObj = {};
+    }
+    PostModel.find().sort(sortObj).then(data=> {
         res.json({
             confirmation: true,
             results: data
