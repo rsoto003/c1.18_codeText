@@ -5,16 +5,31 @@ const PORT = process.env.PORT || 5000;
 const keys = require('./config/keys');
 
 const router = express.Router();
-const AddPost = require('../models/addPost');
+const AddPost = require('./models/addPost');
+
+let dbUrl = 'mongodb://localhost/addPost';
+
+// let dbUrl = 'https://mlab.com/databases/codetext-dev/collections/testusers';
+
+mongoose.connect(dbUrl, function(err, res){
+    if(err){
+        console.log('db connection failed'); 
+    } else {
+        console.log('we have liftoff with the db', res);
+    }
+})
 
 router.get('/', function(req, res, next){
     AddPost.find(null, function(err, posts){
-        
+        res.json({
+            confirmation: 'success',
+            results: 'posts'
+        })
     })
 })
 // const routes = require('./routes');
 
-
+module.exports = router;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -32,7 +47,6 @@ mongoose.connect(keys.mongoURI, function(error) {
     if (error) {
         throw error;
     }
-
     console.log("We are connected to the mlab database");
 });
 
