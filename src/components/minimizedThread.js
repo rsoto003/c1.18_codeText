@@ -75,7 +75,7 @@ export default (props) => {
             <div className="col-md-10 col-sm-10 col-8 justify-content-start ">
                 {/* <UpVote className="col-m-1 col-sm-1 justify-content-start mt-5"/> */}
                 <h4>{postTitle}</h4>
-                <p><small className="text-muted" > {props.data.author} - post ID: {props.data.id} </small></p>
+                <p><small className="text-muted" > {props.data.author} - post ID: {props.data._id} </small></p>
                 <p>{postDesc}</p>
                 
                 <a style={aTag} target="_blank" href={props.data.jsbin}><img style={jsbinStyle} src={jsbinPIC} alt="jsbinPicture"/></a>

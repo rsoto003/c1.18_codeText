@@ -1,5 +1,5 @@
 app.get('/', (req, res) => {
-    console.log('i am listening on the mf server');
+    console.log('i am listening');
     res.send({
         hello: 'this works',
         test: 'is working',

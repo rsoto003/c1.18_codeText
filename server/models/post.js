@@ -5,6 +5,6 @@ var PostSchema = new mongoose.Schema({
     description: {type: String},
     file: {type: String},
     timestamp: {type: Date, default: Date.now}
-});
+}, {collection: 'posts'});
 
 module.exports = mongoose.model('PostSchema', PostSchema);

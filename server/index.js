@@ -5,48 +5,67 @@ const PORT = process.env.PORT || 5000;
 const keys = require('./config/keys');
 
 const router = express.Router();
-const AddPost = require('./models/addPost');
+const PostModel = require('./models/post');
 
-let dbUrl = 'mongodb://localhost:5000/addPost';
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+// let dbUrl = 'mongodb://localhost/addPost';
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
-
-
-mongoose.connect(dbUrl, function(err, res){
+mongoose.connect(keys.mongoURI, function(err, res){
     if(err){
-        console.log('db connection failed'); 
+        console.log('db connection failed', err); 
     } else {
         console.log('we have liftoff with the db', res);
     }
 })
 
-router.get('/', function(req, res, next){
-    AddPost.find(null, function(err, posts){
+
+app.get('/', function(req, res, next){
+    console.log('got request: field  = '+req.query.field);
+    const sortMapping = {
+        newest: { timeStamp: -1},
+        oldest: { timeStamp: 1},
+        popular: { rating: -1},
+        comments: {commentLength: -1},
+        hot: {timeStamp: 1}
+    }
+    if(req.query.field && sortMapping[req.query.field]){
+        var sortObj = sortMapping[req.query.field];
+    } else {
+        sortObj = {};
+    }
+    PostModel.find().sort(sortObj).then(data=> {
         res.json({
-            confirmation: 'success',
-            results: 'posts'
+            confirmation: true,
+            results: data
+        })
+    }).catch(error=> {
+        console.log(error);
+        res.json({
+            confirmation: false,
+            error: error
         })
     })
 })
 
-
 module.exports = router;
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
-
-//testing routing
+// testing routing
 // app.get('/hello', (req, res) => {
 //     res.send('<h1>hello there</h1>');
 //     console.log('listening on hello, lol');
 // })
 
-
-
 mongoose.connect(keys.mongoURI, function(error) {
     if (error) {
         throw error;
     }
+
     console.log("We are connected to the mlab database");
 });
 
@@ -55,8 +74,28 @@ var InstructorSchema = {
     age: Number
 }
 
+/* new post schema */
+/*
+{
+    "_id": {
+        "$oid": "5acd0f13734d1d55c3198d89"
+    },
+    "title": "this is the title",
+    "description": "this is the description",
+    "file": "this is the file",
+    "timeStamp": 1523387073852,
+    "commentLength": 1,
+    "rating": 4.5,
+    "comments": [
+        {
+            "name": "Hannah",
+            "comment": "HEEEELLLLOOOOooooOOOoooOOOO"
+        }
+    ]
+}
+*/
 
-var Instructor = mongoose.model('Instructors', InstructorSchema);
+
 
 // AT A BASE LEVEL CREATING / INSERTING data into our collections for mongo
 // var ryan = new Instructor({ name: 'Ryan', age: 24 });
@@ -68,23 +107,23 @@ var Instructor = mongoose.model('Instructors', InstructorSchema);
 
 //     console.log("These are all of our instructors", instructors);
 // })
-let TestUserSchema = {
-    userName: String,
-    email: String,
-    comment: String
-}
-let TestUser = mongoose.model('TestUser', TestUserSchema);
+// let TestUserSchema = {
+//     userName: String,
+//     email: String,
+//     comment: String
+// }
+// let TestUser = mongoose.model('TestUser', TestUserSchema);
 
-let testWill = new TestUser({userName: 'testWill', email: 'testWIll@gmail.com', comment: 'hello everyoasdafasdfadsfa' });
-testWill.save();
+// let testWill = new TestUser({userName: 'testWill', email: 'testWIll@gmail.com', comment: 'hello everyoasdafasdfadsfa' });
+// // testWill.save();
 
-TestUser.find(function(err, TestUser){
-    if(err) return console.error(err);
+// TestUser.find(function(err, TestUser){
+//     if(err) return console.error(err);
 
-    console.log('these are all of the test users', TestUser);
-});
+//     console.log('these are all of the test users', TestUser);
+// });
 
-app.listen(PORT);
+app.listen(PORT, ()=>{ console.log('server is listening to '+PORT)});
 
 
 
