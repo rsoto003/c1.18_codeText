@@ -72,7 +72,7 @@ export default (props) => {
             <div className="col-md-2 col-sm-2 col-2">
                 <UpVote />
             </div>
-            <div className="col-md-8 col-sm-8 col-8 justify-content-start ">
+            <div className="col-md-10 col-sm-10 col-8 justify-content-start ">
                 {/* <UpVote className="col-m-1 col-sm-1 justify-content-start mt-5"/> */}
                 <h4>{postTitle}</h4>
                 <p><small className="text-muted" > {props.data.author} - post ID: {props.data.id} </small></p>

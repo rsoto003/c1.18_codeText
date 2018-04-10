@@ -8,7 +8,7 @@ import Sidebar from './sidebar';
 import Thread from './uniqueThread';
 import AllThreads from './allthreads';
 import Leaderboard from './leaderboard';
-
+import Register from './account/register';
 
 const UniqueThread = ({ match }) => {
     return(
@@ -28,6 +28,7 @@ const App = () => {
                     <Route path='/newPost' component={NewPost}/>
                     <Route path='/thread/:threadID' component={UniqueThread}  />
                     <Route path='/leaderboard' component={Leaderboard} />
+                    <Route path="/register" component={Register}/>
                 </div>
             </div>
         </div>
