@@ -11,5 +11,5 @@ app.get('/newPost', function(req, res){
 });
 
 app.get('/newPost', Users.descriptionInputChange);
-//maybe only need onSubmit for newPost route
+
 app.get('/newPost', Users.onSubmit)
