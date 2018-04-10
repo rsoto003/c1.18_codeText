@@ -1,29 +1,55 @@
 import React, { Component } from 'react';
 import postData from '../data/threadItems';
 import MinimizedThread from './minimizedThread';
+import FilterFeed from './filterFeed';
 
 class AllThreads extends Component {
     constructor(props){
         super(props);
+        this.state = {
+            oldField : null,
+            postData : []
+        }
     }
-
+    componentDidUpdate(){
+        console.log('update');
+        console.log(this.props);
+        if(this.state.oldField !== this.props.match.params.sort){
+            fetch('http://localhost:3001/threads?field='+this.props.match.params.sort).then(response => response.json()).then(data=>{
+                console.log('got data: ',data);
+                this.setState({
+                    postData: data,
+                    oldField: this.props.match.params.sort
+                })
+            })    
+        }
+    }
+    componentDidMount(){
+        console.log('mount');
+        fetch('http://localhost:3001/threads?field='+this.props.match.params.sort).then(response => response.json()).then(data=>{
+            console.log('got data: ',data);
+            this.setState({
+                postData: data,
+                oldField: this.props.match.params.sort
+            })
+        })   
+    }
     sortThread(object){
-        const objectKeyArray = Object.keys(object); 
-        const sortedThreads = objectKeyArray.sort();
-        console.log(sortedThreads);
-        return sortedThreads;
+        //const objectKeyArray = Object.keys(object); 
+        //const sortedThreads = objectKeyArray.sort();
+        return this.state.postData;
     } 
 
     render(){
-        const sortedPosts = this.sortThread(postData);
+        const sortedPosts = this.sortThread(this.state.postData);
         const threads = sortedPosts.map((item, index) => {
-            console.log(item);
             return (
-                <MinimizedThread data={postData[item]} key={index}/>
+                <MinimizedThread data={item} key={index}/>
             )
         });
         return (
-            <div className="col-m-12 col-sm-9 justify-content-start mt-5 ">
+            <div className="col-m-12 col-sm-9 justify-content-start mt-4">
+            <FilterFeed/>
             {threads} 
             </div>
         )

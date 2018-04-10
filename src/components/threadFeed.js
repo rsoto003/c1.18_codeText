@@ -8,8 +8,9 @@ import UpVote from './upvote';
 const blockStyle={
     display:'block'
 }
-const inlineBlockStyle={
-    display:'inline-block'
+const aTag={
+    display:'inline-block',
+    float:'right'
 }
 
 const iframeStyle={
@@ -23,8 +24,6 @@ const jsbinStyle={
     cursor: 'pointer',
 }
 
-const JSBIN_URL = 'http://jsbin.com/oembed?url=http://jsbin.com/goxeyi/6/edit?html,output';
-
 
 function Jsbin(index){
     
@@ -37,25 +36,24 @@ function Jsbin(index){
 export default () => {
     const threads = Object.keys(postData).map( (key,index) => {
         let postDesc = postData[key].description.slice(0,200)
+        let postTitle = postData[key].title.slice(0,100)
         if(postData[key].description.length > 200){
             postDesc+= '...'
+        }
+        if(postData[key].title.length > 100){
+            postTitle+= '...'
         }
         const jsbin_URL = postData[key].jsbin;
         return (
             
             <div key={index}>
-            
-                <UpVote className="col-m-1 col-sm-1 justify-content-start mt-5"/>
-                <h4>{postData[key].title}</h4>
+                <h4>{postTitle}</h4>
                 <p><small className="text-muted" > {postData[key].author} - post ID: {postData[key].id} </small></p>
                 <p>{postDesc}</p>
 
-                <a style={inlineBlockStyle} target="_blank" href={postData[key].jsbin}><img style={jsbinStyle} src={jsbinPIC} alt="jsbinPicture"/></a>
+                <a style={aTag} target="_blank" href={postData[key].jsbin}><img style={jsbinStyle} src={jsbinPIC} alt="jsbinPicture"/></a>
 
                 <Link style={blockStyle} to={`/thread/${postData[key].id}`}> <p> View More </p> </Link>
-                {/* <iframe style={iframeStyle} src={jsbin_URL} frameborder="0"></iframe> */}
-                {/* {Jsbin(index)} */}
-
 
                 <small style={blockStyle} className="text-muted">Comments</small>
                 <div className="row">

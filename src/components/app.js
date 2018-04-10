@@ -1,15 +1,14 @@
 import React from 'react';
-// import {Link} from 'react-router-dom';
 import {Route} from 'react-router-dom';
-
 import '../assets/css/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './navbar';
 import NewPost from './newPost';
 import Sidebar from './sidebar';
 import Thread from './uniqueThread';
-// import ThreadFeed from './threadFeed';
-import AllThreads from './allthreads'
+import AllThreads from './allthreads';
+import Leaderboard from './leaderboard';
+
 
 const UniqueThread = ({ match }) => {
     return(
@@ -25,9 +24,10 @@ const App = () => {
                 <div className="row">
                     <Sidebar/>
                     {/* <Route exact path="/" component={ThreadFeed} /> */}
-                    <Route exact path="/" component={AllThreads} />
+                    <Route path="/home/:sort?" component={AllThreads} />
                     <Route path='/newPost' component={NewPost}/>
                     <Route path='/thread/:threadID' component={UniqueThread}  />
+                    <Route path='/leaderboard' component={Leaderboard} />
                 </div>
             </div>
         </div>

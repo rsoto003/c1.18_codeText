@@ -8,6 +8,9 @@ export default ()=> {
             <div className="row mt-5 mx-auto">
                 <Link to="/newPost">Post a question!</Link>
             </div>
+            <div className="row mt-5 mx-auto">
+                <Link to="/leaderboard">Leaderboards</Link>
+            </div>
 
             {/* ------------------------------------------- */}
             {/* Everything below isn't part of our MVP or feature set yet*/}
