@@ -93,7 +93,6 @@ class Leaderboard extends Component{
             color:'black',
             cursor:'pointer'
         }
-        console.log(newCommentState)
         this.setState({
             upvotes: newUpvoteState,
             comments: newCommentState,
@@ -116,15 +115,15 @@ class Leaderboard extends Component{
         })
 
         return(
-            <div className="col-sm-12 col-md-9 mt-2" >
+            <div className="col-sm-9 col-md-9 mt-2" >
                 <h1 className="text-center"> Leaderboards </h1>
                 <table className="table table-hover table-striped">
                     <thead>
                         <tr>
                             <th scope="col" >#</th>
                             <th scope="col" >Name</th>
-                            <th scope="col" style={this.state.upvotes.style} onClick={this.upvoteClick} >Upvotes</th>
-                            <th scope="col" style={this.state.comments.style} onClick={this.commentClick} >Comments</th>
+                            <th scope="col"> <span  style={this.state.upvotes.style} onClick={this.upvoteClick}  >Upvotes</span></th>
+                            <th scope="col"> <span style={this.state.comments.style} onClick={this.commentClick} >Comments</span></th>
                         </tr>
                     </thead>
                     <tbody>

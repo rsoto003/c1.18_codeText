@@ -11,28 +11,26 @@ class AllThreads extends Component {
             postData : []
         }
     }
-    componentDidUpdate(){
-        console.log('update');
-        console.log(this.props);
+    fetchDataFromServer(){
         if(this.state.oldField !== this.props.match.params.sort){
-            fetch('http://localhost:3001/threads?field='+this.props.match.params.sort).then(response => response.json()).then(data=>{
+            fetch('http://localhost:5000/?field='+this.props.match.params.sort).then(response => response.json()).then(data=>{
                 console.log('got data: ',data);
-                this.setState({
-                    postData: data,
-                    oldField: this.props.match.params.sort
-                })
+                if(data.confirmation){
+                    this.setState({
+                        postData: data.results,
+                        oldField: this.props.match.params.sort
+                    })
+                }
             })    
         }
     }
+    componentDidUpdate(){
+        console.log('update');
+        this.fetchDataFromServer();
+    }
     componentDidMount(){
         console.log('mount');
-        fetch('http://localhost:3001/threads?field='+this.props.match.params.sort).then(response => response.json()).then(data=>{
-            console.log('got data: ',data);
-            this.setState({
-                postData: data,
-                oldField: this.props.match.params.sort
-            })
-        })   
+        this.fetchDataFromServer();
     }
     sortThread(object){
         //const objectKeyArray = Object.keys(object); 
@@ -41,14 +39,14 @@ class AllThreads extends Component {
     } 
 
     render(){
-        const sortedPosts = this.sortThread(this.state.postData);
-        const threads = sortedPosts.map((item, index) => {
+        //const sortedPosts = this.sortThread(this.state.postData);
+        const threads = this.state.postData.map((item, index) => {
             return (
                 <MinimizedThread data={item} key={index}/>
             )
         });
         return (
-            <div className="col-m-12 col-sm-9 justify-content-start mt-4">
+            <div className="col-m-12 col-sm-10 justify-content-start mt-4">
             <FilterFeed/>
             {threads} 
             </div>
