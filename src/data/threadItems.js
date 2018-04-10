@@ -13,7 +13,7 @@ export default {
             },
             {
                 name: "Ryan Soto",
-                comment: "why am I here"
+                comment: "will is amazing"
             },
             {
                 name: "Ryan Soto",
