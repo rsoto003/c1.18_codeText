@@ -124,7 +124,7 @@ class NewPost extends Component{
 
                             <div className="input-group mt-5">
                                 <div className="input-group-prepend">
-                                    <span className="input-group-text" id="inputGroup-sizing-default" >JSBIN</span>
+                                    <span className="input-group-text" >JSBIN</span>
                                 </div>
                                 <input onChange={this.linkInputChange} type="text" className="form-control" id="jsbinLink" placeholder="attach a JSBIN link?" value={this.state.JSBINLink}/>
                                 <div style={this.state.jsbinState.display} className="alert alert-warning" role="alert"> This JSBIN link is not valid! </div>
