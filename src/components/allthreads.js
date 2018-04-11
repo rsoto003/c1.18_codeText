@@ -13,7 +13,6 @@ class AllThreads extends Component {
     fetchDataFromServer(){
         if(this.state.oldField !== this.props.match.params.sort){
             fetch('http://localhost:5000/?field='+this.props.match.params.sort).then(response => response.json()).then(data=>{
-                console.log('got data: ',data);
                 if(data.confirmation){
                     this.setState({
                         postData: data.results,
@@ -24,11 +23,9 @@ class AllThreads extends Component {
         }
     }
     componentDidUpdate(){
-        console.log('update');
         this.fetchDataFromServer();
     }
     componentDidMount(){
-        console.log('mount');
         this.fetchDataFromServer();
     }
     sortThread(object){
@@ -43,7 +40,6 @@ class AllThreads extends Component {
 
         //const sortedPosts = this.sortThread(this.state.postData);
         const threads = this.state.postData.map((item, index) => {
-            console.log(item)
             return (
                 <MinimizedThread data={item} key={index}/>
             )
