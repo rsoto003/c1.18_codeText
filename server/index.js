@@ -1,16 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const app = express();
+const server = express();
 const PORT = process.env.PORT || 5000;
 const keys = require('./config/keys');
 
 const router = express.Router();
 const PostModel = require('./models/post');
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-// let dbUrl = 'mongodb://localhost/addPost';
-app.use(function(req, res, next) {
+server.use(express.json());
+server.use(express.urlencoded({ extended: false }));
+
+server.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
@@ -24,8 +24,7 @@ mongoose.connect(keys.mongoURI, function(err, res){
     }
 })
 
-
-app.get('/', function(req, res, next){
+server.get('/', function(req, res, next){
     console.log('got request: field  = '+req.query.field);
     const sortMapping = {
         newest: { timeStamp: -1},
@@ -53,10 +52,10 @@ app.get('/', function(req, res, next){
     })
 })
 
-module.exports = router;
+// module.exports = router;
 
 // testing routing
-// app.get('/hello', (req, res) => {
+// server.get('/hello', (req, res) => {
 //     res.send('<h1>hello there</h1>');
 //     console.log('listening on hello, lol');
 // })
@@ -68,11 +67,6 @@ mongoose.connect(keys.mongoURI, function(error) {
 
     console.log("We are connected to the mlab database");
 });
-
-var InstructorSchema = {
-    name: String,
-    age: Number
-}
 
 /* new post schema */
 /*
@@ -94,8 +88,6 @@ var InstructorSchema = {
     ]
 }
 */
-
-
 
 // AT A BASE LEVEL CREATING / INSERTING data into our collections for mongo
 // var ryan = new Instructor({ name: 'Ryan', age: 24 });
@@ -123,7 +115,7 @@ var InstructorSchema = {
 //     console.log('these are all of the test users', TestUser);
 // });
 
-app.listen(PORT, ()=>{ console.log('server is listening to '+PORT)});
+server.listen(PORT, ()=>{ console.log('server is listening to '+PORT)});
 
 
 
