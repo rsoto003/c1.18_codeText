@@ -24,7 +24,7 @@ mongoose.connect(keys.mongoURI, function(err, res){
     }
 })
 
-app.post('/uniqueThread', (req, res ) => {
+server.post('/uniqueThread', (req, res ) => {
     console.log(req.body)
     PostModel.findById( req.body.threadID , (err, data) => {
         if(err) throw err;
@@ -32,14 +32,30 @@ app.post('/uniqueThread', (req, res ) => {
         // console.log(req.body)
         res.send(data);
     } )
-    
-
-    // const threadData = PostModel.find().then( data => {
-    //     res.send(data)
-    // } )
 })
 
-app.get('/', function(req, res, next){
+server.post('/addComment', (req, res) => {
+    PostModel.findById(req.body.threadID , (err, data) => {
+        if(err) throw err;
+
+        console.log(data)
+
+        data.comments.push({
+            "name":"someone",
+            "comment":"lol who is this"
+        })
+
+        data.save(err=>{
+            if(err) throw err;
+
+            console.log('added comment')
+        })
+
+        res.send(data.comments);
+    } )
+})
+
+server.get('/', function(req, res, next){
     console.log('got request: field  = '+req.query.field);
     const sortMapping = {
         newest: { timeStamp: -1},

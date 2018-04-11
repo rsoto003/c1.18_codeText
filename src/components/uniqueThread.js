@@ -36,7 +36,7 @@ class Thread extends Component{
             title: res.data.title,
             
         })
-        console.log(res)
+
         } )
     }
 
