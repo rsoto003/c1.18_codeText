@@ -39,7 +39,7 @@ class upvoteComments extends Component{
         return(
 
             <div className="voteBox">                                           
-                <div className="addVote fa-3x" onClick={this.handleAddVote}> <i className="fas fa-angle-up"></i></div>                 
+                <div className="addVote fa-2x" onClick={this.handleAddVote}> <i className="fas fa-angle-up"></i></div>                 
 
                 <div className="voteNum">{this.state.value}</div>
 
