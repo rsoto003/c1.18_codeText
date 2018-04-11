@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import postData from '../data/threadItems';
 import MinimizedThread from './minimizedThread';
 import FilterFeed from './filterFeed';
 
@@ -39,8 +38,12 @@ class AllThreads extends Component {
     } 
 
     render(){
+
+
+
         //const sortedPosts = this.sortThread(this.state.postData);
         const threads = this.state.postData.map((item, index) => {
+            console.log(item)
             return (
                 <MinimizedThread data={item} key={index}/>
             )
