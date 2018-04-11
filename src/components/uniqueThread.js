@@ -23,36 +23,62 @@ class Thread extends Component{
             textInput:'',
             description:'',
             title: '' ,
-            oldState: this.state
+            threadID: this.props.threadID,
+            alertStyle: { display: 'none' }
         }
         this.updateInput=this.updateInput.bind(this)
         this.onSubmit=this.onSubmit.bind(this)
     }
     componentWillMount(){
-        console.log(this.props)
         axios.post(`http://localhost:5000/uniqueThread`, { threadID: this.props.threadID } ).then( res => {
         this.setState({
             comments: res.data.comments,
             description: res.data.description,
             title: res.data.title,
-            
+            })
         })
-        console.log(res)
-        } )
     }
 
     onSubmit(event){
         event.preventDefault()
         const submittedComment={
-            name:'you',
-            comment:this.state.textInput
+            name:'Anonymous User',
+            comment:this.state.textInput,
+            threadID: this.props.threadID
         }
-        const newCommentState= this.state.comments.slice();
-        newCommentState.push(submittedComment);
-        this.setState({
-            textInput:'',
-            comments:  newCommentState
-        })
+
+        if (this.validCheck(this.state.textInput)){
+
+            this.setState({
+                textInput:'',
+            })
+            axios.post(`http://localhost:5000/addComment`, submittedComment).then( res => {
+                this.setState({
+                    comments: res.data.comments
+                })
+                console.log(res)
+            })
+        }
+
+        // const newCommentState= this.state.comments.slice();
+        // newCommentState.push(submittedComment);
+
+    }
+
+    validCheck(string){
+        if(string.length > 0){
+            this.setState({
+                alertStyle: {display:'none'}
+            })
+            return true
+        } else {
+            this.setState({
+                alertStyle: {display:'block'}
+            })
+
+            return false
+            
+        }
     }
 
     updateInput(event){
@@ -62,7 +88,9 @@ class Thread extends Component{
     }
 
     render(){
+
         const Comments = this.state.comments.map( (item, index) => {
+            // debugger;
             return(
                 <div key={index} >
                     <span><i className="fas fa-user-circle mr-2"></i>{this.state.comments[index].name}</span>
@@ -83,7 +111,10 @@ class Thread extends Component{
                     {Comments}
                     <form style={formStyle} className="form-group" onSubmit={this.onSubmit} >
                         <textarea style={textAreaStyle} id="comment" className="form-control" value={this.state.textInput} onChange={this.updateInput} ></textarea>
+                        <div style={this.state.alertStyle} className="alert alert-warning" role="alert"> Cannot leave comment empty! </div>
+
                         <button className="btn btn-danger btn-sm" >Add a comment</button>
+
                     </form>     
                 </div>
         )
