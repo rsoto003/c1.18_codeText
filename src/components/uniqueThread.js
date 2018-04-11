@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import postData from '../data/threadItems'
-
+import axios from 'axios'
 
 const textAreaStyle={
     fontSize: '13px',
@@ -19,11 +19,26 @@ class Thread extends Component{
     constructor(props){
         super(props)
         this.state={
-            comments: postData[this.props.threadID].comments || '',
-            textInput:''
+            comments: [],
+            textInput:'',
+            description:'',
+            title: '' ,
+            oldState: this.state
         }
         this.updateInput=this.updateInput.bind(this)
         this.onSubmit=this.onSubmit.bind(this)
+    }
+    componentWillMount(){
+        console.log(this.props)
+        axios.post(`http://localhost:5000/uniqueThread`, { threadID: this.props.threadID } ).then( res => {
+        this.setState({
+            comments: res.data.comments,
+            description: res.data.description,
+            title: res.data.title,
+            
+        })
+        console.log(res)
+        } )
     }
 
     onSubmit(event){
@@ -55,17 +70,15 @@ class Thread extends Component{
                 </div>
             )
         } )
-
         return(
-            
                 <div className="col-m-12 col-sm-10 justify-content-start mt-5 ">
-                    <h2>{postData[this.props.threadID].title}</h2>
-                    <p><small className='text-muted' >Author: {postData[this.props.threadID].author} </small></p>
-                    <p>{postData[this.props.threadID].description}</p>
+                    <h2>{this.state.title}</h2>
+                    <p><small className='text-muted' >Author: no one </small></p>
+                    <p>{this.state.description}</p>
                     {/* <iframe src={postData[props.threadID].jsbin} frameborder="0"></iframe> */}
                     <div className="dropdown-divider mb-5"></div>
 
-                    <iframe src={postData[this.props.threadID].jsbin} style={iframeStyle} sandbox="allow-scripts allow-same-origin"></iframe>
+                    {/* <iframe src={postData[this.props.threadID].jsbin} style={iframeStyle} sandbox="allow-scripts allow-same-origin"></iframe> */}
 
                     {Comments}
                     <form style={formStyle} className="form-group" onSubmit={this.onSubmit} >

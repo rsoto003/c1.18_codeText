@@ -24,7 +24,22 @@ mongoose.connect(keys.mongoURI, function(err, res){
     }
 })
 
-server.get('/', function(req, res, next){
+app.post('/uniqueThread', (req, res ) => {
+    console.log(req.body)
+    PostModel.findById( req.body.threadID , (err, data) => {
+        if(err) throw err;
+        // console.log(data);
+        // console.log(req.body)
+        res.send(data);
+    } )
+    
+
+    const threadData = PostModel.find().then( data => {
+        res.send(data)
+    } )
+})
+
+app.get('/', function(req, res, next){
     console.log('got request: field  = '+req.query.field);
     const sortMapping = {
         newest: { timeStamp: -1},
