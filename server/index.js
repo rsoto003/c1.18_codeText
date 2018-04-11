@@ -40,18 +40,18 @@ server.post('/addComment', (req, res) => {
 
         console.log(data)
 
-        data.comments.push({
-            "name":"someone",
-            "comment":"lol who is this"
-        })
 
+
+        data.comments.push( {'name': req.body.name, 'comment': req.body.comment})
+
+        
         data.save(err=>{
             if(err) throw err;
 
             console.log('added comment')
         })
 
-        res.send(data.comments);
+        res.send(data);
     } )
 })
 

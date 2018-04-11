@@ -23,7 +23,7 @@ class Thread extends Component{
             textInput:'',
             description:'',
             title: '' ,
-            oldState: this.state
+            threadID: this.props.threadID
         }
         this.updateInput=this.updateInput.bind(this)
         this.onSubmit=this.onSubmit.bind(this)
@@ -34,23 +34,29 @@ class Thread extends Component{
             comments: res.data.comments,
             description: res.data.description,
             title: res.data.title,
-            
+            })
         })
-
-        } )
     }
 
     onSubmit(event){
         event.preventDefault()
         const submittedComment={
-            name:'you',
-            comment:this.state.textInput
+            name:'Anonymous User',
+            comment:this.state.textInput,
+            threadID: this.props.threadID
         }
-        const newCommentState= this.state.comments.slice();
-        newCommentState.push(submittedComment);
+        axios.post(`http://localhost:5000/addComment`, submittedComment).then( res => {
+            this.setState({
+                comments: res.data.comments
+            })
+            console.log(res)
+        })
+
+        // const newCommentState= this.state.comments.slice();
+        // newCommentState.push(submittedComment);
         this.setState({
             textInput:'',
-            comments:  newCommentState
+            // comments:  newCommentState
         })
     }
 
@@ -61,7 +67,9 @@ class Thread extends Component{
     }
 
     render(){
+
         const Comments = this.state.comments.map( (item, index) => {
+            // debugger;
             return(
                 <div key={index} >
                     <span><i className="fas fa-user-circle mr-2"></i>{this.state.comments[index].name}</span>
