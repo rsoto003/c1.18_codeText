@@ -31,12 +31,17 @@ server.post('/uniqueThread', (req, res ) => {
         // console.log(data);
         // console.log(req.body)
         res.send(data);
-    } )
+        console.log(data);
     
 
     const threadData = PostModel.find().then( data => {
         res.send(data)
-    } )
+        })
+    })
+})
+
+server.post('/newPost', (req, res) => {
+    PostModel.findById( req.)
 })
 
 server.get('/', function(req, res, next){
