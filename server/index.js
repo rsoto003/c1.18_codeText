@@ -34,9 +34,9 @@ app.post('/uniqueThread', (req, res ) => {
     } )
     
 
-    const threadData = PostModel.find().then( data => {
-        res.send(data)
-    } )
+    // const threadData = PostModel.find().then( data => {
+    //     res.send(data)
+    // } )
 })
 
 app.get('/', function(req, res, next){

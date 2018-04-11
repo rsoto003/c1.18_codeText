@@ -29,7 +29,6 @@ class Thread extends Component{
         this.onSubmit=this.onSubmit.bind(this)
     }
     componentWillMount(){
-        console.log(this.props)
         axios.post(`http://localhost:5000/uniqueThread`, { threadID: this.props.threadID } ).then( res => {
         this.setState({
             comments: res.data.comments,
