@@ -80,9 +80,10 @@ export default (props) => {
                 <a style={aTag} target="_blank" href={props.data.jsbin}><img style={jsbinStyle} src={jsbinPIC} alt="jsbinPicture"/></a>
 
                 <Link style={inlineBlock} to={`/thread/${props.data._id}`}> <p> View More </p> </Link>
+                <div className="dropdown-divider mt-5"></div>
+
                 <small style={blockStyle} className="text-muted">Comments ({props.data.comments.length})</small>
                 {Comments}
-                <div className="dropdown-divider mb-5"></div>
             </div>
 
             
