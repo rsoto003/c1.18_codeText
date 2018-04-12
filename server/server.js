@@ -40,21 +40,6 @@ server.post('/uniqueThread', (req, res ) => {
     })
 })
 
-
-// server.post('/newPost', (req, res) => {
-//     let PostInput = find({title: req.body.titleInput, description: req.body.descriptionInput, jsbin: req.body.JSBINLink});
-//     const PostData = new PostModel()
-//     PostData.save()
-//         .then(item => {
-//             console.log('post was saved to the database.')
-//         })
-//         .catch(err => {
-//             console.log('unable to save to database', err)
-//         })
-//         console.log('this is the titleInput: ',req.body.titleInput);
-//     // PostModel.findById( res.titleInput, )
-//     // if(err) throw err;
-// })
 server.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -72,8 +57,8 @@ server.post('/newPost', (req, res, next) => {
     postdata.save((err, post) => {
         if(err){
             return next(err)
-            res.json(201, post)
         }
+        res.json(201, post)
     })
 })
 
@@ -105,13 +90,6 @@ server.get('/', function(req, res, next){
     })
 })
 
-// module.exports = router;
-
-// testing routing
-// server.get('/hello', (req, res) => {
-//     res.send('<h1>hello there</h1>');
-//     console.log('listening on hello, lol');
-// })
 
 mongoose.connect(keys.mongoURI, function(error) {
     if (error) {
