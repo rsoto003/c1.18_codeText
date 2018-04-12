@@ -78,7 +78,7 @@ class Thread extends Component{
             })
 
             return false
-            
+        
         }
     }
 
