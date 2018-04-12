@@ -40,13 +40,12 @@ class AllThreads extends Component {
 
         //const sortedPosts = this.sortThread(this.state.postData);
         const threads = this.state.postData.map((item, index) => {
-            console.log(item)
             return (
                 <MinimizedThread data={item} key={index}/>
             )
         });
         return (
-            <div className="col-m-12 col-sm-10 justify-content-start mt-4">
+            <div className="col-m-12 col-sm-10 justify-content-start mt-3">
             <FilterFeed/>
             {threads} 
             </div>

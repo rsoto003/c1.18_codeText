@@ -37,7 +37,6 @@ function Jsbin(index){
 }
 
 export default (props) => {
-    console.log(props)
     let postDesc = props.data.description.slice(0,200)
     if(props.data.description.length > 200){
         postDesc+= '...'
@@ -50,7 +49,6 @@ export default (props) => {
 
     const commentArray = [];
     const allComments = props.data.comments.map( (item, index) => {
-        console.log(item)
         commentArray.push(
             <div key={index} >
                 <span><i className="fas fa-user-circle mr-2"></i>{props.data.comments[index].name}</span>
@@ -69,7 +67,7 @@ export default (props) => {
     } )
 
     return (
-        <div className="row">
+        <div className="row pt-5 my-4 border bg-white">
             <div className="col-md-2 col-sm-2 col-2">
                 <UpVote />
             </div>
@@ -82,9 +80,10 @@ export default (props) => {
                 <a style={aTag} target="_blank" href={props.data.jsbin}><img style={jsbinStyle} src={jsbinPIC} alt="jsbinPicture"/></a>
 
                 <Link style={inlineBlock} to={`/thread/${props.data._id}`}> <p> View More </p> </Link>
+                <div className="dropdown-divider mt-5"></div>
+
                 <small style={blockStyle} className="text-muted">Comments ({props.data.comments.length})</small>
                 {Comments}
-                <div className="dropdown-divider mb-5"></div>
             </div>
 
             
