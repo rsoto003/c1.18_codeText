@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import '../assets/css/app.css';
 
-class upvoteComments extends Component{
+class UpvoteComments extends Component{
     constructor(props){
         super(props);
 
@@ -38,15 +38,15 @@ class upvoteComments extends Component{
 
         return(
 
-            <div className="voteBox">                                           
-                <div className="addVote fa-2x" onClick={this.handleAddVote}> <i className="fas fa-angle-up"></i></div>                 
+            <div className="text-center">                                            
+                <div className="addVote fa-1x" onClick={this.handleAddVote}> <i className="fas fa-angle-up"></i></div>                 
 
                 <div className="voteNum">{this.state.value}</div>
 
-                <div className="deleteVote fa-3x" onClick={this.handleDeleteVote}> <i className="fas fa-angle-down"></i></div>
+                <div className="deleteVote fa-1x" onClick={this.handleDeleteVote}> <i className="fas fa-angle-down"></i></div>
             </div>
         )
     }
 }
 
-export default upvoteComments;
+export default UpvoteComments;
