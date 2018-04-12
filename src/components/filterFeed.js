@@ -7,7 +7,7 @@ export default ()=> {
         <div className="">                                  
             <ul className="nav justify-content-end py-3">
                 <li className="nav-item">
-                    <Link className="nav-link active" to="/home/hot">Hot</Link>                    
+                    <Link className="nav-link active" to="/hot">Hot</Link>                    
                 </li>
                 <li className="nav-item">
                     <Link className="nav-link" to="/home/popular">Popular</Link>

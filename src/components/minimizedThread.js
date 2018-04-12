@@ -1,9 +1,9 @@
 import React from 'react';
 import postData from '../data/threadItems';
 import { Link } from 'react-router-dom';
-
 import jsbinPIC from '../assets/images/jsbin.png';
-import UpVote from './upvote'
+import UpVote from './upvote';
+import upvoteComments from './upvotecomments';
 
 const blockStyle={
     display:'block'
@@ -50,6 +50,7 @@ export default (props) => {
 
     const commentArray = [];
     const allComments = props.data.comments.map( (item, index) => {
+        console.log(item)
         commentArray.push(
             <div key={index} >
                 <span><i className="fas fa-user-circle mr-2"></i>{props.data.comments[index].name}</span>
