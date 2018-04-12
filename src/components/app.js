@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
+import {Route, Redirect} from 'react-router-dom';
 import '../assets/css/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './navigation/navbar';
@@ -23,7 +23,10 @@ const App = () => {
             <div className="container">
                 <div className="row">
                     <Sidebar/>
-                    {/* <Route exact path="/" component={ThreadFeed} /> */}
+                    <Route exact path="/" render={ ()=> (
+                        <Redirect to="/home/" />
+                    )} />
+
                     <Route path="/home/:sort?" component={AllThreads} />
                     <Route path='/newPost' component={NewPost}/>
                     <Route path='/thread/:threadID' component={UniqueThread}  />
