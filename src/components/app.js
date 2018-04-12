@@ -18,15 +18,14 @@ const UniqueThread = ({ match }) => {
 
 const App = () => {
     return(
-        <div>
+        <div className="bg-light">
             <Navbar/>
             <div className="container">
                 <div className="row">
                     <Sidebar/>
                     <Route exact path="/" render={ ()=> (
-                        <Redirect to="/home/" />
+                        <Redirect to="/home/newest" />
                     )} />
-
                     <Route path="/home/:sort?" component={AllThreads} />
                     <Route path='/newPost' component={NewPost}/>
                     <Route path='/thread/:threadID' component={UniqueThread}  />
