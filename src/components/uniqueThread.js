@@ -96,11 +96,6 @@ class Thread extends Component{
         const Comments = this.state.comments.map( (item, index) => {
             // debugger;
             return(
-<<<<<<< HEAD
-                <div key={index} >                    
-                    <span><i className="fas fa-user-circle mr-2"></i>{this.state.comments[index].name}</span>
-                    <p><small>{this.state.comments[index].comment}</small></p>
-=======
                 <div key={index} className="row">
                     <div className="col-md-2 col-sm-2 col-2">
                         <UpvoteComments />
@@ -109,7 +104,6 @@ class Thread extends Component{
                         <span><i className="fas fa-user-circle mr-2"></i>{this.state.comments[index].name}</span>
                         <p><small>{this.state.comments[index].comment}</small></p>
                     </div>
->>>>>>> 730622b0503367aaaf2b75ea980ae15fb0bda2ab
                 </div>
             )
         } )
