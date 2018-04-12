@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import postData from '../data/threadItems'
-import axios from 'axios'
+import postData from '../data/threadItems';
+import axios from 'axios';
+
 
 const textAreaStyle={
     fontSize: '13px',
@@ -71,7 +72,7 @@ class Thread extends Component{
         const Comments = this.state.comments.map( (item, index) => {
             // debugger;
             return(
-                <div key={index} >
+                <div key={index} >                    
                     <span><i className="fas fa-user-circle mr-2"></i>{this.state.comments[index].name}</span>
                     <p><small>{this.state.comments[index].comment}</small></p>
                 </div>
