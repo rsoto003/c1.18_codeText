@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import postData from '../data/threadItems'
 import axios from 'axios'
+import UpvoteComments from './upvotecomments';
 
 const textAreaStyle={
     fontSize: '13px',
@@ -92,9 +93,14 @@ class Thread extends Component{
         const Comments = this.state.comments.map( (item, index) => {
             // debugger;
             return(
-                <div key={index} >
-                    <span><i className="fas fa-user-circle mr-2"></i>{this.state.comments[index].name}</span>
-                    <p><small>{this.state.comments[index].comment}</small></p>
+                <div key={index} className="row">
+                    <div className="col-md-2 col-sm-2 col-2">
+                        <UpvoteComments />
+                    </div>
+                    <div className="col-md-10 col-sm-10 col-8 justify-content-start ">
+                        <span><i className="fas fa-user-circle mr-2"></i>{this.state.comments[index].name}</span>
+                        <p><small>{this.state.comments[index].comment}</small></p>
+                    </div>
                 </div>
             )
         } )
@@ -104,10 +110,11 @@ class Thread extends Component{
                     <p><small className='text-muted' >Author: no one </small></p>
                     <p>{this.state.description}</p>
                     {/* <iframe src={postData[props.threadID].jsbin} frameborder="0"></iframe> */}
-                    <div className="dropdown-divider mb-5"></div>
+                               <div className="dropdown-divider mb-5"></div>
 
                     {/* <iframe src={postData[this.props.threadID].jsbin} style={iframeStyle} sandbox="allow-scripts allow-same-origin"></iframe> */}
 
+                     
                     {Comments}
                     <form style={formStyle} className="form-group" onSubmit={this.onSubmit} >
                         <textarea style={textAreaStyle} id="comment" className="form-control" value={this.state.textInput} onChange={this.updateInput} ></textarea>
