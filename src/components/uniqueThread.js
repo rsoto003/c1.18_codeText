@@ -24,6 +24,7 @@ class Thread extends Component{
             textInput:'',
             description:'',
             title: '' ,
+            jsbin:'',
             threadID: this.props.threadID,
             alertStyle: { display: 'none' }
         }
@@ -36,7 +37,9 @@ class Thread extends Component{
             comments: res.data.comments,
             description: res.data.description,
             title: res.data.title,
+            jsbin:res.data.jsbin
             })
+            console.log(res);
         })
     }
 
@@ -104,15 +107,16 @@ class Thread extends Component{
                 </div>
             )
         } )
+        
         return(
-                <div className="col-m-12 col-sm-10 justify-content-start mt-5">
+                <div className="col-m-12 col-sm-10 justify-content-start mt-5 pt-5 bg-white ">
                     <h2>{this.state.title}</h2>
                     <p><small className='text-muted' >Author: no one </small></p>
                     <p>{this.state.description}</p>
                     {/* <iframe src={postData[props.threadID].jsbin} frameborder="0"></iframe> */}
                                <div className="dropdown-divider mb-5"></div>
 
-                    {/* <iframe src={postData[this.props.threadID].jsbin} style={iframeStyle} sandbox="allow-scripts allow-same-origin"></iframe> */}
+                    {/* <iframe src={this.state.jsbin} style={iframeStyle} sandbox="allow-scripts allow-same-origin"></iframe> */}
 
                      
                     {Comments}
