@@ -37,6 +37,7 @@ function Jsbin(index){
 }
 
 export default (props) => {
+    console.log(props)
     let postDesc = props.data.description.slice(0,200)
     if(props.data.description.length > 200){
         postDesc+= '...'
