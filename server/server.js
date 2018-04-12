@@ -50,7 +50,8 @@ server.post('/newPost', (req, res, next) => {
     var postdata = new PostModel({
         title: req.body.newTitleState,
         description: req.body.newDescriptionState,
-        jsbin: req.body.JsbinState     
+        jsbin: req.body.JsbinState,
+        comments: [{name:'hello', comment:'hello'}]
     })
     res.send(postdata);
     console.log('this is the postdata: ', postdata);
@@ -58,7 +59,7 @@ server.post('/newPost', (req, res, next) => {
         if(err){
             return next(err)
         }
-        res.json(201, post)
+        // res.json(201, post)
     })
 })
 
