@@ -43,7 +43,15 @@ class NewPost extends Component{
     }
 
     onSubmit(event){
-
+        event.preventDefault();
+        const submittedData = {
+            newTitleState: this.state.titleInput,
+            newDescriptionState: this.state.descriptionInput,
+            JsbinState: this.state.JSBINLink
+        }
+        axios.post('http://localhost:5000/newPost', submittedData).then(res =>{
+            console.log(res);
+        })
         if (!this.state.titleInput.length || !this.state.descriptionInput.length) event.preventDefault()
 
         const newTitleState={...this.state.titleState};

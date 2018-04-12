@@ -1,9 +1,9 @@
 import React from 'react';
 import postData from '../data/threadItems';
 import { Link } from 'react-router-dom';
-
 import jsbinPIC from '../assets/images/jsbin.png';
-import UpVote from './upvote'
+import UpVote from './upvote';
+import upvoteComments from './upvotecomments';
 
 const blockStyle={
     display:'block'
@@ -67,7 +67,7 @@ export default (props) => {
     } )
 
     return (
-        <div className="row">
+        <div className="row pt-5 my-4 border bg-white">
             <div className="col-md-2 col-sm-2 col-2">
                 <UpVote />
             </div>
@@ -80,9 +80,10 @@ export default (props) => {
                 <a style={aTag} target="_blank" href={props.data.jsbin}><img style={jsbinStyle} src={jsbinPIC} alt="jsbinPicture"/></a>
 
                 <Link style={inlineBlock} to={`/thread/${props.data._id}`}> <p> View More </p> </Link>
+                <div className="dropdown-divider mt-5"></div>
+
                 <small style={blockStyle} className="text-muted">Comments ({props.data.comments.length})</small>
                 {Comments}
-                <div className="dropdown-divider mb-5"></div>
             </div>
 
             

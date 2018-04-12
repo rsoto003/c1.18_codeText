@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import postData from '../data/threadItems';
-import axios from 'axios';
-
+import postData from '../data/threadItems'
+import axios from 'axios'
+import UpvoteComments from './upvotecomments';
 
 const textAreaStyle={
     fontSize: '13px',
@@ -24,7 +24,9 @@ class Thread extends Component{
             textInput:'',
             description:'',
             title: '' ,
-            threadID: this.props.threadID
+            jsbin:'',
+            threadID: this.props.threadID,
+            alertStyle: { display: 'none' }
         }
         this.updateInput=this.updateInput.bind(this)
         this.onSubmit=this.onSubmit.bind(this)
@@ -35,7 +37,9 @@ class Thread extends Component{
             comments: res.data.comments,
             description: res.data.description,
             title: res.data.title,
+            jsbin:res.data.jsbin
             })
+            console.log(res);
         })
     }
 
@@ -46,19 +50,39 @@ class Thread extends Component{
             comment:this.state.textInput,
             threadID: this.props.threadID
         }
-        axios.post(`http://localhost:5000/addComment`, submittedComment).then( res => {
+
+        if (this.validCheck(this.state.textInput)){
+
             this.setState({
-                comments: res.data.comments
+                textInput:'',
             })
-            console.log(res)
-        })
+            axios.post(`http://localhost:5000/addComment`, submittedComment).then( res => {
+                this.setState({
+                    comments: res.data.comments
+                })
+                console.log(res)
+            })
+        }
 
         // const newCommentState= this.state.comments.slice();
         // newCommentState.push(submittedComment);
-        this.setState({
-            textInput:'',
-            // comments:  newCommentState
-        })
+
+    }
+
+    validCheck(string){
+        if(string.length > 0){
+            this.setState({
+                alertStyle: {display:'none'}
+            })
+            return true
+        } else {
+            this.setState({
+                alertStyle: {display:'block'}
+            })
+
+            return false
+            
+        }
     }
 
     updateInput(event){
@@ -72,26 +96,42 @@ class Thread extends Component{
         const Comments = this.state.comments.map( (item, index) => {
             // debugger;
             return(
+<<<<<<< HEAD
                 <div key={index} >                    
                     <span><i className="fas fa-user-circle mr-2"></i>{this.state.comments[index].name}</span>
                     <p><small>{this.state.comments[index].comment}</small></p>
+=======
+                <div key={index} className="row">
+                    <div className="col-md-2 col-sm-2 col-2">
+                        <UpvoteComments />
+                    </div>
+                    <div className="col-md-10 col-sm-10 col-8 justify-content-start">
+                        <span><i className="fas fa-user-circle mr-2"></i>{this.state.comments[index].name}</span>
+                        <p><small>{this.state.comments[index].comment}</small></p>
+                    </div>
+>>>>>>> 730622b0503367aaaf2b75ea980ae15fb0bda2ab
                 </div>
             )
         } )
+        
         return(
-                <div className="col-m-12 col-sm-10 justify-content-start mt-5 ">
+                <div className="col-m-12 col-sm-10 justify-content-start mt-5 pt-5 bg-white ">
                     <h2>{this.state.title}</h2>
                     <p><small className='text-muted' >Author: no one </small></p>
                     <p>{this.state.description}</p>
                     {/* <iframe src={postData[props.threadID].jsbin} frameborder="0"></iframe> */}
-                    <div className="dropdown-divider mb-5"></div>
+                               <div className="dropdown-divider mb-5"></div>
 
-                    {/* <iframe src={postData[this.props.threadID].jsbin} style={iframeStyle} sandbox="allow-scripts allow-same-origin"></iframe> */}
+                    {/* <iframe src={this.state.jsbin} style={iframeStyle} sandbox="allow-scripts allow-same-origin"></iframe> */}
 
+                     
                     {Comments}
                     <form style={formStyle} className="form-group" onSubmit={this.onSubmit} >
                         <textarea style={textAreaStyle} id="comment" className="form-control" value={this.state.textInput} onChange={this.updateInput} ></textarea>
+                        <div style={this.state.alertStyle} className="alert alert-warning" role="alert"> Cannot leave comment empty! </div>
+
                         <button className="btn btn-danger btn-sm" >Add a comment</button>
+
                     </form>     
                 </div>
         )

@@ -11,5 +11,4 @@ app.get('/newPost', function(req, res){
 });
 
 app.get('/newPost', Users.descriptionInputChange);
-
 app.get('/newPost', Users.onSubmit)

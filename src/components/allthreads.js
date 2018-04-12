@@ -45,7 +45,7 @@ class AllThreads extends Component {
             )
         });
         return (
-            <div className="col-m-12 col-sm-10 justify-content-start mt-4">
+            <div className="col-m-12 col-sm-10 justify-content-start mt-3">
             <FilterFeed/>
             {threads} 
             </div>
