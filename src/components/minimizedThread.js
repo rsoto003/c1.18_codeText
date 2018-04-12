@@ -49,7 +49,6 @@ export default (props) => {
 
     const commentArray = [];
     const allComments = props.data.comments.map( (item, index) => {
-        console.log(item)
         commentArray.push(
             <div key={index} >
                 <span><i className="fas fa-user-circle mr-2"></i>{props.data.comments[index].name}</span>
@@ -68,7 +67,7 @@ export default (props) => {
     } )
 
     return (
-        <div className="row">
+        <div className="row pt-5 my-4 border bg-white">
             <div className="col-md-2 col-sm-2 col-2">
                 <UpVote />
             </div>

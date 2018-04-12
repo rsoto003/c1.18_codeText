@@ -97,7 +97,7 @@ class Thread extends Component{
                     <div className="col-md-2 col-sm-2 col-2">
                         <UpvoteComments />
                     </div>
-                    <div className="col-md-10 col-sm-10 col-8 justify-content-start ">
+                    <div className="col-md-10 col-sm-10 col-8 justify-content-start">
                         <span><i className="fas fa-user-circle mr-2"></i>{this.state.comments[index].name}</span>
                         <p><small>{this.state.comments[index].comment}</small></p>
                     </div>
@@ -105,7 +105,7 @@ class Thread extends Component{
             )
         } )
         return(
-                <div className="col-m-12 col-sm-10 justify-content-start mt-5 ">
+                <div className="col-m-12 col-sm-10 justify-content-start mt-5">
                     <h2>{this.state.title}</h2>
                     <p><small className='text-muted' >Author: no one </small></p>
                     <p>{this.state.description}</p>
