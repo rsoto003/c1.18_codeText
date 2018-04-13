@@ -108,9 +108,9 @@ server.get('/', function(req, res, next){
     console.log('got request: field  = '+req.query.field);
     const sortMapping = {
         newest: { 'timestamp': -1},
-        oldest: { timestamp: 1},
+        oldest: { timestamp: 1},    
         popular: { rating: -1},
-        comments: {commentLength: -1},
+        comments: { comments: -1 },
         hot: {timestamp: 1}
     }
     var sortObj;
