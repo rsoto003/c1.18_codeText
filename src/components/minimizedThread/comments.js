@@ -14,7 +14,9 @@ class Comments extends Component{
         this.axiosRequest = this.axiosRequest.bind(this)
     }
 
-
+    componentWillReceiveProps(){
+        this.axiosRequest()
+    }
 
     axiosRequest(){
         console.log(this.props)
@@ -25,7 +27,6 @@ class Comments extends Component{
                 allCommentsLength: res.data.comments.length
             })
         } )
-        
         
     }
 
