@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MinimizedThread from './minimizedThread';
+import MinimizedThread from './minimizedThread/minimizedThread';
 import FilterFeed from './filterFeed';
 
 class AllThreads extends Component {
