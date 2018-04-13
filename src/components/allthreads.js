@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MinimizedThread from './minimizedThread';
+import MinimizedThread from './minimizedThread/minimizedThread';
 import FilterFeed from './filterFeed';
 
 class AllThreads extends Component {
@@ -45,7 +45,7 @@ class AllThreads extends Component {
             )
         });
         return (
-            <div className="col-m-12 col-sm-10 justify-content-start mt-4">
+            <div className="col-m-12 col-sm-8 justify-content-start mt-3">
             <FilterFeed/>
             {threads} 
             </div>
