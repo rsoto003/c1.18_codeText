@@ -72,18 +72,12 @@ server.post('/addComment', (req, res) => {
 })
 
 server.post('/uniqueThread', (req, res ) => {
-    // console.log(req.body)
     PostModel.findById( req.body.threadID , (err, data) => {
         if(err) throw err;
-        // console.log(data);
-        // console.log(req.body)
+
         res.send(data);
         console.log(data);
     
-
-    const threadData = PostModel.find().then( data => {
-        res.send(data)
-        })
     })
 })
 
@@ -113,25 +107,26 @@ server.post('/newPost', (req, res, next) => {
 server.get('/', function(req, res, next){
     console.log('got request: field  = '+req.query.field);
     const sortMapping = {
-        newest: { timeStamp: -1},
-        oldest: { timeStamp: 1},
+        newest: { 'timestamp': -1},
+        oldest: { timestamp: 1},
         popular: { rating: -1},
         comments: {commentLength: -1},
-        hot: {timeStamp: 1}
+        hot: {timestamp: 1}
     }
+    var sortObj;
     if(req.query.field && sortMapping[req.query.field]){
-        var sortObj = sortMapping[req.query.field];
+        sortObj = sortMapping[req.query.field];
     } else {
         sortObj = {};
     }
     PostModel.find().sort(sortObj).then(data=> {
-        res.json({
+        res.send({
             confirmation: true,
             results: data
         })
     }).catch(error=> {
         console.log(error);
-        res.json({
+        res.send({
             confirmation: false,
             error: error
         })
