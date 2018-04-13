@@ -66,8 +66,11 @@ class Thread extends Component{
 
         // const newCommentState= this.state.comments.slice();
         // newCommentState.push(submittedComment);
-
     }
+    deletePost(event){
+        axios.post(`http://localhost:5000/delete`, {threadID: this.state.threadID} );
+    }
+
 
     validCheck(string){
         if(string.length > 0){
@@ -81,7 +84,7 @@ class Thread extends Component{
             })
 
             return false
-            
+        
         }
     }
 
@@ -113,6 +116,7 @@ class Thread extends Component{
                     <h2>{this.state.title}</h2>
                     <p><small className='text-muted' >Author: no one </small></p>
                     <p>{this.state.description}</p>
+                    <button className="btn btn-danger btn-sm" onClick={this.deletePost.bind(this)}>Delete Post</button>
                     {/* <iframe src={postData[props.threadID].jsbin} frameborder="0"></iframe> */}
                                <div className="dropdown-divider mb-5"></div>
 
