@@ -9,26 +9,11 @@ class Comments extends Component{
         super(props);
         this.state={
             commentLength:2,
-            allCommentsLength: this.props.data.comments.length 
+            //allCommentsLength: this.props.data.comments.length
         }
-        this.axiosRequest = this.axiosRequest.bind(this)
     }
 
-    componentWillReceiveProps(){
-        this.axiosRequest()
-    }
 
-    axiosRequest(){
-        console.log(this.props)
-        axios.post('http://localhost:5000/uniqueThread', {threadID: this.props.data._id} ).then( res => {
-            console.log('RESPONSE: ', res)
-            this.setState({
-                commentLength:2,
-                allCommentsLength: res.data.comments.length
-            })
-        } )
-        
-    }
 
     renderMoreComments(){
         this.setState({
@@ -36,15 +21,16 @@ class Comments extends Component{
         })    }
 
     viewMoreComments(){
-         if (this.state.allCommentsLength >2){
+        const {length } = this.props.data.comments
+         if (length >2){
             return(
-                <p onClick={this.renderMoreComments.bind(this)} className="badge pill badge-primary">View more comments <span className="badge badge-light">{this.state.allCommentsLength}</span> </p>
+                <p onClick={this.renderMoreComments.bind(this)} className="badge pill badge-primary">View more comments <span className="badge badge-light">{length}</span> </p>
             )
-        } else if (this.state.allCommentsLength >0){
+        } else if (length >0){
             return(
-                <small className="text-muted" >Comments ({this.state.allCommentsLength})</small>
+                <small className="text-muted" >Comments ({length})</small>
             )
-        } else if (this.state.allCommentsLength === 0){
+        } else if (length === 0){
             return (
                 <p className="py-4" > No comments yet! </p>
             )
