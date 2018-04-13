@@ -24,9 +24,9 @@ const App = () => {
                 <div className="row">
                     <Sidebar/>
                     <Route exact path="/" render={ ()=> (
-                        <Redirect to="/home/newest" />
+                        <Redirect to="/newest" />
                     )} />
-                    <Route path="/home/:sort?" component={AllThreads} />
+                    <Route path="/:sort?" component={AllThreads} />
                     <Route path='/newPost' component={NewPost}/>
                     <Route path='/thread/:threadID' component={UniqueThread}  />
                     <Route path='/leaderboard' component={Leaderboard} />

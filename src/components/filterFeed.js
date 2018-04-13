@@ -10,16 +10,16 @@ export default ()=> {
                     <Link className="nav-link active" to="/hot">Hot</Link>                    
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link" to="/home/popular">Popular</Link>
+                    <Link className="nav-link" to="/popular">Popular</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link" to="/home/comments">Comments</Link>
+                    <Link className="nav-link" to="/comments">Comments</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link" to="/home/newest">Newest</Link>
+                    <Link className="nav-link" to="/newest">Newest</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link" to="/home/oldest">Oldest</Link>
+                    <Link className="nav-link" to="/oldest">Oldest</Link>
                 </li>
             </ul>
 

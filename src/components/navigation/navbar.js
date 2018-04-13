@@ -6,7 +6,7 @@ export default ()=> {
     
     return (
         <nav className="navbar navbar-dark bg-dark">
-            <Link to="/home" className="navbar-brand" >context</Link>
+            <Link to="/" className="navbar-brand" >context</Link>
             <div><input className="form-control" type="text" placeholder="search" /></div>
             <ProfileDropdown/>
         </nav>
