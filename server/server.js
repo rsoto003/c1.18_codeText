@@ -24,6 +24,16 @@ mongoose.connect(keys.mongoURI, function(err, res){
     }
 })
 
+// mongoose.connect(keys.mongoURI, (err, db) => {
+//     if(err) throw err;
+//     let postInfo = {description: 'pls god pls oh god'};
+//     db.collection("posts").remove(postInfo, (err, obj)=> {
+//         if (err) throw err;
+//         console.log(obj.result.n + " document(s) deleted");
+//         db.close();
+//     })
+// })
+
 server.post('/addComment', (req, res) => {
     PostModel.findById(req.body.threadID , (err, data) => {
         if(err) throw err;
