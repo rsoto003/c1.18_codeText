@@ -85,7 +85,6 @@ export default (props) => {
                 <small style={blockStyle} className="text-muted">Comments ({props.data.comments.length})</small>
                 {Comments}
             </div>
-
             
         </div>
     )
