@@ -37,7 +37,6 @@ class Comments extends Component{
     
 
     render(){
-        console.log(this.props)
         const commentArray = [];
         const allComments = this.props.data.comments.map( (item, index) => {
             commentArray.push(

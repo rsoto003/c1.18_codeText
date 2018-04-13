@@ -119,19 +119,20 @@ server.get('/', function(req, res, next){
         comments: {commentLength: -1},
         hot: {timeStamp: 1}
     }
+    var sortObj;
     if(req.query.field && sortMapping[req.query.field]){
-        var sortObj = sortMapping[req.query.field];
+        sortObj = sortMapping[req.query.field];
     } else {
         sortObj = {};
     }
     PostModel.find().sort(sortObj).then(data=> {
-        res.json({
+        res.send({
             confirmation: true,
             results: data
         })
     }).catch(error=> {
         console.log(error);
-        res.json({
+        res.send({
             confirmation: false,
             error: error
         })

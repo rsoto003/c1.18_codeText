@@ -40,11 +40,7 @@ class MinimizedThread extends Component{
     constructor(props){
         super(props)
     }
-    shouldComponentUpdate(nextProps){
-        console.log('next Props:', nextProps)
-        console.log(this.props)
-        return false
-    }
+
 
     render(){
         let postDesc = this.props.data.description.slice(0,200)
@@ -73,8 +69,6 @@ class MinimizedThread extends Component{
     
                     <Link style={inlineBlock} to={`/thread/${this.props.data._id}`}> <p> View More </p> </Link>
                     <div className="dropdown-divider mt-5"></div>
-    
-                    {/* <small style={blockStyle} className="text-muted">Comments ({this.props.data.comments.length})</small> */}
                     <Comments data = {this.props.data} />
                 </div>
     
