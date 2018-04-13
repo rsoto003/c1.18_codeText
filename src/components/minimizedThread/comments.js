@@ -8,7 +8,8 @@ class Comments extends Component{
     constructor(props){
         super(props);
         this.state={
-            commentLength:2
+            commentLength:2,
+            allCommentsLength: this.props.data.comments.length || 0
         }
     }
     renderMoreComments(){
@@ -16,7 +17,27 @@ class Comments extends Component{
             commentLength: this.state.commentLength + 3
         })
     }
+
+    viewMoreComments(){
+         if (this.state.allCommentsLength >2){
+            return(
+                <p onClick={this.renderMoreComments.bind(this)} className="badge pill badge-primary">View more comments <span className="badge badge-light">{this.state.allCommentsLength}</span> </p>
+            )
+        } else if (this.state.allCommentsLength >0){
+            return(
+                <small className="text-muted" >Comments ({this.state.allCommentsLength})</small>
+            )
+        } else if (this.state.allCommentsLength === 0){
+            return (
+                <p className="py-4" > No comments yet! </p>
+            )
+        }
+    }
+
+    
+
     render(){
+        console.log(this.props)
         const commentArray = [];
         const allComments = this.props.data.comments.map( (item, index) => {
             commentArray.push(
@@ -35,10 +56,10 @@ class Comments extends Component{
                 fewComments[index]
             )
         } )
+
         return(
             <div>
-                <p onClick={this.renderMoreComments.bind(this)} className="badge pill badge-primary">View more comments <span className="badge badge-light">{commentArray.length}</span> </p>
-            
+                {this.viewMoreComments()}
                 {Comments}
                 
             </div>
