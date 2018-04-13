@@ -23,21 +23,37 @@ mongoose.connect(keys.mongoURI, function(err, res){
         console.log('we have liftoff with the db', res);
     }
 })
-
-// mongoose.connect(keys.mongoURI, (err, db) => {
+            /*    deleting post  */
+// mongoose.connect(keys.mongoURI, (err, db, req) => {
 //     if(err) throw err;
-//     let postInfo = {description: 'pls god pls oh god'};
+//     let postInfo = req.data._id;
 //     db.collection("posts").remove(postInfo, (err, obj)=> {
 //         if (err) throw err;
 //         console.log(obj.result.n + " document(s) deleted");
-//         db.close();
+//     }).catch(error=> {
+//         console.log(error);
+//         res.json({
+//             confirmation: false,
+//             error: error
+//         })
 //     })
+   
 // })
+server.post('/delete', (req, res) => {
+    PostModel.findById(req.body.threadID, (err,data) => {
+        data.remove( err => {
+            if (err) throw err;
+
+            console.log('deleted this bitch')
+        } )
+    } )
+    
+})
 
 server.post('/addComment', (req, res) => {
     PostModel.findById(req.body.threadID , (err, data) => {
         if(err) throw err;
-
+        
         console.log(data)
 
 
@@ -90,7 +106,7 @@ server.post('/newPost', (req, res, next) => {
         if(err){
             return next(err)
         }
-        // res.json(201, post)
+        
     })
 })
 

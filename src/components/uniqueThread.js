@@ -68,7 +68,7 @@ class Thread extends Component{
         // newCommentState.push(submittedComment);
     }
     deletePost(event){
-        axios.post(`http://localhost:5000/main`)
+        axios.post(`http://localhost:5000/delete`, {threadID: this.state.threadID} );
     }
 
 
@@ -116,7 +116,7 @@ class Thread extends Component{
                     <h2>{this.state.title}</h2>
                     <p><small className='text-muted' >Author: no one </small></p>
                     <p>{this.state.description}</p>
-                    <button className="btn btn-danger btn-sm" >Delete Post</button>
+                    <button className="btn btn-danger btn-sm" onClick={this.deletePost.bind(this)}>Delete Post</button>
                     {/* <iframe src={postData[props.threadID].jsbin} frameborder="0"></iframe> */}
                                <div className="dropdown-divider mb-5"></div>
 
