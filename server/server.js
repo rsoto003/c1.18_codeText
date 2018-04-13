@@ -98,7 +98,7 @@ server.post('/newPost', (req, res, next) => {
         title: req.body.newTitleState,
         description: req.body.newDescriptionState,
         jsbin: req.body.JsbinState,
-        comments: [{name:'hello', comment:'hello'}]
+        // comments: [{name:'hello', comment:'hello'}]
     })
     res.send(postdata);
     console.log('this is the postdata: ', postdata);
