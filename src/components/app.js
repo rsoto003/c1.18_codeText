@@ -18,7 +18,7 @@ const UniqueThread = ({ match }) => {
 
 const App = () => {
     return(
-        <div className="bg-light">
+        <div className="">
             <Navbar/>
             <div className="container-fluid">
                 <div className="row">
