@@ -23,8 +23,11 @@ const App = () => {
             <div className="container-fluid">
                 <div className="row">
                     <Sidebar/>
+                    <Route exact path="/" render={ ()=> (
+                        <Redirect to="/home/newest" component={AllThreads} />
+                    )} />
                     {/* <Route exact path="/home" render={ ()=> (
-                        <Redirect to="/newest" />
+                        <Redirect to="/home/newest" />
                     )} /> */}
                     <Route path="/home/:sort?" component={AllThreads} />
                     <Route path='/newPost' component={NewPost}/>
