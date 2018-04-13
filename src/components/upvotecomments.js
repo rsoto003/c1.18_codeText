@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../assets/css/app.css';
+import '../assets/css/upvotecomment.css';
 
 class UpvoteComments extends Component{
     constructor(props){
@@ -38,7 +38,7 @@ class UpvoteComments extends Component{
 
         return(
 
-            <div className="text-center">                                            
+            <div className="text-center vote-container mb-3">                                            
                 <div  className="addVote fa-1x" onClick={this.handleAddVote}> <i className="fas fa-angle-up"></i></div>                 
 
                 <div className="voteNum">{this.state.value}</div>
