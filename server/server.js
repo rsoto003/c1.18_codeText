@@ -72,18 +72,12 @@ server.post('/addComment', (req, res) => {
 })
 
 server.post('/uniqueThread', (req, res ) => {
-    // console.log(req.body)
     PostModel.findById( req.body.threadID , (err, data) => {
         if(err) throw err;
-        // console.log(data);
-        // console.log(req.body)
+
         res.send(data);
         console.log(data);
     
-
-    const threadData = PostModel.find().then( data => {
-        res.send(data)
-        })
     })
 })
 

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import axios from 'axios'
 
 
 
@@ -9,14 +9,30 @@ class Comments extends Component{
         super(props);
         this.state={
             commentLength:2,
-            allCommentsLength: this.props.data.comments.length || 0
+            allCommentsLength: this.props.data.comments.length 
         }
+        this.axiosRequest = this.axiosRequest.bind(this)
     }
+
+
+
+    axiosRequest(){
+        console.log(this.props)
+        axios.post('http://localhost:5000/uniqueThread', {threadID: this.props.data._id} ).then( res => {
+            console.log('RESPONSE: ', res)
+            this.setState({
+                commentLength:2,
+                allCommentsLength: res.data.comments.length
+            })
+        } )
+        
+        
+    }
+
     renderMoreComments(){
         this.setState({
             commentLength: this.state.commentLength + 3
-        })
-    }
+        })    }
 
     viewMoreComments(){
          if (this.state.allCommentsLength >2){
@@ -37,6 +53,8 @@ class Comments extends Component{
     
 
     render(){
+        
+        // console.log(this.props)
         const commentArray = [];
         const allComments = this.props.data.comments.map( (item, index) => {
             commentArray.push(

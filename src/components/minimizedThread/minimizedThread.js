@@ -62,7 +62,7 @@ class MinimizedThread extends Component{
                 <div className="col-md-10 col-sm-10 col-8 justify-content-start ">
                     {/* <UpVote className="col-m-1 col-sm-1 justify-content-start mt-5"/> */}
                     <h4>{postTitle}</h4>
-                    <p><small className="text-muted" > {this.props.data.author} - post ID: {this.props.data._id} </small></p>
+                    <p><small className="text-muted" > {this.props.data.author} - post ID: {this.props.data.timestamp} </small></p>
                     <p>{postDesc}</p>
                     
                     <a style={aTag} target="_blank" href={this.props.data.jsbin}><img style={jsbinStyle} src={jsbinPIC} alt="jsbinPicture"/></a>
