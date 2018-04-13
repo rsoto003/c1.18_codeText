@@ -43,15 +43,8 @@ class NewPost extends Component{
     }
 
     onSubmit(event){
-        event.preventDefault();
-        const submittedData = {
-            newTitleState: this.state.titleInput,
-            newDescriptionState: this.state.descriptionInput,
-            JsbinState: this.state.JSBINLink
-        }
-        axios.post('http://localhost:5000/newPost', submittedData).then(res =>{
-            console.log(res);
-        })
+
+
         if (!this.state.titleInput.length || !this.state.descriptionInput.length) event.preventDefault()
 
         const newTitleState={...this.state.titleState};
@@ -66,8 +59,9 @@ class NewPost extends Component{
             descriptionState: newDescriptionState
         })
 
-        this.jsbinIsValid(event)
-    
+        const newJsbinState = this.jsbinIsValid(event)
+
+        this.sumbitToDatabase(newTitleState, newDescriptionState, newJsbinState)
     }
     jsbinIsValid(event){
         const jsbinLink = this.state.JSBINLink
@@ -99,14 +93,32 @@ class NewPost extends Component{
                 })
     
             }
-            newJsbinState.display = isJsbin ? {display:'none'} : {display:'block'} ;
+
 
         }
-
-
+        newJsbinState.display = isJsbin ? {display:'none'} : {display:'block'} ;
         this.setState({
             jsbinState: newJsbinState
         })
+        return newJsbinState.display
+    }
+
+    sumbitToDatabase(title, description, jsbin){
+        
+
+        const displays = title.display.display + description.display.display + jsbin.display;
+
+        if (displays == "nonenonenone"){
+            console.log('sending the payload')
+            const submittedData = {
+                newTitleState: this.state.titleInput,
+                newDescriptionState: this.state.descriptionInput,
+                JsbinState: this.state.JSBINLink
+            }
+            axios.post('http://localhost:5000/newPost', submittedData).then(res =>{
+                console.log(res);
+            })
+        }
 
     }
 
