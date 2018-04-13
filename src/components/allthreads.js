@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MinimizedThread from './minimizedThread/minimizedThread';
 import FilterFeed from './filterFeed';
+import axios from 'axios';
 
 class AllThreads extends Component {
     constructor(props){
@@ -9,13 +10,14 @@ class AllThreads extends Component {
             oldField : null,
             postData : []
         }
+        this.fetchDataFromServer = this.fetchDataFromServer.bind(this);
     }
     fetchDataFromServer(){
         if(this.state.oldField !== this.props.match.params.sort){
-            fetch('http://localhost:5000/?field='+this.props.match.params.sort).then(response => response.json()).then(data=>{
-                if(data.confirmation){
+            axios.get(`http://localhost:5000/?field=${this.props.match.params.sort}`).then(res=>{
+                if(res.data.confirmation){
                     this.setState({
-                        postData: data.results,
+                        postData: res.data.results,
                         oldField: this.props.match.params.sort
                     })
                 }
@@ -35,8 +37,6 @@ class AllThreads extends Component {
     } 
 
     render(){
-
-
 
         //const sortedPosts = this.sortThread(this.state.postData);
         const threads = this.state.postData.map((item, index) => {
