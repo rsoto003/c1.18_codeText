@@ -20,7 +20,7 @@ const App = () => {
     return(
         <div className="bg-light">
             <Navbar/>
-            <div className="container">
+            <div className="container-fluid">
                 <div className="row">
                     <Sidebar/>
                     <Route exact path="/" render={ ()=> (
