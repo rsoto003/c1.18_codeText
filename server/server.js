@@ -23,36 +23,26 @@ mongoose.connect(keys.mongoURI, function(err, res){
         console.log('we have liftoff with the db', res);
     }
 })
-            /*    deleting post  */
-// mongoose.connect(keys.mongoURI, (err, db, req) => {
-//     if(err) throw err;
-//     let postInfo = req.data._id;
-//     db.collection("posts").remove(postInfo, (err, obj)=> {
-//         if (err) throw err;
-//         console.log(obj.result.n + " document(s) deleted");
-//     }).catch(error=> {
-//         console.log(error);
-//         res.json({
-//             confirmation: false,
-//             error: error
-//         })
-//     })
-   
-// })
+
 server.post('/delete', (req, res) => {
     PostModel.findById(req.body.threadID, (err,data) => {
-        data.remove( err => {
-            if (err) throw err;
+        if(data === null){
+            console.log(`Cannot find thread ID of: ${req.body.threadID}`)
+            
+        }else {
+            data.remove( err => {
+                if (err) throw err;
+    
+                console.log(`Deleting post with ID of: ${req.body.threadID}`)
+            } )
+        }
 
-            console.log('deleted this bitch')
-        } )
     } )
     
 })
 
 server.post('/commentVote', (req,res) => {
     PostModel.findById(req.body.threadID , (err,data)=> {
-        // console.log(data.comments.id('5ad3da924d07c10b28333070'))
         console.log(req.body)
         const target = data.comments.id(req.body.commentData._id);
         if (req.body.vote==='up'){
@@ -79,7 +69,7 @@ server.post('/addComment', (req, res) => {
 
 
         data.comments.push( {
-            'name': 'Anonymous', 
+            name: 'Anonymous', 
             'comment': req.body.comment,
             'rating': 0
         })  
@@ -114,20 +104,30 @@ server.use(function(req, res, next) {
   });
 
 server.post('/newPost', (req, res, next) => {
-    var postdata = new PostModel({
-        title: req.body.newTitleState,
-        description: req.body.newDescriptionState,
-        jsbin: req.body.JsbinState,
-        comments: []
-    })
-    res.send(postdata);
-    console.log('this is the postdata: ', postdata);
-    postdata.save((err, post) => {
-        if(err){
-            return next(err)
-        }
-        
-    })
+
+    const { newTitleState, newDescriptionState, JsbinState } = req.body;
+
+    if( newTitleState.length===0 || newDescriptionState.length===0 ){
+        console.log('Invalid post data!: ', req.body)
+        res.send('ERROR. INVALID POST DATA')
+    } else {
+        const postdata = new PostModel({
+            title: newTitleState,
+            description: newDescriptionState,
+            jsbin: JsbinState,
+            comments: []
+        })
+        res.send(postdata);
+        console.log('this is the postdata: ', postdata);
+        postdata.save((err, post) => {
+            if(err){
+                return next(err)
+            }
+            
+        })
+    }
+
+
 })
 
 server.get('/', function(req, res, next){
