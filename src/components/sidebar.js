@@ -1,20 +1,37 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import FilterFeed from './filterFeed';
+// import FilterFeed from './filterFeed';
 
 
 export default ()=> {
     return (
-        <div className="col-2 d-none d-sm-block">         
+        <div className="col-2 d-none d-sm-block mt-5">         
                
-                              
-                <div className="row mt-5 mx-auto">
-                    <Link to="/newPost" >Post a question!</Link>
-                </div>              
+                <ul className="nav flex-column">             
+                    <li className="nav-item mt-2">
+                        <Link className="nav-link"  to="/newPost" >Post a question!</Link>
+                    </li>  
+
+                    <li className="nav-item mt-2">
+                        <Link className="nav-link active" to="/home/hot">Hot</Link>                    
+                    </li>
+                    <li className="nav-item mt-2">
+                        <Link className="nav-link" to="/home/popular">Popular</Link>
+                    </li>
+                    <li className="nav-item mt-2">
+                        <Link className="nav-link" to="/home/comments">Comments</Link>
+                    </li>
+                    <li className="nav-item mt-2">
+                        <Link className="nav-link" to="/home/newest">Newest</Link>
+                    </li>
+                    <li className="nav-item mt-2">
+                        <Link className="nav-link" to="/home/oldest">Oldest</Link>
+                    </li>            
                
-                <div className="row mt-5 mx-auto">
-                    <Link to="/leaderboard">Leaderboards</Link>
-                </div>
+                    <li className="nav-item mt-2">
+                        <Link className="nav-link"  to="/leaderboard">Leaderboards</Link>
+                    </li>
+                </ul> 
             
 
 
