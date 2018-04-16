@@ -50,6 +50,26 @@ server.post('/delete', (req, res) => {
     
 })
 
+server.post('/commentVote', (req,res) => {
+    PostModel.findById(req.body.threadID , (err,data)=> {
+        // console.log(data.comments.id('5ad3da924d07c10b28333070'))
+        console.log(req.body)
+        const target = data.comments.id(req.body.commentData._id);
+        if (req.body.vote==='up'){
+            target.rating +=1;
+        } else {
+            target.rating -=1;
+        }
+        data.save(err=>{
+            if(err)throw err;
+            console.log('voting: ', req.body.vote)
+        })
+        res.send(data.comments.id(req.body.commentData._id));
+    } )
+    
+    }
+)
+
 server.post('/addComment', (req, res) => {
     PostModel.findById(req.body.threadID , (err, data) => {
         if(err) throw err;
@@ -58,7 +78,11 @@ server.post('/addComment', (req, res) => {
 
 
 
-        data.comments.push( {'name': req.body.name, 'comment': req.body.comment})
+        data.comments.push( {
+            'name': 'Anonymous', 
+            'comment': req.body.comment,
+            'rating': 0
+        })  
 
         
         data.save(err=>{
@@ -81,6 +105,8 @@ server.post('/uniqueThread', (req, res ) => {
     })
 })
 
+
+
 server.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -92,7 +118,7 @@ server.post('/newPost', (req, res, next) => {
         title: req.body.newTitleState,
         description: req.body.newDescriptionState,
         jsbin: req.body.JsbinState,
-        // comments: [{name:'hello', comment:'hello'}]
+        comments: []
     })
     res.send(postdata);
     console.log('this is the postdata: ', postdata);
