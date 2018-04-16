@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 
 export default ()=> {
     return (
-        <div className="col-2 d-none d-sm-block pt-5 pl-5">         
+        <div className="col-md-2 d-none d-md-block pt-5 pl-3">         
                
                     <ul className="nav flex-column">             
                         <li className="nav-item mt-2">

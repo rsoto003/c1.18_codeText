@@ -5,13 +5,14 @@ import logo from '../../assets/images/logo.svg';
 import '../../assets/css/app.css';
 
 export default ()=> {
-    const logoStyle = {
-        width: '100%'
-    }
+    // const logoStyle = {
+    //     width: '100%',
+
+    // }
     
     return (
         <nav className="navbar navbar-dark sticky-top new-bg">
-            <Link to="/home/newest" className="nav" ><img style={logoStyle} src={logo} alt="codingcoops logo"/></Link>           
+            <Link to="/home/newest" className="nav" ><img className="w-100" src={logo} alt="codingcoops logo"/></Link>           
             {/* <div><input className="form-control input-lg" type="text" placeholder="search" /></div> */}
 
             <form className="form-inline mt-2 mt-md-0 col-4"> 
