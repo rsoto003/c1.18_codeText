@@ -1,40 +1,40 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+
 // import FilterFeed from './filterFeed';
 
 
 export default ()=> {
     return (
-        <nav className="navbar navbar-inverse navbar-fixed-left col-2">         
-               <div className="container">
-                    <div id="navbar" className="navbar-collapse collapse" >
-                        <ul className="nav navbar-nav">             
-                            <li className="">
-                                <Link className=""  to="/newPost" >Post a question!</Link>
-                            </li>  
+        
+        <nav className="col-2 hidden-xs-down bg-faded sidebar">         
+               
+            <ul className="nav nav-pills flex-column">             
+                <li className="nav-item mt-2">
+                    <Link className="nav-link active"  to="/newPost" >Post a question!</Link>
+                </li>  
 
-                            <li className="">
-                                <Link className="" to="/home/hot">Hot</Link>                    
-                            </li>
-                            <li className="">
-                                <Link className="" to="/home/popular">Popular</Link>
-                            </li>
-                            <li className="">
-                                <Link className="" to="/home/comments">Comments</Link>
-                            </li>
-                            <li className="">
-                                <Link className="" to="/home/newest">Newest</Link>
-                            </li>
-                            <li className="">
-                                <Link className="" to="/home/oldest">Oldest</Link>
-                            </li>            
-                    
-                            <li className="">
-                                <Link className=""  to="/leaderboard">Leaderboards</Link>
-                            </li>
-                        </ul> 
-                    </div>
-                </div>
+                <li className="nav-item mt-2">
+                    <Link className="nav-link " to="/home/hot">Hot</Link>                    
+                </li>
+                <li className="nav-item mt-2">
+                    <Link className="nav-link" to="/home/popular">Popular</Link>
+                </li>
+                <li className="nav-item mt-2">
+                    <Link className="nav-link" to="/home/comments">Comments</Link>
+                </li>
+                <li className="nav-item mt-2">
+                    <Link className="nav-link" to="/home/newest">Newest</Link>
+                </li>
+                <li className="nav-item mt-2">
+                    <Link className="nav-link" to="/home/oldest">Oldest</Link>
+                </li>            
+        
+                <li className="nav-item mt-2">
+                    <Link className="nav-link"  to="/leaderboard">Leaderboards</Link>
+                </li>
+            </ul> 
+    
 
 
                 {/* ------------------------------------------- */}
@@ -53,8 +53,8 @@ export default ()=> {
                 <div className="row mt-5 mx-auto">
                     <Link to="/help">Help</Link>
                 </div> */}
-
-            </nav>
+        </nav>
         
+            
     )
 }

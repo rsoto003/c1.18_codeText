@@ -42,7 +42,7 @@ class AllThreads extends Component {
             )
         });
         return (
-            <div className="col-10 mt-4">
+            <div className="col-10 mt-4 pl-5 offset-md-2">
                 {/* <div className="row justify-content-end">
                     <FilterFeed/>                 
                 </div> */}

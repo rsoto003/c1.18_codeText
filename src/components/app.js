@@ -36,7 +36,6 @@ const App = () => {
                     <Route path='/thread/:threadID' component={UniqueThread}  />
                     <Route path='/leaderboard' component={Leaderboard} />
                     <Route path="/register" component={Register}/>
-                    
                 </div>
             </div>
         </div>
