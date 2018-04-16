@@ -5,34 +5,36 @@ import {Link} from 'react-router-dom';
 
 export default ()=> {
     return (
-        <div className="col-2 d-none d-sm-block pt-5 pl-5">         
-               
-                    <ul className="nav flex-column">             
-                        <li className="nav-item mt-2">
-                            <Link className="nav-link"  to="/newPost" >Post a question!</Link>
-                        </li>  
+        <nav className="navbar navbar-inverse navbar-fixed-left col-2">         
+               <div className="container">
+                    <div id="navbar" className="navbar-collapse collapse" >
+                        <ul className="nav navbar-nav">             
+                            <li className="">
+                                <Link className=""  to="/newPost" >Post a question!</Link>
+                            </li>  
 
-                        <li className="nav-item mt-2">
-                            <Link className="nav-link active" to="/home/hot">Hot</Link>                    
-                        </li>
-                        <li className="nav-item mt-2">
-                            <Link className="nav-link" to="/home/popular">Popular</Link>
-                        </li>
-                        <li className="nav-item mt-2">
-                            <Link className="nav-link" to="/home/comments">Comments</Link>
-                        </li>
-                        <li className="nav-item mt-2">
-                            <Link className="nav-link" to="/home/newest">Newest</Link>
-                        </li>
-                        <li className="nav-item mt-2">
-                            <Link className="nav-link" to="/home/oldest">Oldest</Link>
-                        </li>            
-                
-                        <li className="nav-item mt-2">
-                            <Link className="nav-link"  to="/leaderboard">Leaderboards</Link>
-                        </li>
-                    </ul> 
-                
+                            <li className="">
+                                <Link className="" to="/home/hot">Hot</Link>                    
+                            </li>
+                            <li className="">
+                                <Link className="" to="/home/popular">Popular</Link>
+                            </li>
+                            <li className="">
+                                <Link className="" to="/home/comments">Comments</Link>
+                            </li>
+                            <li className="">
+                                <Link className="" to="/home/newest">Newest</Link>
+                            </li>
+                            <li className="">
+                                <Link className="" to="/home/oldest">Oldest</Link>
+                            </li>            
+                    
+                            <li className="">
+                                <Link className=""  to="/leaderboard">Leaderboards</Link>
+                            </li>
+                        </ul> 
+                    </div>
+                </div>
 
 
                 {/* ------------------------------------------- */}
@@ -51,7 +53,8 @@ export default ()=> {
                 <div className="row mt-5 mx-auto">
                     <Link to="/help">Help</Link>
                 </div> */}
-            </div>
+
+            </nav>
         
     )
 }
