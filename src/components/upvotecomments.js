@@ -23,7 +23,9 @@ class UpvoteComments extends Component{
         
         axios.post('http://localhost:5000/commentVote', submittedData ).then( res => {
             console.log(res);
-            
+            this.setState({
+                value: res.data.rating
+            })
         })
     }
 

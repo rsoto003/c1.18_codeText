@@ -54,7 +54,7 @@ server.post('/commentVote', (req,res) => {
     PostModel.findById(req.body.threadID , (err,data)=> {
         // console.log(data.comments.id('5ad3da924d07c10b28333070'))
         console.log(req.body)
-        const target = data.comments.id('5ad3da924d07c10b28333070');
+        const target = data.comments.id(req.body.commentData._id);
         if (req.body.vote==='up'){
             target.rating +=1;
         } else {
@@ -62,9 +62,9 @@ server.post('/commentVote', (req,res) => {
         }
         data.save(err=>{
             if(err)throw err;
-            console.log('voting: ', data.body.vote)
+            console.log('voting: ', req.body.vote)
         })
-        res.send(data.comments.id('5ad3da924d07c10b28333070'));
+        res.send(data.comments.id(req.body.commentData._id));
     } )
     
     }
