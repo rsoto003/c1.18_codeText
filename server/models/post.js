@@ -12,6 +12,7 @@ var PostSchema = new mongoose.Schema({
     title: {type: String},
     description: {type: String},
     jsbin: {type: String},
+    rating: {type: Number, default: 0},
     timestamp: {type: Date, default: Date.now},
     comments: [commentSchema],
 }, {collection: 'posts'});

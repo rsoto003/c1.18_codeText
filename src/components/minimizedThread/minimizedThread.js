@@ -55,7 +55,7 @@ class MinimizedThread extends Component{
         return (
             <div className="row pt-5 my-4 border bg-white">
                 <div className="col-md-2 col-sm-2 col-2">
-                    <UpVote threadID={this.props.data.threadID} />
+                    <UpVote postData={this.props} />
                 </div>
                 <div className="col-md-10 col-sm-10 col-8 justify-content-start ">
                     {/* <UpVote className="col-m-1 col-sm-1 justify-content-start mt-5"/> */}

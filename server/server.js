@@ -41,6 +41,25 @@ server.post('/delete', (req, res) => {
     
 })
 
+server.post('/postVote', (req,res) => {
+    console.log(req.body)
+
+    PostModel.findById(req.body.threadID, (err,data) => {
+        console.log(data)
+
+        if (req.body.vote ==='up'){
+            data.rating +=1
+        } else {
+            data.rating -= 1
+        }
+        data.save(err=>{
+            if(err)throw err;
+            console.log('Post voting: ', req.body.vote)
+        })
+        res.send(data)
+    })
+})
+
 server.post('/commentVote', (req,res) => {
     PostModel.findById(req.body.threadID , (err,data)=> {
         console.log(req.body)
@@ -52,7 +71,7 @@ server.post('/commentVote', (req,res) => {
         }
         data.save(err=>{
             if(err)throw err;
-            console.log('voting: ', req.body.vote)
+            console.log('Comment voting: ', req.body.vote)
         })
         res.send(data.comments.id(req.body.commentData._id));
     } )
@@ -115,7 +134,8 @@ server.post('/newPost', (req, res, next) => {
             title: newTitleState,
             description: newDescriptionState,
             jsbin: JsbinState,
-            comments: []
+            comments: [],
+            rating: 0
         })
         res.send(postdata);
         console.log('this is the postdata: ', postdata);
