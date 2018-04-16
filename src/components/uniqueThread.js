@@ -95,17 +95,15 @@ class Thread extends Component{
     }
 
     render(){
-
         const Comments = this.state.comments.map( (item, index) => {
-            // debugger;
             return(
                 <div key={index} className="row">
                     <div className="col-md-2 col-sm-2 col-2">
-                        <UpvoteComments style="margin-bottom: 50%" />
+                        <UpvoteComments threadID={this.props.threadID} data={item} />
                     </div>
                     <div className="col-md-10 col-sm-10 col-8 justify-content-start">
-                        <span><i className="fas fa-user-circle mr-2"></i>{this.state.comments[index].name}</span>
-                        <p><small>{this.state.comments[index].comment}</small></p>
+                        <span><i className="fas fa-user-circle mr-2"></i>{item.name}</span>
+                        <p><small>{item.comment}</small></p>
                     </div>
                 </div>
             )

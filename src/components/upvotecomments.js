@@ -1,28 +1,44 @@
 import React, {Component} from 'react';
 import '../assets/css/upvotecomment.css';
+import axios from 'axios';
 
 class UpvoteComments extends Component{
     constructor(props){
         super(props);
 
         this.state= {
-            value: 0
+            value: this.props.data.rating
         }
         this.handleAddVote = this.handleAddVote.bind(this);
         this.handleDeleteVote = this.handleDeleteVote.bind(this);
+        this.axiosCall = this.axiosCall.bind(this);
+
+    }
+    axiosCall(vote){
+        const submittedData={
+            vote,
+            commentData: this.props.data,
+            threadID : this.props.threadID
+        }
+        
+        axios.post('http://localhost:5000/commentVote', submittedData ).then( res => {
+            console.log(res);
+            this.setState({
+                value: res.data.rating
+            })
+        })
     }
 
-    handleAddVote(){        
-        console.log('handleAddVote: ', this.state.value);       
-
+    handleAddVote(){   
+        // console.log(this.props)     
+        this.axiosCall('up')
         this.setState({
            value: this.state.value + 1
         });
     }
 
     handleDeleteVote(){        
-        console.log('handledeleteVote: ', this.state.value);           
-        
+        this.axiosCall('down')
         this.setState({
             value: this.state.value - 1
         });
@@ -35,7 +51,6 @@ class UpvoteComments extends Component{
     }
 
     render(){
-
         return(
 
             <div className="text-center vote-container mb-3">                                            
