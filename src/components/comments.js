@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios'
-
+import UpvoteComments from './upvotecomments'
 
 
 
@@ -61,12 +61,19 @@ class Comments extends Component{
         const commentArray = [];
         const allComments = this.props.data.comments.reverse().map( (item, index) => {
             commentArray.push(
-                <div key={index} >
-                    <span><i className="fas fa-user-circle mr-2"></i>{this.props.data.comments[index].name}</span>
-                    <p><small>{this.props.data.comments[index].comment}</small></p>
-                </div>
+                    <div key={index} className="row">	
+                        <div className="col-md-2 col-sm-2 col-2">	
+                            <UpvoteComments threadID={this.props.data.threadID} data={item} />	
+                        </div>	
+                        <div className="col-md-10 col-sm-10 col-8 justify-content-start">	
+                            <span><i className="fas fa-user-circle mr-2"></i>{item.name}</span>	
+                            <p><small>{item.comment}</small></p>	
+                        </div>	
+                    </div>	
+                    )
+                } 
             )
-        } )
+        
 
         const fewComments=[];
         for (var i =this.state.commentLength; i>0; i--){
