@@ -9,6 +9,9 @@ class UpvoteComments extends Component{
         this.state= {
             value: this.props.data.rating
         }
+        this.pointerStyle={
+            cursor:'pointer'
+        }
         this.handleAddVote = this.handleAddVote.bind(this);
         this.handleDeleteVote = this.handleDeleteVote.bind(this);
         this.axiosCall = this.axiosCall.bind(this);
@@ -54,11 +57,11 @@ class UpvoteComments extends Component{
         return(
 
             <div className="text-center vote-container mb-3">                                            
-                <div  className="addVote fa-1x" onClick={this.handleAddVote}> <i className="fas fa-angle-up"></i></div>                 
+                <div style={this.pointerStyle} className="addVote fa-1x" onClick={this.handleAddVote}> <i className="fas fa-angle-up"></i></div>                 
 
                 <div className="voteNum">{this.state.value}</div>
 
-                <div className="deleteVote fa-1x" onClick={this.handleDeleteVote}> <i className="fas fa-angle-down"></i></div>
+                <div style={this.pointerStyle} className="deleteVote fa-1x" onClick={this.handleDeleteVote}> <i className="fas fa-angle-down"></i></div>
             </div>
         )
     }

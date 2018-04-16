@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './navigation/navbar';
 import NewPost from './newPost';
 import Sidebar from './sidebar';
-import Thread from './uniqueThread';
+import Thread from './UniqueThread/uniqueThread';
 import AllThreads from './allthreads';
 import Leaderboard from './leaderboard';
 import Register from './account/register';

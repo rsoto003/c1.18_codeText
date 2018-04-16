@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import postData from '../../data/threadItems';
 import { Link } from 'react-router-dom';
 import jsbinPIC from '../../assets/images/jsbin.png';
-import Comments from './comments.js'
+import Comments from '../comments.js'
 import UpVote from '../upvote';
 import upvoteComments from '../upvotecomments';
 const blockStyle={

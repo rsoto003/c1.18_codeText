@@ -11,6 +11,10 @@ class Comments extends Component{
             commentLength:2,
             //allCommentsLength: this.props.data.comments.length
         }
+        this.pointerStyle={
+            cursor:'pointer'
+        }
+
     }
 
 
@@ -18,13 +22,25 @@ class Comments extends Component{
     renderMoreComments(){
         this.setState({
             commentLength: this.state.commentLength + 3
-        })    }
+        })    
+    }
+
+    minimizeComments(){
+        this.setState({
+            commentLength: 2
+        })
+    }
 
     viewMoreComments(){
         const {length } = this.props.data.comments
+        if (length === this.state.commentLength && length !==2){
+            return(
+                <p style={this.pointerStyle} onClick={this.minimizeComments.bind(this)} className="badge pill badge-danger">Minimize Comments <span className="badge badge-light">{length}</span> </p>
+            )
+        }
          if (length >2){
             return(
-                <p onClick={this.renderMoreComments.bind(this)} className="badge pill badge-primary">View more comments <span className="badge badge-light">{length}</span> </p>
+                <p style={this.pointerStyle} onClick={this.renderMoreComments.bind(this)} className="badge pill badge-primary">View more comments <span className="badge badge-light">{length}</span> </p>
             )
         } else if (length >0){
             return(
@@ -37,13 +53,13 @@ class Comments extends Component{
         }
     }
 
-    
+
 
     render(){
-        
+
         console.log(this.props)
         const commentArray = [];
-        const allComments = this.props.data.comments.map( (item, index) => {
+        const allComments = this.props.data.comments.reverse().map( (item, index) => {
             commentArray.push(
                 <div key={index} >
                     <span><i className="fas fa-user-circle mr-2"></i>{this.props.data.comments[index].name}</span>
@@ -51,8 +67,9 @@ class Comments extends Component{
                 </div>
             )
         } )
+
         const fewComments=[];
-        for (var i =0; i<this.state.commentLength; i++){
+        for (var i =this.state.commentLength; i>0; i--){
             fewComments.push(commentArray[i]);
         }
         const Comments = fewComments.map( (item, index) => {
