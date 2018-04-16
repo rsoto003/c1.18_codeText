@@ -6,8 +6,7 @@ import {Link} from 'react-router-dom';
 
 export default ()=> {
     return (
-        
-        <nav className="col-2 hidden-xs-down bg-faded sidebar">         
+        <div className="col-md-2 d-none d-md-block pl-3 sidebar">         
                
             <ul className="nav nav-pills flex-column">             
                 <li className="nav-item mt-2">
@@ -53,7 +52,7 @@ export default ()=> {
                 <div className="row mt-5 mx-auto">
                     <Link to="/help">Help</Link>
                 </div> */}
-        </nav>
+        </div>
         
             
     )

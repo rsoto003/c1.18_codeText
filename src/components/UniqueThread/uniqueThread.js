@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import postData from '../data/threadItems'
 import axios from 'axios'
-import UpvoteComments from './upvotecomments';
+import UpvoteComments from '../upvotecomments';
+import Comments from '../comments'
 
 const textAreaStyle={
     fontSize: '13px',
@@ -15,6 +15,7 @@ const iframeStyle={
     width: '100%',
     height: '400px'
 }
+
 
 class Thread extends Component{
     constructor(props){
@@ -95,34 +96,18 @@ class Thread extends Component{
     }
 
     render(){
-        console.log(this.props)
-        const Comments = this.state.comments.map( (item, index) => {
-            return(
-                <div key={index} className="row">
-                    <div className="col-md-2 col-sm-2 col-2">
-                        <UpvoteComments threadID={this.props.threadID} data={item} />
-                    </div>
-                    <div className="col-md-10 col-sm-10 col-8 justify-content-start">
-                        <span><i className="fas fa-user-circle mr-2"></i>{item.name}</span>
-                        <p><small>{item.comment}</small></p>
-                    </div>
-                </div>
-            )
-        } )
+
         
         return(
+            
+
                 <div className="col-m-12 col-sm-10 justify-content-start mt-5 pt-5 bg-white ">
                     <h2>{this.state.title}</h2>
                     <p><small className='text-muted' >Author: no one </small></p>
                     <p>{this.state.description}</p>
                     <button className="btn btn-danger btn-sm" onClick={this.deletePost.bind(this)}>Delete Post</button>
-                    {/* <iframe src={postData[props.threadID].jsbin} frameborder="0"></iframe> */}
-                               <div className="dropdown-divider mb-5"></div>
-
-                    {/* <iframe src={this.state.jsbin} style={iframeStyle} sandbox="allow-scripts allow-same-origin"></iframe> */}
-
-                     
-                    {Comments}
+                        <div className="dropdown-divider mb-5"></div>
+                        <Comments data={this.state}/>
                     <form style={formStyle} className="form-group" onSubmit={this.onSubmit} >
                         <textarea style={textAreaStyle} id="comment" className="form-control" value={this.state.textInput} onChange={this.updateInput} ></textarea>
                         <div style={this.state.alertStyle} className="alert alert-warning" role="alert"> Cannot leave comment empty! </div>
