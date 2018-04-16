@@ -130,7 +130,7 @@ class NewPost extends Component{
                     <h1>New Post</h1>
                 </div>
                 <div>
-                    <form onSubmit={this.onSubmit} className="form-group" >
+                    <form action="http://localhost:3000/" onSubmit={this.onSubmit} className="form-group" >
                         <div className="input-group input-group-lg">
                             <input onChange={this.titleInputChange} type="text" className="form-control" placeholder="Add a Title" value={this.state.titleInput} />
                         </div>

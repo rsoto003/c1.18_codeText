@@ -3,6 +3,7 @@ import axios from 'axios'
 import UpvoteComments from '../upvotecomments';
 import Comments from '../comments'
 
+
 const textAreaStyle={
     fontSize: '13px',
     height: '55px',
@@ -65,8 +66,10 @@ class Thread extends Component{
                 textInput:'',
             })
             axios.post(`http://localhost:5000/addComment`, submittedComment).then( res => {
+                const newData=this.state.data
+                newData.res.comments=res.data.comments
                 this.setState({
-                    comments: res.data.comments
+                    data:newData
                 })
                 console.log(res)
             })
@@ -76,7 +79,7 @@ class Thread extends Component{
         // newCommentState.push(submittedComment);
     }
     deletePost(event){
-        axios.post(`http://localhost:5000/delete`, {threadID: this.state.threadID} );
+        axios.post(`http://localhost:5000/delete`, {threadID: this.state.threadID} )
     }
 
 
@@ -103,24 +106,24 @@ class Thread extends Component{
     }
 
     render(){
-        console.log(this.props)
+        console.log(this.props);
+
         return(
-            
-                <div className="col-m-12 col-sm-10 justify-content-start mt-5 pt-5 bg-white ">
-                    <h2>{this.state.title}</h2>
-                    <p><small className='text-muted' >Author: no one </small></p>
-                    <p>{this.state.description}</p>
-                    <button className="btn btn-danger btn-sm" onClick={this.deletePost.bind(this)}>Delete Post</button>
-                        <div className="dropdown-divider mb-5"></div>
-                        <Comments threadID={this.state.threadID} data={this.state.data.res} />
-                    <form style={formStyle} className="form-group" onSubmit={this.onSubmit} >
-                        <textarea style={textAreaStyle} id="comment" className="form-control" value={this.state.textInput} onChange={this.updateInput} ></textarea>
-                        <div style={this.state.alertStyle} className="alert alert-warning" role="alert"> Cannot leave comment empty! </div>
+            <div className="col-m-12 col-sm-10 justify-content-start mt-5 pt-5 bg-white ">
+                <h2>{this.state.title}</h2>
+                <p><small className='text-muted' >Author: no one </small></p>
+                <p>{this.state.description}</p>
+                <button className="btn btn-danger btn-sm" onClick={this.deletePost.bind(this)}>Delete Post</button>
+                    <div className="dropdown-divider mb-5"></div>
+                    <Comments threadID={this.state.threadID} data={this.state.data.res} />
+                <form style={formStyle} className="form-group" onSubmit={this.onSubmit} >
+                    <textarea style={textAreaStyle} id="comment" className="form-control" value={this.state.textInput} onChange={this.updateInput} ></textarea>
+                    <div style={this.state.alertStyle} className="alert alert-warning" role="alert"> Cannot leave comment empty! </div>
 
-                        <button className="btn btn-danger btn-sm" >Add a comment</button>
+                    <button  className="btn btn-danger btn-sm" >Add a comment</button>
 
-                    </form>     
-                </div>
+                </form>     
+            </div>
         )
     }
 };

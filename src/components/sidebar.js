@@ -13,7 +13,7 @@ export default ()=> {
                         </li>  
 
                         <li className="nav-item mt-2">
-                            <Link className="nav-link active" to="/home/hot">Hot</Link>                    
+                            <Link className="nav-link" to="/home/hot">Hot</Link>                    
                         </li>
                         <li className="nav-item mt-2">
                             <Link className="nav-link" to="/home/popular">Popular</Link>
