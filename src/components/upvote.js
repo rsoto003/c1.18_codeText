@@ -7,37 +7,40 @@ class UpVote extends Component{
         super(props);
 
         this.state= {
-            value: 0
+            value: this.props.postData.data.rating
         }
         this.handleAddVote = this.handleAddVote.bind(this);
         this.handleDeleteVote = this.handleDeleteVote.bind(this);
+        this.axiosCall = this.axiosCall.bind(this)
     }
 
 
 
-    handleAddVote(){        
-        console.log('handleAddVote: ', this.state.value);
-        this.setState({
-           value: this.state.value + 1
-        });
+    axiosCall(vote){
+        const submittedData={
+            vote,
+            threadID: this.props.postData.data._id
+        }
+        
+        axios.post('http://localhost:5000/postVote', submittedData ).then( res => {
+            console.log(res);
+            this.setState({
+                value: res.data.rating
+            })
+        })
+    }
+
+    handleAddVote(){   
+        this.axiosCall('up')
     }
 
     handleDeleteVote(){        
-        console.log('handledeleteVote: ', this.state.value);           
-        this.setState({
-            value: this.state.value - 1
-        });
-
-        if(this.state.value < 1) {
-            this.setState({
-                value: 0
-            });
-        } 
+        this.axiosCall('down')
     }
 
+
     render(){
-
-
+        console.log(this.props)
 
     
         return(
