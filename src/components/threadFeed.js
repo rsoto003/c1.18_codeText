@@ -30,7 +30,6 @@ function Jsbin(index){
     return(
         <iframe style={iframeStyle} src={postData[index].jsbin} frameborder="0"></iframe>
     )
-
 }
 
 export default () => {

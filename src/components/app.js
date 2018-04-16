@@ -22,18 +22,21 @@ const App = () => {
             <Navbar/>
             <div className="container-fluid">
                 <div className="row">
+                
                     <Sidebar/>
+                    
                     <Route exact path="/" render={ ()=> (
                         <Redirect to="/home/newest" component={AllThreads} />
                     )} />
-                    <Route exact path="/home" render={ ()=> (
+                    {/* <Route exact path="/home" render={ ()=> (
                         <Redirect to="/home/newest" />
-                    )} />
+                    )} /> */}
                     <Route path="/home/:sort?" component={AllThreads} />
                     <Route path='/newPost' component={NewPost}/>
                     <Route path='/thread/:threadID' component={UniqueThread}  />
                     <Route path='/leaderboard' component={Leaderboard} />
                     <Route path="/register" component={Register}/>
+                    
                 </div>
             </div>
         </div>
