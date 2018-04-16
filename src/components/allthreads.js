@@ -47,7 +47,7 @@ class AllThreads extends Component {
                     <FilterFeed/>                 
                 </div> */}
                 <div className="row">                    
-                    <div className="col-12 col-md-10">{threads}</div>
+                    <div className="col-sm-12 col-md-10">{threads}</div>
                     {/* <div className="col-1-sm d-none d-sm-block"></div> */}
                 </div>
             </div>
