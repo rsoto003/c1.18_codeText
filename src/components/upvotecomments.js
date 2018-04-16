@@ -33,7 +33,6 @@ class UpvoteComments extends Component{
     }
 
     handleAddVote(){   
-        // console.log(this.props)     
         this.axiosCall('up')
         this.setState({
            value: this.state.value + 1
@@ -54,6 +53,7 @@ class UpvoteComments extends Component{
     }
 
     render(){
+        console.log(this.props)
         return(
 
             <div className="text-center vote-container mb-3">                                            

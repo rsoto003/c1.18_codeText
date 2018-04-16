@@ -17,8 +17,6 @@ class Comments extends Component{
 
     }
 
-
-
     renderMoreComments(){
         this.setState({
             commentLength: this.state.commentLength + 3
@@ -56,14 +54,13 @@ class Comments extends Component{
 
 
     render(){
-
         console.log(this.props)
         const commentArray = [];
-        const allComments = this.props.data.comments.reverse().map( (item, index) => {
+        const allComments = this.props.data.comments.slice().reverse().map( (item, index) => {
             commentArray.push(
                     <div key={index} className="row">	
                         <div className="col-md-2 col-sm-2 col-2">	
-                            <UpvoteComments threadID={this.props.data.threadID} data={item} />	
+                            <UpvoteComments threadID={this.props.data._id} data={item} />	
                         </div>	
                         <div className="col-md-10 col-sm-10 col-8 justify-content-start">	
                             <span><i className="fas fa-user-circle mr-2"></i>{item.name}</span>	
@@ -73,10 +70,9 @@ class Comments extends Component{
                     )
                 } 
             )
-        
 
         const fewComments=[];
-        for (var i =this.state.commentLength; i>0; i--){
+        for (var i = this.state.commentLength-1; i>=-1; i--){
             fewComments.push(commentArray[i]);
         }
         const Comments = fewComments.map( (item, index) => {
