@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import '../assets/css/app.css';
+import axios from 'axios';
 
 class UpVote extends Component{
     constructor(props){
@@ -12,9 +13,10 @@ class UpVote extends Component{
         this.handleDeleteVote = this.handleDeleteVote.bind(this);
     }
 
-    handleAddVote(){        
-        console.log('handleAddVote: ', this.state.value);       
 
+
+    handleAddVote(){        
+        console.log('handleAddVote: ', this.state.value);
         this.setState({
            value: this.state.value + 1
         });
@@ -22,7 +24,6 @@ class UpVote extends Component{
 
     handleDeleteVote(){        
         console.log('handledeleteVote: ', this.state.value);           
-        
         this.setState({
             value: this.state.value - 1
         });
