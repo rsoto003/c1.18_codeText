@@ -1,18 +1,22 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import FilterFeed from './filterFeed';
 
 
 export default ()=> {
     return (
-        <div className="col-2 d-none d-sm-block mx-auto">
-        
-            
-                <div className="row mt-5 ">
+        <div className="col-2 d-none d-sm-block">         
+               
+                              
+                <div className="row mt-5 mx-auto">
                     <Link to="/newPost" >Post a question!</Link>
-                </div>
-                <div className="row mt-5 ">
+                </div>              
+               
+                <div className="row mt-5 mx-auto">
                     <Link to="/leaderboard">Leaderboards</Link>
                 </div>
+            
+
 
                 {/* ------------------------------------------- */}
                 {/* Everything below isn't part of our MVP or feature set yet*/}

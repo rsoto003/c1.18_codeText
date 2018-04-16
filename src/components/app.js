@@ -22,7 +22,9 @@ const App = () => {
             <Navbar/>
             <div className="container-fluid">
                 <div className="row">
+                
                     <Sidebar/>
+                    
                     <Route exact path="/" render={ ()=> (
                         <Redirect to="/home/newest" component={AllThreads} />
                     )} />
@@ -34,6 +36,7 @@ const App = () => {
                     <Route path='/thread/:threadID' component={UniqueThread}  />
                     <Route path='/leaderboard' component={Leaderboard} />
                     <Route path="/register" component={Register}/>
+                    
                 </div>
             </div>
         </div>
