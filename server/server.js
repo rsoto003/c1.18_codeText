@@ -43,7 +43,6 @@ server.post('/delete', (req, res) => {
 
 server.post('/commentVote', (req,res) => {
     PostModel.findById(req.body.threadID , (err,data)=> {
-        // console.log(data.comments.id('5ad3da924d07c10b28333070'))
         console.log(req.body)
         const target = data.comments.id(req.body.commentData._id);
         if (req.body.vote==='up'){
@@ -70,7 +69,7 @@ server.post('/addComment', (req, res) => {
 
 
         data.comments.push( {
-            'name': 'Anonymous', 
+            name: 'Anonymous', 
             'comment': req.body.comment,
             'rating': 0
         })  

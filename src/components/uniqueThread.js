@@ -95,6 +95,7 @@ class Thread extends Component{
     }
 
     render(){
+        console.log(this.props)
         const Comments = this.state.comments.map( (item, index) => {
             return(
                 <div key={index} className="row">

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const commentSchema = new mongoose.Schema({
-    author: {type: String},
+    name: {type: String},
     comment: {type: String},
     rating: {type: Number, default: 0}
 })
