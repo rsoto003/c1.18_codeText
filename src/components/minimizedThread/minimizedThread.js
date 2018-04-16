@@ -43,6 +43,7 @@ class MinimizedThread extends Component{
 
 
     render(){
+        console.log(this.props)
         let postDesc = this.props.data.description.slice(0,200)
         if(this.props.data.description.length > 200){
             postDesc+= '...'
@@ -67,7 +68,7 @@ class MinimizedThread extends Component{
     
                     <Link style={inlineBlock} to={`/thread/${this.props.data._id}`}> <p> View More </p> </Link>
                     <div className="dropdown-divider mt-5"></div>
-                    <Comments data = {this.props.data} />
+                    <Comments data ={this.props.data} threadID={this.props.data._id} />
                 </div>
     
             </div>

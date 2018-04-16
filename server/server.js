@@ -20,7 +20,7 @@ mongoose.connect(keys.mongoURI, function(err, res){
     if(err){
         console.log('db connection failed', err); 
     } else {
-        console.log('we have liftoff with the db', res);
+        console.log('we have liftoff with the db');
     }
 })
 
@@ -63,6 +63,7 @@ server.post('/postVote', (req,res) => {
 server.post('/commentVote', (req,res) => {
     PostModel.findById(req.body.threadID , (err,data)=> {
         console.log(req.body)
+        console.log(data)
         const target = data.comments.id(req.body.commentData._id);
         if (req.body.vote==='up'){
             target.rating +=1;
@@ -109,7 +110,7 @@ server.post('/uniqueThread', (req, res ) => {
         if(err) throw err;
 
         res.send(data);
-        console.log(data);
+        // console.log(data);
     
     })
 })
@@ -188,52 +189,6 @@ mongoose.connect(keys.mongoURI, function(error) {
     console.log("We are connected to the mlab database");
 });
 
-/* new post schema */
-/*
-{
-    "_id": {
-        "$oid": "5acd0f13734d1d55c3198d89"
-    },
-    "title": "this is the title",
-    "description": "this is the description",
-    "file": "this is the file",
-    "timeStamp": 1523387073852,
-    "commentLength": 1,
-    "rating": 4.5,
-    "comments": [
-        {
-            "name": "Hannah",
-            "comment": "HEEEELLLLOOOOooooOOOoooOOOO"
-        }
-    ]
-}
-*/
-
-// AT A BASE LEVEL CREATING / INSERTING data into our collections for mongo
-// var ryan = new Instructor({ name: 'Ryan', age: 24 });
-// ryan.save();
-
-// READING FROM OUR COLLECTIONS
-// Instructor.find(function(err, instructors) {
-//     if (err) return console.error(err);
-
-//     console.log("These are all of our instructors", instructors);
-// })
-// let TestUserSchema = {
-//     userName: String,
-//     email: String,
-//     comment: String
-// }
-// let TestUser = mongoose.model('TestUser', TestUserSchema);
-
-// let testWill = new TestUser({userName: 'testWill', email: 'testWIll@gmail.com', comment: 'hello everyoasdafasdfadsfa' });
-// // testWill.save();
-
-// TestUser.find(function(err, TestUser){
-//     if(err) return console.error(err);
-
-//     console.log('these are all of the test users', TestUser);
-// });
 
 server.listen(PORT, ()=>{ console.log('server is listening to '+PORT)});
 
