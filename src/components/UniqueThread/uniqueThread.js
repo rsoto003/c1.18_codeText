@@ -3,7 +3,6 @@ import axios from 'axios'
 import UpvoteComments from '../upvotecomments';
 import Comments from '../comments'
 
-
 const textAreaStyle={
     fontSize: '13px',
     height: '55px',
@@ -79,7 +78,11 @@ class Thread extends Component{
         // newCommentState.push(submittedComment);
     }
     deletePost(event){
-        axios.post(`http://localhost:5000/delete`, {threadID: this.state.threadID} )
+        axios.post(`http://localhost:5000/delete`, {threadID: this.state.threadID} ).then(res => {
+            if(!res.data){
+                console.log('already deleted')
+            }
+        })
     }
 
 
@@ -106,7 +109,7 @@ class Thread extends Component{
     }
 
     render(){
-        console.log(this.props);
+
 
         return(
             
