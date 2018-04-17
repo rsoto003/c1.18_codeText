@@ -1,13 +1,31 @@
 
-.navbar {
+/* .navbar {
     color: #FFFFFF;
     background-color: #CC3333;
-}
+} */
 
-.sidebar {
+/* .sidebar {
     padding-left: 10px;
-}
+} */
 
 .new-bg{
     background-color: #202020 !important;
+}
+
+.sidebar {
+    position: fixed !important;
+    top: 103px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-right: 1px solid #eee;
+}
+
+
+@media only screen and (max-width: 600px) {
+   
+
 }

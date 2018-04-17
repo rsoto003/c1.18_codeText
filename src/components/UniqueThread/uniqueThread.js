@@ -109,21 +109,22 @@ class Thread extends Component{
         console.log(this.props);
 
         return(
-            <div className="col-m-12 col-sm-10 justify-content-start mt-5 pt-5 bg-white ">
-                <h2>{this.state.title}</h2>
-                <p><small className='text-muted' >Author: no one </small></p>
-                <p>{this.state.description}</p>
-                <button className="btn btn-danger btn-sm" onClick={this.deletePost.bind(this)}>Delete Post</button>
-                    <div className="dropdown-divider mb-5"></div>
-                    <Comments threadID={this.state.threadID} data={this.state.data.res} />
-                <form style={formStyle} className="form-group" onSubmit={this.onSubmit} >
-                    <textarea style={textAreaStyle} id="comment" className="form-control" value={this.state.textInput} onChange={this.updateInput} ></textarea>
-                    <div style={this.state.alertStyle} className="alert alert-warning" role="alert"> Cannot leave comment empty! </div>
+            
+                <div className="col-m-12 col-sm-10 justify-content-start mt-5 pt-5 bg-white offset-md-2 pl-5 ">
+                    <h2>{this.state.title}</h2>
+                    <p><small className='text-muted' >Author: no one </small></p>
+                    <p>{this.state.description}</p>
+                    <button className="btn btn-danger btn-sm" onClick={this.deletePost.bind(this)}>Delete Post</button>
+                        <div className="dropdown-divider mb-5"></div>
+                        <Comments threadID={this.state.threadID} data={this.state.data.res} />
+                    <form style={formStyle} className="form-group" onSubmit={this.onSubmit} >
+                        <textarea style={textAreaStyle} id="comment" className="form-control" value={this.state.textInput} onChange={this.updateInput} ></textarea>
+                        <div style={this.state.alertStyle} className="alert alert-warning" role="alert"> Cannot leave comment empty! </div>
 
-                    <button  className="btn btn-danger btn-sm" >Add a comment</button>
+                        <button className="btn btn-danger btn-sm mt-2" >Add a comment</button>
 
-                </form>     
-            </div>
+                    </form>     
+                </div>
         )
     }
 };

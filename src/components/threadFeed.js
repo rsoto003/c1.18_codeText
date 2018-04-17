@@ -68,7 +68,7 @@ export default () => {
     }) 
 
     return (
-        <div className="col-m-12 col-sm-9 justify-content-start mt-5 ">
+        <div className="col-m-10 col-sm-9 justify-content-start mt-5 offset-md-2 ">
             {threads}
             
         </div>
