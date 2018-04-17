@@ -2,8 +2,6 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import '../assets/css/sidebar.css';
 
-
-
 export default ()=> {
     return (
         <div className="col-md-2 d-none d-md-block pl-3 sidebar">         
@@ -31,7 +29,7 @@ export default ()=> {
                             <Link className="nav-link"  to="/leaderboard">Leaderboards</Link>
                         </li>
                         <li className="nav-item mt-2">
-                        <Link className="nav-link"  to="/aboutus">About Us</Link>
+                            <Link className="nav-link"  to="/aboutus">About Us</Link>
                         </li>
                     </ul>
             </div>

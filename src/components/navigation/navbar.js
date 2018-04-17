@@ -7,7 +7,6 @@ import logo from '../../assets/images/logo.svg';
 export default ()=> {
         
     return (
-
         <nav className="navbar navbar-dark sticky-top new-bg">
             <Link to="/home/newest" className="nav" ><img className="w-100" src={logo} alt="codingcoops logo"/></Link>           
             {/* <div><input className="form-control input-lg" type="text" placeholder="search" /></div> */}
@@ -18,7 +17,6 @@ export default ()=> {
                     {/* <button className="btn btn-info" type="submit"> <i className="fas fa-search"></i> </button> */}
                 </div>
             </form>
-            {/* <Link className="nav-link"  to="/aboutus">About Us</Link> */}
             <ProfileDropdown/>
         </nav>
     )
