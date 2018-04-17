@@ -9,6 +9,7 @@ import Thread from './uniqueThread';
 import AllThreads from './allthreads';
 import Leaderboard from './leaderboard';
 import Register from './account/register';
+import AboutUs from './aboutus';
 
 const UniqueThread = ({ match }) => {
     return(
@@ -34,6 +35,7 @@ const App = () => {
                     <Route path='/thread/:threadID' component={UniqueThread}  />
                     <Route path='/leaderboard' component={Leaderboard} />
                     <Route path="/register" component={Register}/>
+                    <Route path="/aboutus" component={AboutUs}/>
                 </div>
             </div>
         </div>
