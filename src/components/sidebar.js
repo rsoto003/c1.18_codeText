@@ -26,9 +26,11 @@ export default ()=> {
                         <li className="nav-item mt-2">
                             <Link className="nav-link text-secondary font-weight-bold" to="/home/oldest">Oldest</Link>
                         </li>            
-                
                         <li className="nav-item mt-2">
                             <Link className="nav-link text-secondary font-weight-bold"  to="/leaderboard">Leaderboards</Link>
+                        </li>
+                        <li className="nav-item mt-2">
+                            <Link className="nav-link"  to="/aboutus">About Us</Link>
                         </li>
                     </ul>
             </div>
