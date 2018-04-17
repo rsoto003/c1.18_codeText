@@ -15,24 +15,24 @@ export default () => {
                 <p className="text">We are a team of four developers who made this web application. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat accusamus sint quibusdam repellendus excepturi dolores, autem commodi nihil explicabo ipsum provident. Quos sapiente ex architecto consectetur velit blanditiis ratione fuga repudiandae unde, deleniti ad voluptas. Consequatur consectetur, perferendis fuga obcaecati quo, tempore soluta dolores recusandae quibusdam neque sequi alias asperiores?</p>
             </div>
             <div className="photo-container">
-                <div className="left-container">
+                <div className="profile-container">
                     <img className="profile-photo" src={sasha}/>
                     <h3>Sasha</h3>
                     <a href="https://github.com">My Github</a>
                 </div>
-                <div className="right-container">
+                <div className="profile-container">
                     <img className="profile-photo" src={hanran}/>
                     <h3>Hanran</h3>
                     <a href="https://github.com">My Github</a>
                 </div>
             </div>
             <div className="photo-container">
-                <div className="left-container">
+                <div className="profile-container">
                     <img className="profile-photo" src={ryan}/>
                     <h3>Ryan</h3>
                     <a href="https://github.com">My Github</a>
                 </div>
-                <div className="right-container">
+                <div className="profile-container">
                     <img className="profile-photo" src={will}/>
                     <h3>Will</h3>
                     <a href="https://github.com">My Github</a>

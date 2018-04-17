@@ -12,7 +12,7 @@
 }
 
 .photo-container {
-    margin-left: 24%;
+    margin-left: 14%;
 }
 
 .profile-photo {
@@ -26,7 +26,7 @@
     text-align: center;
 } */
 
-.left-container {
+/* .left-container {
     margin: 0;
     display: block;
     position: fixed;
@@ -35,5 +35,11 @@
 .right-container {
     display: block;
     float: right;
-}
+} */
 
+
+.profile-container {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+}
