@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import '../assets/css/sidebar.css';
 
-// import FilterFeed from './filterFeed';
+
 
 export default ()=> {
     return (
@@ -11,7 +12,6 @@ export default ()=> {
                 <li className="nav-item mt-2">
                     <Link className="nav-link active"  to="/newPost" >Post a question!</Link>
                 </li>  
-
                         <li className="nav-item mt-2">
                             <Link className="nav-link" to="/home/hot">Hot</Link>                    
                         </li>
@@ -30,11 +30,7 @@ export default ()=> {
                         <li className="nav-item mt-2">
                             <Link className="nav-link"  to="/leaderboard">Leaderboards</Link>
                         </li>
-                    </ul> 
-                
-
+                    </ul>
             </div>
-        
-            
     )
 }
