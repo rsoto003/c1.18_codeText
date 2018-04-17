@@ -1,7 +1,39 @@
-.codingcoops {
-    margin-left: 44%;
+.team {
+    margin-left: 72%;
+}
+
+.text {
+    margin: 0 auto;
 }
 
 .about {
-    margin-left: 44%;
+    /* margin-left: 102%; */
+    float: right;
 }
+
+.photo-container {
+    margin-left: 24%;
+}
+
+.profile-photo {
+    height: 30%;
+    width: 30%;
+    margin: 5%;
+    padding: 2%;
+}
+
+/* .photo-text {
+    text-align: center;
+} */
+
+.left-container {
+    margin: 0;
+    display: block;
+    position: fixed;
+}
+
+.right-container {
+    display: block;
+    float: right;
+}
+
