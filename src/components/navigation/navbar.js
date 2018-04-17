@@ -7,6 +7,11 @@ import logo from '../../assets/images/logo.svg';
 export default ()=> {
         
     return (
+ about_page
+        <nav className="navbar navbar-dark bg-dark sticky-top py-5">
+            <Link to="/home/newest" className="navbar-brand" >context</Link>
+            <div><input className="form-control" type="text" placeholder="search" /></div>
+
         <nav className="navbar navbar-dark sticky-top new-bg">
             <Link to="/home/newest" className="nav" ><img className="w-100" src={logo} alt="codingcoops logo"/></Link>           
             {/* <div><input className="form-control input-lg" type="text" placeholder="search" /></div> */}
