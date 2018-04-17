@@ -3,12 +3,14 @@ const mongoose = require('mongoose');
 const server = express();
 const PORT = process.env.PORT || 5000;
 const keys = require('./config/keys');
-
 const router = express.Router();
 const PostModel = require('./models/post');
+const commentRoutes = require('./routes/commentRoutes')
+
 
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
+server.use(commentRoutes)
 
 server.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -60,50 +62,50 @@ server.post('/postVote', (req,res) => {
     })
 })
 
-server.post('/commentVote', (req,res) => {
-    PostModel.findById(req.body.threadID , (err,data)=> {
-        console.log(req.body)
-        console.log(data)
-        const target = data.comments.id(req.body.commentData._id);
-        if (req.body.vote==='up'){
-            target.rating +=1;
-        } else {
-            target.rating -=1;
-        }
-        data.save(err=>{
-            if(err)throw err;
-            console.log('Comment voting: ', req.body.vote)
-        })
-        res.send(data.comments.id(req.body.commentData._id));
-    } )
+// server.post('/commentVote', (req,res) => {
+//     PostModel.findById(req.body.threadID , (err,data)=> {
+//         console.log(req.body)
+//         console.log(data)
+//         const target = data.comments.id(req.body.commentData._id);
+//         if (req.body.vote==='up'){
+//             target.rating +=1;
+//         } else {
+//             target.rating -=1;
+//         }
+//         data.save(err=>{
+//             if(err)throw err;
+//             console.log('Comment voting: ', req.body.vote)
+//         })
+//         res.send(data.comments.id(req.body.commentData._id));
+//     } )
     
-    }
-)
+//     }
+// )
 
-server.post('/addComment', (req, res) => {
-    PostModel.findById(req.body.threadID , (err, data) => {
-        if(err) throw err;
+// server.post('/addComment', (req, res) => {
+//     PostModel.findById(req.body.threadID , (err, data) => {
+//         if(err) throw err;
         
-        console.log(data)
+//         console.log(data)
 
 
 
-        data.comments.push( {
-            name: 'Anonymous', 
-            'comment': req.body.comment,
-            'rating': 0
-        })  
+//         data.comments.push( {
+//             name: 'Anonymous', 
+//             'comment': req.body.comment,
+//             'rating': 0
+//         })  
 
         
-        data.save(err=>{
-            if(err) throw err;
+//         data.save(err=>{
+//             if(err) throw err;
 
-            console.log('added comment')
-        })
+//             console.log('added comment')
+//         })
 
-        res.send(data);
-    } )
-})
+//         res.send(data);
+//     } )
+// })
 
 server.post('/uniqueThread', (req, res ) => {
     PostModel.findById( req.body.threadID , (err, data) => {
