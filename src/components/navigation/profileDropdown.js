@@ -50,7 +50,7 @@ class ProfileDropdown extends Component{
 
         return(
             <div onClick={this.toggleMenuOn} className="dropdown">
-                <i style={pointer} className="fas fa-user-circle fa-2x"></i>
+                <i style={pointer} className="fas fa-user-circle fa-2x text-white"></i>
                 <div style={this.state.dropdownDisplay} className="dropdown-menu">
 
                     <form style={dropdownItem} className="form-group">

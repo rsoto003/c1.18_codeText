@@ -115,7 +115,7 @@ class Leaderboard extends Component{
         })
 
         return(
-            <div className="col-sm-9 col-md-9 mt-4" >
+            <div className="col-sm-9 col-md-9 mt-4 offset-md-2" >
                 <h1 className="text-center display-3"> Leaderboards </h1>
                 <table className="table table-hover table-striped">
                     <thead>

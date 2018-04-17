@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import postData from '../data/threadItems'
 import axios from 'axios'
-import UpvoteComments from './upvotecomments';
+import UpvoteComments from '../upvotecomments';
+import Comments from '../comments'
+
 
 const textAreaStyle={
     fontSize: '13px',
@@ -16,11 +17,16 @@ const iframeStyle={
     height: '400px'
 }
 
+
 class Thread extends Component{
     constructor(props){
         super(props)
         this.state={
-            comments: [],
+            data:{
+                res:{
+                    comments:[]
+                }
+            },
             textInput:'',
             description:'',
             title: '' ,
@@ -33,12 +39,15 @@ class Thread extends Component{
     }
     componentWillMount(){
         axios.post(`http://localhost:5000/uniqueThread`, { threadID: this.props.threadID } ).then( res => {
-        this.setState({
-            comments: res.data.comments,
-            description: res.data.description,
-            title: res.data.title,
-            jsbin:res.data.jsbin
-            })
+            const newData=this.state.data;
+            newData.res=res.data
+            this.setState({
+                data:newData,
+                description: res.data.description,
+                title: res.data.title,
+                jsbin:res.data.jsbin
+                })
+                
             console.log(res);
         })
     }
@@ -57,8 +66,10 @@ class Thread extends Component{
                 textInput:'',
             })
             axios.post(`http://localhost:5000/addComment`, submittedComment).then( res => {
+                const newData=this.state.data
+                newData.res.comments=res.data.comments
                 this.setState({
-                    comments: res.data.comments
+                    data:newData
                 })
                 console.log(res)
             })
@@ -68,7 +79,7 @@ class Thread extends Component{
         // newCommentState.push(submittedComment);
     }
     deletePost(event){
-        axios.post(`http://localhost:5000/delete`, {threadID: this.state.threadID} );
+        axios.post(`http://localhost:5000/delete`, {threadID: this.state.threadID} )
     }
 
 
@@ -95,38 +106,22 @@ class Thread extends Component{
     }
 
     render(){
-        const Comments = this.state.comments.map( (item, index) => {
-            return(
-                <div key={index} className="row">
-                    <div className="col-md-2 col-sm-2 col-2">
-                        <UpvoteComments threadID={this.props.threadID} data={item} />
-                    </div>
-                    <div className="col-md-10 col-sm-10 col-8 justify-content-start">
-                        <span><i className="fas fa-user-circle mr-2"></i>{item.name}</span>
-                        <p><small>{item.comment}</small></p>
-                    </div>
-                </div>
-            )
-        } )
-        
+        console.log(this.props);
+
         return(
-                <div className="col-m-12 col-sm-10 justify-content-start mt-5 pt-5 bg-white ">
+            
+                <div className="col-m-12 col-sm-10 justify-content-start mt-5 pt-5 bg-white offset-md-2 pl-5 ">
                     <h2>{this.state.title}</h2>
                     <p><small className='text-muted' >Author: no one </small></p>
                     <p>{this.state.description}</p>
                     <button className="btn btn-danger btn-sm" onClick={this.deletePost.bind(this)}>Delete Post</button>
-                    {/* <iframe src={postData[props.threadID].jsbin} frameborder="0"></iframe> */}
-                               <div className="dropdown-divider mb-5"></div>
-
-                    {/* <iframe src={this.state.jsbin} style={iframeStyle} sandbox="allow-scripts allow-same-origin"></iframe> */}
-
-                     
-                    {Comments}
+                        <div className="dropdown-divider mb-5"></div>
+                        <Comments threadID={this.state.threadID} data={this.state.data.res} />
                     <form style={formStyle} className="form-group" onSubmit={this.onSubmit} >
                         <textarea style={textAreaStyle} id="comment" className="form-control" value={this.state.textInput} onChange={this.updateInput} ></textarea>
                         <div style={this.state.alertStyle} className="alert alert-warning" role="alert"> Cannot leave comment empty! </div>
 
-                        <button className="btn btn-danger btn-sm" >Add a comment</button>
+                        <button className="btn btn-danger btn-sm mt-2" >Add a comment</button>
 
                     </form>     
                 </div>

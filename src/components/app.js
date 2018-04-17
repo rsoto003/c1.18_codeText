@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './navigation/navbar';
 import NewPost from './newPost';
 import Sidebar from './sidebar';
-import Thread from './uniqueThread';
+import Thread from './UniqueThread/uniqueThread';
 import AllThreads from './allthreads';
 import Leaderboard from './leaderboard';
 import Register from './account/register';
@@ -23,13 +23,15 @@ const App = () => {
             <Navbar/>
             <div className="container-fluid">
                 <div className="row">
+                
                     <Sidebar/>
+                    
                     <Route exact path="/" render={ ()=> (
                         <Redirect to="/home/newest" component={AllThreads} />
                     )} />
-                    <Route exact path="/home" render={ ()=> (
+                    {/* <Route exact path="/home" render={ ()=> (
                         <Redirect to="/home/newest" />
-                    )} />
+                    )} /> */}
                     <Route path="/home/:sort?" component={AllThreads} />
                     <Route path='/newPost' component={NewPost}/>
                     <Route path='/thread/:threadID' component={UniqueThread}  />

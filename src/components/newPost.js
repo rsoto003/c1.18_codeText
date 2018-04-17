@@ -125,12 +125,12 @@ class NewPost extends Component{
 
     render(){
         return (
-            <div className="col-md-9 col-sm-12 mt-2" >
+            <div className="col-md-9 col-sm-12 mt-2 offset-md-2" >
                 <div className="text-center" >
                     <h1>New Post</h1>
                 </div>
                 <div>
-                    <form onSubmit={this.onSubmit} className="form-group" >
+                    <form action="http://localhost:3000/" onSubmit={this.onSubmit} className="form-group" >
                         <div className="input-group input-group-lg">
                             <input onChange={this.titleInputChange} type="text" className="form-control" placeholder="Add a Title" value={this.state.titleInput} />
                         </div>
