@@ -43,7 +43,6 @@ class MinimizedThread extends Component{
 
 
     render(){
-        console.log(this.props)
         let postDesc = this.props.data.description.slice(0,200)
         if(this.props.data.description.length > 200){
             postDesc+= '...'

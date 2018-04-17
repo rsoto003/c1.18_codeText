@@ -25,6 +25,9 @@
     padding-top: 38px;
 }
 
+ul.nav > li > a:active {
+    color: #02BBDF !important;
+}
 
 @media only screen and (max-width: 600px) {
    

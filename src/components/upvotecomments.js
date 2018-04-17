@@ -53,7 +53,6 @@ class UpvoteComments extends Component{
     }
 
     render(){
-        console.log(this.props)
         return(
 
             <div className="text-center vote-container mb-3">                                            

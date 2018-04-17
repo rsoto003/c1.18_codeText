@@ -1,8 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-
-// import FilterFeed from './filterFeed';
-
+import '../assets/css/sidebar.css';
+import '../assets/css/app.css';
 
 export default ()=> {
     return (
@@ -10,33 +9,28 @@ export default ()=> {
                
             <ul className="nav nav-pills flex-column">             
                 <li className="nav-item mt-2">
-                    <Link className="nav-link active"  to="/newPost" >Post a question!</Link>
+                    <Link className="nav-link font-weight-bold"  to="/newPost" >Post a question!</Link>
                 </li>  
-
-                <li className="nav-item mt-2">
-                    <Link className="nav-link " to="/home/hot">Hot</Link>                    
-                </li>
-                <li className="nav-item mt-2">
-                    <Link className="nav-link" to="/home/popular">Popular</Link>
-                </li>
-                <li className="nav-item mt-2">
-                    <Link className="nav-link" to="/home/comments">Comments</Link>
-                </li>
-                <li className="nav-item mt-2">
-                    <Link className="nav-link" to="/home/newest">Newest</Link>
-                </li>
-                <li className="nav-item mt-2">
-                    <Link className="nav-link" to="/home/oldest">Oldest</Link>
-                </li>            
-        
-                <li className="nav-item mt-2">
-                    <Link className="nav-link"  to="/leaderboard">Leaderboards</Link>
-                </li>
-            </ul> 
-    
-
+                        <li className="nav-item mt-2">
+                            <Link className="nav-link text-secondary font-weight-bold" to="/home/hot">Hot</Link>                    
+                        </li>
+                        <li className="nav-item mt-2">
+                            <Link className="nav-link text-secondary font-weight-bold" to="/home/popular">Popular</Link>
+                        </li>
+                        <li className="nav-item mt-2">
+                            <Link className="nav-link text-secondary font-weight-bold" to="/home/comments">Comments</Link>
+                        </li>
+                        <li className="nav-item mt-2">
+                            <Link className="nav-link text-secondary font-weight-bold" to="/home/newest">Newest</Link>
+                        </li>
+                        <li className="nav-item mt-2">
+                            <Link className="nav-link text-secondary font-weight-bold" to="/home/oldest">Oldest</Link>
+                        </li>            
+                
+                        <li className="nav-item mt-2">
+                            <Link className="nav-link text-secondary font-weight-bold"  to="/leaderboard">Leaderboards</Link>
+                        </li>
+                    </ul>
             </div>
-        
-            
     )
 }

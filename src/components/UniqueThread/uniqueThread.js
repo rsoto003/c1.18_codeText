@@ -65,8 +65,10 @@ class Thread extends Component{
                 textInput:'',
             })
             axios.post(`http://localhost:5000/addComment`, submittedComment).then( res => {
+                const newData=this.state.data
+                newData.res.comments=res.data.comments
                 this.setState({
-                    comments: res.data.comments
+                    data:newData
                 })
                 console.log(res)
             })
@@ -76,7 +78,11 @@ class Thread extends Component{
         // newCommentState.push(submittedComment);
     }
     deletePost(event){
-        axios.post(`http://localhost:5000/delete`, {threadID: this.state.threadID} );
+        axios.post(`http://localhost:5000/delete`, {threadID: this.state.threadID} ).then(res => {
+            if(!res.data){
+                console.log('already deleted')
+            }
+        })
     }
 
 
@@ -103,7 +109,8 @@ class Thread extends Component{
     }
 
     render(){
-        console.log(this.props)
+
+
         return(
             
                 <div className="col-m-10 col-sm-10 justify-content-start pt-5 bg-white offset-md-2 pl-5 ">
