@@ -28,7 +28,7 @@ server.post('/delete', (req, res) => {
     PostModel.findById(req.body.threadID, (err,data) => {
         if(!data){
             console.log(`Cannot find thread ID of: ${req.body.threadID}`)
-            
+            res.send(null)
         }else {
             data.remove( err => {
                 if (err) throw err;
