@@ -30,6 +30,9 @@ export default ()=> {
                         <li className="nav-item mt-2">
                             <Link className="nav-link"  to="/leaderboard">Leaderboards</Link>
                         </li>
+                        <li className="nav-item mt-2">
+                        <Link className="nav-link"  to="/aboutus">About Us</Link>
+                        </li>
                     </ul>
             </div>
     )

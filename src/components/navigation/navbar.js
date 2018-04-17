@@ -18,6 +18,7 @@ export default ()=> {
                     {/* <button className="btn btn-info" type="submit"> <i className="fas fa-search"></i> </button> */}
                 </div>
             </form>
+            {/* <Link className="nav-link"  to="/aboutus">About Us</Link> */}
             <ProfileDropdown/>
         </nav>
     )
