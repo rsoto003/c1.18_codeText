@@ -14,7 +14,7 @@
 
 .sidebar {
     position: fixed !important;
-    top: 103px;
+    top: 83px;
     bottom: 0;
     left: 0;
     z-index: 1000;
@@ -22,6 +22,7 @@
     overflow-x: hidden;
     overflow-y: auto;
     border-right: 1px solid #eee;
+    padding-top: 38px;
 }
 
 

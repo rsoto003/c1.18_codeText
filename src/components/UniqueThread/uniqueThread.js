@@ -106,7 +106,7 @@ class Thread extends Component{
         console.log(this.props)
         return(
             
-                <div className="col-m-10 col-sm-10 justify-content-start mt-5 pt-5 bg-white offset-md-2 pl-5 ">
+                <div className="col-m-10 col-sm-10 justify-content-start pt-5 bg-white offset-md-2 pl-5 ">
                     <h2>{this.state.title}</h2>
                     <p><small className='text-muted' >Author: no one </small></p>
                     <p>{this.state.description}</p>

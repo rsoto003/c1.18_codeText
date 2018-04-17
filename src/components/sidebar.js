@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 
 export default ()=> {
     return (
-        <div className="col-md-2 d-none d-md-block pl-3 sidebar">         
+        <div className="col-md-2 d-none d-md-block pl-5 sidebar">         
                
             <ul className="nav nav-pills flex-column">             
                 <li className="nav-item mt-2">
