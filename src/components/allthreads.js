@@ -35,16 +35,21 @@ class AllThreads extends Component {
     } 
 
     render(){
-
+        console.log(this.props)
         const threads = this.state.postData.map((item, index) => {
             return (
                 <MinimizedThread data={item} key={index}/>
             )
         });
         return (
-            <div className="col-m-12 col-sm-8 justify-content-start mt-3">
-            <FilterFeed/>
-            {threads} 
+            <div className="col-sm-12 col-md-10 mt-4 offset-md-2 pl-5">
+                {/* <div className="row justify-content-end">
+                    <FilterFeed/>                 
+                </div> */}
+                <div className="row">                    
+                    <div className="col-sm-12 col-md-10">{threads}</div>
+                    {/* <div className="col-1-sm d-none d-sm-block"></div> */}
+                </div>
             </div>
         )
     }

@@ -30,7 +30,6 @@ function Jsbin(index){
     return(
         <iframe style={iframeStyle} src={postData[index].jsbin} frameborder="0"></iframe>
     )
-
 }
 
 export default () => {
@@ -69,7 +68,7 @@ export default () => {
     }) 
 
     return (
-        <div className="col-m-12 col-sm-9 justify-content-start mt-5 ">
+        <div className="col-m-10 col-sm-9 justify-content-start mt-5 offset-md-2 ">
             {threads}
             
         </div>

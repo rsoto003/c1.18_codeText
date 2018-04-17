@@ -20,40 +20,50 @@ mongoose.connect(keys.mongoURI, function(err, res){
     if(err){
         console.log('db connection failed', err); 
     } else {
-        console.log('we have liftoff with the db', res);
+        console.log('we have liftoff with the db');
     }
 })
-            /*    deleting post  */
-// mongoose.connect(keys.mongoURI, (err, db, req) => {
-//     if(err) throw err;
-//     let postInfo = req.data._id;
-//     db.collection("posts").remove(postInfo, (err, obj)=> {
-//         if (err) throw err;
-//         console.log(obj.result.n + " document(s) deleted");
-//     }).catch(error=> {
-//         console.log(error);
-//         res.json({
-//             confirmation: false,
-//             error: error
-//         })
-//     })
-   
-// })
+
 server.post('/delete', (req, res) => {
     PostModel.findById(req.body.threadID, (err,data) => {
-        data.remove( err => {
-            if (err) throw err;
+        if(!data){
+            console.log(`Cannot find thread ID of: ${req.body.threadID}`)
+            
+        }else {
+            data.remove( err => {
+                if (err) throw err;
+    
+                console.log(`Deleting post with ID of: ${req.body.threadID}`)
+            } )
+        }
 
-            console.log('deleted this bitch')
-        } )
     } )
     
 })
 
+server.post('/postVote', (req,res) => {
+    console.log(req.body)
+
+    PostModel.findById(req.body.threadID, (err,data) => {
+        console.log(data)
+
+        if (req.body.vote ==='up'){
+            data.rating +=1
+        } else {
+            data.rating -= 1
+        }
+        data.save(err=>{
+            if(err)throw err;
+            console.log('Post voting: ', req.body.vote)
+        })
+        res.send(data)
+    })
+})
+
 server.post('/commentVote', (req,res) => {
     PostModel.findById(req.body.threadID , (err,data)=> {
-        // console.log(data.comments.id('5ad3da924d07c10b28333070'))
         console.log(req.body)
+        console.log(data)
         const target = data.comments.id(req.body.commentData._id);
         if (req.body.vote==='up'){
             target.rating +=1;
@@ -62,7 +72,7 @@ server.post('/commentVote', (req,res) => {
         }
         data.save(err=>{
             if(err)throw err;
-            console.log('voting: ', req.body.vote)
+            console.log('Comment voting: ', req.body.vote)
         })
         res.send(data.comments.id(req.body.commentData._id));
     } )
@@ -79,7 +89,7 @@ server.post('/addComment', (req, res) => {
 
 
         data.comments.push( {
-            'name': 'Anonymous', 
+            name: 'Anonymous', 
             'comment': req.body.comment,
             'rating': 0
         })  
@@ -100,7 +110,7 @@ server.post('/uniqueThread', (req, res ) => {
         if(err) throw err;
 
         res.send(data);
-        console.log(data);
+        // console.log(data);
     
     })
 })
@@ -114,20 +124,31 @@ server.use(function(req, res, next) {
   });
 
 server.post('/newPost', (req, res, next) => {
-    var postdata = new PostModel({
-        title: req.body.newTitleState,
-        description: req.body.newDescriptionState,
-        jsbin: req.body.JsbinState,
-        comments: []
-    })
-    res.send(postdata);
-    console.log('this is the postdata: ', postdata);
-    postdata.save((err, post) => {
-        if(err){
-            return next(err)
-        }
-        
-    })
+
+    const { newTitleState, newDescriptionState, JsbinState } = req.body;
+
+    if( newTitleState.length===0 || newDescriptionState.length===0 ){
+        console.log('Invalid post data!: ', req.body)
+        res.send('ERROR. INVALID POST DATA')
+    } else {
+        const postdata = new PostModel({
+            title: newTitleState,
+            description: newDescriptionState,
+            jsbin: JsbinState,
+            comments: [],
+            rating: 0
+        })
+        res.send(postdata);
+        console.log('this is the postdata: ', postdata);
+        postdata.save((err, post) => {
+            if(err){
+                return next(err)
+            }
+            
+        })
+    }
+
+
 })
 
 server.get('/', function(req, res, next){
@@ -168,52 +189,6 @@ mongoose.connect(keys.mongoURI, function(error) {
     console.log("We are connected to the mlab database");
 });
 
-/* new post schema */
-/*
-{
-    "_id": {
-        "$oid": "5acd0f13734d1d55c3198d89"
-    },
-    "title": "this is the title",
-    "description": "this is the description",
-    "file": "this is the file",
-    "timeStamp": 1523387073852,
-    "commentLength": 1,
-    "rating": 4.5,
-    "comments": [
-        {
-            "name": "Hannah",
-            "comment": "HEEEELLLLOOOOooooOOOoooOOOO"
-        }
-    ]
-}
-*/
-
-// AT A BASE LEVEL CREATING / INSERTING data into our collections for mongo
-// var ryan = new Instructor({ name: 'Ryan', age: 24 });
-// ryan.save();
-
-// READING FROM OUR COLLECTIONS
-// Instructor.find(function(err, instructors) {
-//     if (err) return console.error(err);
-
-//     console.log("These are all of our instructors", instructors);
-// })
-// let TestUserSchema = {
-//     userName: String,
-//     email: String,
-//     comment: String
-// }
-// let TestUser = mongoose.model('TestUser', TestUserSchema);
-
-// let testWill = new TestUser({userName: 'testWill', email: 'testWIll@gmail.com', comment: 'hello everyoasdafasdfadsfa' });
-// // testWill.save();
-
-// TestUser.find(function(err, TestUser){
-//     if(err) return console.error(err);
-
-//     console.log('these are all of the test users', TestUser);
-// });
 
 server.listen(PORT, ()=>{ console.log('server is listening to '+PORT)});
 
