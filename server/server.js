@@ -5,7 +5,8 @@ const PORT = process.env.PORT || 5000;
 const keys = require('./config/keys');
 const router = express.Router();
 const commentRoutes = require('./routes/commentRoutes')
-const post = require('./routes/posts')
+const postRoute = require('./routes/posts')
+const passportRoute = require('./routes/passportRoute')
 
 server.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -15,8 +16,9 @@ server.use(function(req, res, next) {
 
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
-server.use(commentRoutes)
-server.use(post)
+server.use(commentRoutes);
+server.use(postRoute);
+server.use('/auth',passportRoute);
 
 mongoose.connect(keys.mongoURI, function(err, res){
     if(err){
