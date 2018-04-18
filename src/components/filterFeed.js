@@ -4,10 +4,8 @@ import {Link} from 'react-router-dom'
 
 export default ()=> {
     return (
-        <div className="">                                  
-            {/* <ul className="nav justify-content-end py-3"> */}
-            {/* <nav className="nav flex-column h-100 align-items-left justify-content-center fixed-top"> */}
-            
+        <div className="">                                
+                        
             <ul className="nav justify-content-end py-3"> 
                     {/* <li className="nav-item">
                         <Link className="nav-link" to="/newPost" >Post a question!</Link>

@@ -55,7 +55,7 @@ class UpvoteComments extends Component{
     render(){
         return(
 
-            <div className="text-center vote-container mb-3">                                            
+            <div className="text-center vote-container mb-3 mt-2">                                            
                 <div style={this.pointerStyle} className="addVote fa-1x" onClick={this.handleAddVote}> <i className="fas fa-angle-up"></i></div>                 
 
                 <div className="voteNum">{this.state.value}</div>
