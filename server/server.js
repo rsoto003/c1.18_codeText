@@ -4,13 +4,14 @@ const { resolve } = require('path');
 const server = express();
 const PORT = process.env.PORT || 5000;
 const keys = require('./config/keys');
+const cookieSession = require('cookie-session')
+const cookieParser = require('cookie-parser')
+const passport = require('passport')
 
 const passportConfig = require('./config/passport-setup');
-const passport = require('passport')
 const router = express.Router();
 const commentRoutes = require('./routes/commentRoutes')
 const postRoute = require('./routes/posts')
-const cookieParser = require('cookie-parser')
 const passportRoute = require('./routes/passportRoute')
 
 
@@ -20,11 +21,12 @@ server.use(function(req, res, next) {
     next();
 });
 
+server.use(cookieParser())
+server.use(cookieSession({
+    maxAge: 24*60*60*1000,
+    keys: [keys.session.cookieKey]
+}))
 
-// server.use(passportConfig)
-
-
-// server.use(cookieParser())
 server.use(passport.initialize());
 server.use(passport.session());
 

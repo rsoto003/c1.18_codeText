@@ -15,6 +15,7 @@ passport.use(new GitHubStrategy({
             if (currentUser){
                 //if user exists, pass
                 console.log('user exists: ', currentUser)
+                done(null, currentUser)
             } else {
                 
                 new User({
@@ -25,21 +26,24 @@ passport.use(new GitHubStrategy({
                     name: profile.displayName
                 }).save().then( newUser=>{
                     console.log('user created: ', newUser)
+                    done(null, newUser)
                 })
             }
         } )
-
-
     }
 ));  
 
 
-// passport.serializeUser( (user,done) => {
-//     done(null,user);
-// })
+
+passport.serializeUser( (user,done) => {
+    done(null,user.id);
+})
 
 
-// passport.deserializeUser( (user,done) => {
-//     done(null,user)
-// });
+passport.deserializeUser( (id,done) => {
+    User.findById(id).then(user => {
+        done(null, user)
+    })
+    // done(null,user)
+});
 

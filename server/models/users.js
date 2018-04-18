@@ -8,6 +8,6 @@ const userSchema = new mongoose.Schema({
     name: {type:String},
     posts: {type: Array, default: []},
     upvoted: {type:Number, default:0} 
-}, {collection: "users"})
+}, {collection: "user"})
 
 module.exports = mongoose.model('userSchema', userSchema)

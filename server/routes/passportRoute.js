@@ -6,9 +6,14 @@ router.get('/github', passport.authenticate('github'));
 router.get('/error', (req,res)=>{
     res.send('there was an error')
 });
-      
+
+router.get('/logout', (req,res)=>{
+    req.logout()
+})
+
 router.get('/callback',
     passport.authenticate('github', {failureRedirect: '/error'}), (req,res) => {
+        res.send(req.user)
         console.log('it worked!')
     }
 );
