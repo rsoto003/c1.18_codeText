@@ -43,9 +43,7 @@ class NewPost extends Component{
     }
 
     onSubmit(event){
-
-
-        if (!this.state.titleInput.length || !this.state.descriptionInput.length) event.preventDefault()
+        event.preventDefault()
 
         const newTitleState={...this.state.titleState};
         newTitleState.display = this.state.titleInput.length===0 ? {display:'block'} : {display:'none'};
@@ -115,8 +113,9 @@ class NewPost extends Component{
                 newDescriptionState: this.state.descriptionInput,
                 JsbinState: this.state.JSBINLink
             }
-            axios.post('http://localhost:5000/newPost', submittedData).then(res =>{
+            axios.post('/posts/new', submittedData).then(res =>{
                 console.log(res);
+                this.props.history.push('/');
             })
         }
 
@@ -130,26 +129,26 @@ class NewPost extends Component{
                     <h1>New Post</h1>
                 </div>
                 <div>
-                    <form action="http://localhost:3000/" onSubmit={this.onSubmit} className="form-group" >
+                    <form onSubmit={this.onSubmit} className="form-group" >
                         <div className="input-group input-group-lg">
                             <input onChange={this.titleInputChange} type="text" className="form-control" placeholder="Add a Title" value={this.state.titleInput} />
                         </div>
 
-                            <div style={this.state.titleState.display} className="alert alert-warning" role="alert"> Cannot leave title empty! </div>
+                        <div style={this.state.titleState.display} className="alert alert-warning" role="alert"> Cannot leave title empty! </div>
 
-                            <label className="mt-4" htmlFor="post">Add a description</label>
-                            <textarea onChange={this.descriptionInputChange} id="post" className="form-control" cols="30" rows="10" placeholder="Describe your problem" value={this.state.descriptionInput}></textarea>
+                        <label className="mt-4" htmlFor="post">Add a description</label>
+                        <textarea onChange={this.descriptionInputChange} id="post" className="form-control" cols="30" rows="10" placeholder="Describe your problem" value={this.state.descriptionInput}></textarea>
 
-                            <div style={this.state.descriptionState.display} className="alert alert-warning" role="alert"> Cannot leave description empty! </div>
+                        <div style={this.state.descriptionState.display} className="alert alert-warning" role="alert"> Cannot leave description empty! </div>
 
-                            <div className="input-group mt-5">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text" >JSBIN</span>
-                                </div>
-                                <input onChange={this.linkInputChange} type="text" className="form-control" id="jsbinLink" placeholder="attach a JSBIN link?" value={this.state.JSBINLink}/>
-                                <div style={this.state.jsbinState.display} className="alert alert-warning" role="alert"> This JSBIN link is not valid! </div>
+                        <div className="input-group mt-5">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" >JSBIN</span>
                             </div>
-                            <button className="float-right mt-2 btn btn-primary" >Submit post</button>
+                            <input onChange={this.linkInputChange} type="text" className="form-control" id="jsbinLink" placeholder="attach a JSBIN link?" value={this.state.JSBINLink}/>
+                            <div style={this.state.jsbinState.display} className="alert alert-warning" role="alert"> This JSBIN link is not valid! </div>
+                        </div>
+                        <button className="float-right mt-2 btn btn-primary" >Submit post</button>
                     </form>
                 </div>
             </div>
@@ -158,4 +157,4 @@ class NewPost extends Component{
 
 }
 
-export default NewPost
+export default NewPost;

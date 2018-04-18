@@ -3,8 +3,18 @@
   "version": "1.0.0",
   "description": "C118 Context Final Project",
   "main": "index.js",
+  "proxy": {
+    "/posts": {
+      "target": "http://localhost:5000"
+    },
+    "/comment": {
+      "target": "http://localhost:5000"
+    }
+  },
   "scripts": {
-    "start": "node dev_server.js",
+    "start": "npm-run-all --parallel dev:*",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "node dev_server.js",
     "bundle": "webpack --config webpack.prod.js --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -36,6 +46,7 @@
     "eslint": "^4.18.2",
     "file-loader": "^1.1.11",
     "image-webpack-loader": "^4.2.0",
+    "npm-run-all": "^4.1.2",
     "postcss-loader": "^2.1.1",
     "react-hot-loader": "^4.0.0",
     "style-loader": "^0.20.3",

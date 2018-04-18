@@ -37,7 +37,7 @@ class Thread extends Component{
         this.onSubmit=this.onSubmit.bind(this)
     }
     componentWillMount(){
-        axios.post(`http://localhost:5000/uniqueThread`, { threadID: this.props.threadID } ).then( res => {
+        axios.post(`/posts/unique-thread`, { threadID: this.props.threadID } ).then( res => {
             const newData=this.state.data;
             newData.res=res.data
             this.setState({
@@ -64,7 +64,7 @@ class Thread extends Component{
             this.setState({
                 textInput:'',
             })
-            axios.post(`http://localhost:5000/addComment`, submittedComment).then( res => {
+            axios.post(`/comment/add`, submittedComment).then( res => {
                 const newData=this.state.data
                 newData.res.comments=res.data.comments
                 this.setState({
@@ -78,7 +78,7 @@ class Thread extends Component{
         // newCommentState.push(submittedComment);
     }
     deletePost(event){
-        axios.post(`http://localhost:5000/delete`, {threadID: this.state.threadID} ).then(res => {
+        axios.post(`/posts/delete`, {threadID: this.state.threadID} ).then(res => {
             if(!res.data){
                 console.log('already deleted')
             }
