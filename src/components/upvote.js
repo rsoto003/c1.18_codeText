@@ -26,7 +26,7 @@ class UpVote extends Component{
         }
         
         axios.post('/posts/vote', submittedData ).then( res => {
-            console.log(res);
+            // console.log(res);
             this.setState({
                 value: res.data.rating
             })
@@ -43,7 +43,7 @@ class UpVote extends Component{
 
 
     render(){
-        console.log(this.props)
+        // console.log(this.props)
 
     
         return(
