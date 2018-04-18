@@ -56,11 +56,11 @@ class Comments extends Component{
         const commentArray = [];
         const allComments = this.props.data.comments.slice().reverse().map( (item, index) => {
             commentArray.push(
-                    <div key={index} className="row">	
-                        <div className="col-md-2 col-sm-2 col-2">	
+                    <div key={index} className="row mt-2">	
+                        <div className="col-2 col-md-1 col-sm-1">	
                             <UpvoteComments threadID={this.props.data._id} data={item} />	
                         </div>	
-                        <div className="col-md-10 col-sm-10 col-8 justify-content-start">	
+                        <div className="col-10 col-md-11 col-sm-10 justify-content-start">	
                             <span><i className="fas fa-user-circle mr-2"></i>{item.name}</span>	
                             <p><small>{item.comment}</small></p>	
                         </div>	
