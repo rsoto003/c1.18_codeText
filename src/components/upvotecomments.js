@@ -24,7 +24,7 @@ class UpvoteComments extends Component{
             threadID : this.props.threadID
         }
         
-        axios.post('http://localhost:5000/commentVote', submittedData ).then( res => {
+        axios.post('/comment/vote', submittedData ).then( res => {
             console.log(res);
             this.setState({
                 value: res.data.rating

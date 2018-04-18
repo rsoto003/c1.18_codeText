@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const { resolve } = require('path');
 const server = express();
 const PORT = process.env.PORT || 5000;
 const keys = require('./config/keys');
@@ -19,6 +20,13 @@ server.use(express.urlencoded({ extended: false }));
 server.use(commentRoutes);
 server.use(postRoute);
 server.use('/auth',passportRoute);
+server.use(post);
+
+server.use(express.static(resolve(__dirname, '..', 'dist')));
+
+server.get('*', (req, res) => {
+    res.sendFile(resolve(__dirname, '..', 'dist', 'index.html'));
+});
 
 mongoose.connect(keys.mongoURI, function(err, res){
     if(err){

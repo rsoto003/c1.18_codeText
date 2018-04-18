@@ -8,8 +8,9 @@
     "npm": "5.6.0"
   },
   "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js"
+    "start": "npm run start --prefix ..",
+    "server": "node server.js",
+    "dev": "nodemon server.js"
   },
   "author": "Ryan Soto",
   "license": "ISC",

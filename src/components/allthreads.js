@@ -14,7 +14,7 @@ class AllThreads extends Component {
     }
     fetchDataFromServer(){
         if(this.state.oldField !== this.props.match.params.sort){
-            axios.get(`http://localhost:5000/?field=${this.props.match.params.sort}`).then(res=>{
+            axios.get(`/posts?field=${this.props.match.params.sort}`).then(res=>{
                 if(res.data.confirmation){
                     this.setState({
                         postData: res.data.results,
