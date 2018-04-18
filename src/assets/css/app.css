@@ -11,7 +11,7 @@
 .new-bg{
     background-color: #202020 !important;
 }
-
+/* Side bar and lists */
 .sidebar {
     position: fixed !important;
     top: 83px;
@@ -25,8 +25,30 @@
     padding-top: 38px;
 }
 
-ul.nav > li > a:active {
-    color: #02BBDF !important;
+ul.nav > li > a.text-new-color2 {
+    color: #464646;
+}
+
+ul.nav > li > a.text-new-color2:hover {
+    color: #02BBDF;
+}
+ul.nav > li > a.text-new-color2:focus {
+    color: #02BBDF;
+}
+
+ul.nav > li > a.text-new-color1 { 
+    color: #ffffff;
+    background-color: #02BBDF;
+    
+} 
+
+ul.nav > li > a.text-new-color1:hover {
+    color: #ffffff;
+    background-color: #0299b6;
+}
+ul.nav > li > a.text-new-color1:focus {
+    color: #ffffff;
+    background-color: #0299b6;
 }
 
 @media only screen and (max-width: 600px) {

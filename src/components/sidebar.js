@@ -9,30 +9,28 @@ export default ()=> {
                
             <ul className="nav nav-pills flex-column">             
                 <li className="nav-item mt-2">
-                    <Link className="nav-link font-weight-bold"  to="/newPost" >Post a question!</Link>
+                    <Link className="nav-link font-weight-bold text-new-color1"  to="/newPost" >Post a question!</Link>
                 </li>  
-                        <li className="nav-item mt-2">
-                            <Link className="nav-link text-secondary font-weight-bold" to="/home/hot">Hot</Link>                    
-                        </li>
-                        <li className="nav-item mt-2">
-                            <Link className="nav-link text-secondary font-weight-bold" to="/home/popular">Popular</Link>
-                        </li>
-                        <li className="nav-item mt-2">
-                            <Link className="nav-link text-secondary font-weight-bold" to="/home/comments">Comments</Link>
-                        </li>
-                        <li className="nav-item mt-2">
-                            <Link className="nav-link text-secondary font-weight-bold" to="/home/newest">Newest</Link>
-                        </li>
-                        <li className="nav-item mt-2">
-                            <Link className="nav-link text-secondary font-weight-bold" to="/home/oldest">Oldest</Link>
-                        </li>            
-                        <li className="nav-item mt-2">
-                            <Link className="nav-link text-secondary font-weight-bold"  to="/leaderboard">Leaderboards</Link>
-                        </li>
-                        <li className="nav-item mt-2">
-                            <Link className="nav-link"  to="/aboutus">About Us</Link>
-                        </li>
-                    </ul>
+                        
+                <li className="nav-item mt-2">
+                    <Link className="nav-link text-new-color2 font-weight-bold" to="/home/popular">Popular</Link>
+                </li>
+                <li className="nav-item mt-2">
+                    <Link className="nav-link text-new-color2 font-weight-bold" to="/home/comments">Comments</Link>
+                </li>
+                <li className="nav-item mt-2">
+                    <Link className="nav-link text-new-color2 font-weight-bold" to="/home/newest">Newest</Link>
+                </li>
+                <li className="nav-item mt-2">
+                    <Link className="nav-link text-new-color2 font-weight-bold" to="/home/oldest">Oldest</Link>
+                </li>            
+                <li className="nav-item mt-2">
+                    <Link className="nav-link text-new-color2 font-weight-bold"  to="/leaderboard">Leaderboards</Link>
+                </li>
+                <li className="nav-item mt-2">
+                    <Link className="nav-link text-new-color2 font-weight-bold"  to="/aboutus">About Us</Link>
+                </li>
+            </ul>
             </div>
     )
 }
