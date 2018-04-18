@@ -68,7 +68,6 @@ router.get('/posts', function(req, res, next){
         oldest: { timestamp: 1},    
         popular: { rating: -1},
         comments: { comments: -1 },
-        hot: {timestamp: -1}
     }
     var sortObj;
     if(req.query.field && sortMapping[req.query.field]){

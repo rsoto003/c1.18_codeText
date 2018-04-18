@@ -29,17 +29,17 @@ class NewPost extends Component{
     titleInputChange(event){
         this.setState({
             titleInput: event.target.value
-        })
+        });
     }
     descriptionInputChange(event){
         this.setState({
             descriptionInput: event.target.value
-        })
+        });
     }
     linkInputChange(event){
         this.setState({
             JSBINLink:event.target.value
-        })
+        });
     }
 
     onSubmit(event){
@@ -49,17 +49,17 @@ class NewPost extends Component{
         newTitleState.display = this.state.titleInput.length===0 ? {display:'block'} : {display:'none'};
         this.setState({
             titleState: newTitleState
-        })
+        });
 
         const newDescriptionState = {...this.state.descriptionState};
         newDescriptionState.display = this.state.descriptionInput.length===0 ? {display:'block'}:{display:'none'};
         this.setState({
             descriptionState: newDescriptionState
-        })
+        });
 
-        const newJsbinState = this.jsbinIsValid(event)
+        const newJsbinState = this.jsbinIsValid(event);
 
-        this.sumbitToDatabase(newTitleState, newDescriptionState, newJsbinState)
+        this.sumbitToDatabase(newTitleState, newDescriptionState, newJsbinState);
     }
     jsbinIsValid(event){
         const jsbinLink = this.state.JSBINLink
@@ -88,7 +88,7 @@ class NewPost extends Component{
 
                 axios.get ( `https://jsbin.com/oembed?url=http://jsbin.com${subString}`).then( (res)=>{
                     console.log(res.request)
-                })
+                });
     
             }
 
@@ -97,7 +97,7 @@ class NewPost extends Component{
         newJsbinState.display = isJsbin ? {display:'none'} : {display:'block'} ;
         this.setState({
             jsbinState: newJsbinState
-        })
+        });
         return newJsbinState.display
     }
 
@@ -152,7 +152,7 @@ class NewPost extends Component{
                     </form>
                 </div>
             </div>
-        )
+        );
     }
 
 }
