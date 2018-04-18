@@ -51,14 +51,17 @@ class ProfileDropdown extends Component{
         return(
             <div onClick={this.toggleMenuOn} className="dropdown">
                 <i style={pointer} className="fas fa-user-circle fa-2x text-white"></i>
-                <div style={this.state.dropdownDisplay} className="dropdown-menu">
-
+                <div style={this.state.dropdownDisplay} className="dropdown-menu">                    
                     <form style={dropdownItem} className="form-group">
-                        <p>sign in to proceed</p>
+                        {/* <p>sign in to proceed</p>
                         <input  type="text" className="form-control mt-2 mb-2" placeholder="username" />
-                        <input type="text" className="form-control mb-2" placeholder="password" />
+                        <input type="text" className="form-control mb-2" placeholder="password" /> */}
+                        <a href="http://localhost:5000/auth/github" className="btn btn-dark text-white">
+                        <i className="fab fa-github fa-2x text-white pr-2"></i>
 
-                        <p><Link to="/register" >Sign up!</Link><button className='btn btn-sm btn-primary float-right' >Submit</button></p>
+                         Sign in with gitHub!
+                        </a>
+                        {/* <p><Link to="/register" >Sign up!</Link><button className='btn btn-sm btn-primary float-right' >Submit</button></p> */}
                     </form>
 
                 </div>

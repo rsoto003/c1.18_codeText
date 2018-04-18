@@ -9,12 +9,14 @@ router.get('/error', (req,res)=>{
 
 router.get('/logout', (req,res)=>{
     req.logout()
+
 })
 
 router.get('/callback',
     passport.authenticate('github', {failureRedirect: '/error'}), (req,res) => {
-        res.send(req.user)
+        res.redirect('/')
         console.log('it worked!')
+        
     }
 );
 
