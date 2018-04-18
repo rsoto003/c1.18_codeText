@@ -82,12 +82,11 @@ class NewPost extends Component{
             } else {
                 const dotComPos = jsbinLink.indexOf('.com')
                 const subString = jsbinLink.substring( ( dotComPos+4 ),( jsbinLink.length ) )
-                console.log(subString);
+                console.log('subString: ', subString);
 
                 // http://jsbin.com/qatakap/1/edit?html,output
-
                 axios.get ( `https://jsbin.com/oembed?url=http://jsbin.com${subString}`).then( (res)=>{
-                    console.log(res.request)
+                    console.log('res.request: ', res.request);
                 });
     
             }
