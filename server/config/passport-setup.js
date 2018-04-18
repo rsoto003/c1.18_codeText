@@ -10,17 +10,16 @@ passport.use(new GitHubStrategy({
     },(accessToken, refreshToken, profile, done) => {
         console.log(profile)
         //check if user already exists
-        User.findOne({id:profile.id}).then( currentUser => {
-            console.log(profile.login)
+        User.findOne({githubId:profile.id}).then( currentUser => {
             if (currentUser){
                 //if user exists, pass
                 console.log('user exists: ', currentUser)
                 done(null, currentUser)
             } else {
-                
+                console.log("CREATING A NEW USER ************")
                 new User({
                     login: profile.username,
-                    id: profile.id,
+                    githubId: profile.id,
                     avatar_url: profile.photos[0].value,
                     githubUrl: profile.profileUrl,
                     name: profile.displayName
@@ -29,7 +28,9 @@ passport.use(new GitHubStrategy({
                     done(null, newUser)
                 })
             }
-        } )
+        } ).catch(err => {
+            console.log('ERROR: ', err)
+        })
     }
 ));  
 
@@ -43,6 +44,8 @@ passport.serializeUser( (user,done) => {
 passport.deserializeUser( (id,done) => {
     User.findById(id).then(user => {
         done(null, user)
+    }).catch(err =>{
+        console.log(err)
     })
     // done(null,user)
 });

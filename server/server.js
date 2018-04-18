@@ -4,15 +4,17 @@ const { resolve } = require('path');
 const server = express();
 const PORT = process.env.PORT || 5000;
 const keys = require('./config/keys');
-const cookieSession = require('cookie-session')
-const cookieParser = require('cookie-parser')
-const passport = require('passport')
+const passport = require('passport');
+const session = require('express-session');
+
 
 const passportConfig = require('./config/passport-setup');
 const router = express.Router();
 const commentRoutes = require('./routes/commentRoutes')
 const postRoute = require('./routes/posts')
 const passportRoute = require('./routes/passportRoute')
+const profileRoute = require('./routes/profileRoute')
+
 
 
 server.use(function(req, res, next) {
@@ -21,12 +23,8 @@ server.use(function(req, res, next) {
     next();
 });
 
-server.use(cookieParser())
-server.use(cookieSession({
-    maxAge: 24*60*60*1000,
-    keys: [keys.session.cookieKey]
-}))
 
+server.use(session({ secret: keys.session.cookieKey }));
 server.use(passport.initialize());
 server.use(passport.session());
 
@@ -39,7 +37,7 @@ server.use(express.urlencoded({ extended: false }));
 server.use(commentRoutes);
 server.use(postRoute);
 server.use('/auth',passportRoute);
-
+server.use('/profile', profileRoute);
 
 
 server.use(express.static(resolve(__dirname, '..', 'dist')));
