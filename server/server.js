@@ -24,7 +24,7 @@ server.use(function(req, res, next) {
 // server.use(passportConfig)
 
 
-server.use(cookieParser())
+// server.use(cookieParser())
 server.use(passport.initialize());
 server.use(passport.session());
 
@@ -32,6 +32,8 @@ server.use(passport.session());
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
 
+
+// using routes imported from route directory
 server.use(commentRoutes);
 server.use(postRoute);
 server.use('/auth',passportRoute);
