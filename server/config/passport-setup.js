@@ -1,11 +1,26 @@
-var passport = require ('passport');
+const passport = require ('passport');
 
-var GoogleStrategy = require('passport-github').Strategy
+const GitHubStrategy = require('passport-github').Strategy;
+ 
+passport.use(new GitHubStrategy({
+    clientID: 'a92e4125b337edb86197',
+    clientSecret: '592abb03ff862e09c389c59109769ed2850bb46a',
+    callbackURL: "http://localhost:5000/auth/callback"
+  },
+  (accessToken, refreshToken, profile, cb) => {
+        User.findOrCreate({ githubId: profile.id }, (err, user) => {
+            return cb(err, user);
+        });
+    }
+));  
 
 
+passport.serializeUser( (user,done) => {
+    done(null,user);
+})
 
-(token, tokenSecret, profile, done) => {
-    User.findOrCreate({ googleId: profile.id}, (err, user) {
-        return done(err, user)
-    })
-}
+
+passport.deserializeUser( (user,done) => {
+    done(null,user)
+});
+

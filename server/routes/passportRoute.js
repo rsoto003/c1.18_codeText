@@ -1,6 +1,18 @@
 const router = require('express').Router();
-// const PostModel = require('../models/post');
+const passport = require('passport')
 
-router.post('/login', )
+router.get('/', passport.authenticate('github'));
+
+router.get('/error', (req,res)=>{
+    res.send('there was an error')
+});
+      
+router.get('/callback',
+    passport.authenticate('github', {failureRedirect: '/error'}),
+    (req,res) => {
+        res.send('it worked!')
+    }
+);
 
 module.exports = router
+
