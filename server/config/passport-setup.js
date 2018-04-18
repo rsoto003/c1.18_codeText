@@ -9,15 +9,27 @@ passport.use(new GitHubStrategy({
     callbackURL: "http://localhost:5000/auth/callback"
     },(accessToken, refreshToken, profile, done) => {
         console.log(profile)
-        new User({
-            login: profile.login,
-            id: profile.id,
-            avatar_url: profile.avatar_id,
-            githubUrl: profile.avatar.html_url,
-            name: profile.name
-        }).save().then( (newUser)=>{
-            conosle.log('user created: ', newUser)
-        })
+        //check if user already exists
+        User.findOne({id:profile.id}).then( currentUser => {
+            console.log(profile.login)
+            if (currentUser){
+                //if user exists, pass
+                console.log('user exists: ', currentUser)
+            } else {
+                
+                new User({
+                    login: profile.username,
+                    id: profile.id,
+                    avatar_url: profile.photos[0].value,
+                    githubUrl: profile.profileUrl,
+                    name: profile.displayName
+                }).save().then( newUser=>{
+                    console.log('user created: ', newUser)
+                })
+            }
+        } )
+
+
     }
 ));  
 
