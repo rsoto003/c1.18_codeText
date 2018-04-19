@@ -9,9 +9,9 @@ router.get('/check', (req, res)=> {
     } else {
         authenticated = false;
     }
-    console.log(req)
     res.send({authenticated});
 });
+
 
 router.get('/github', passport.authenticate('github'));
 
@@ -20,17 +20,22 @@ router.get('/error', (req,res)=>{
 });
 
 router.get('/logout', (req,res)=>{
+    console.log('logging out')
     req.logout()
-    res.end();
+    req.session.destroy( () => {
+        res.redirect('/');  
+    } )
 });
 
-router.get('/callback',passport.authenticate('github'), (req,res) => {
+
+router.get('/callback',passport.authenticate('github') , (req,res) => {
         // res.send(req.user)
+        console.log('it worked!**********')
         res.redirect('/')
-        console.log('it worked!***********  ')
-        
     }
 );
+
+
 
 module.exports = router
 
