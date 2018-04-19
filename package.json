@@ -3,8 +3,18 @@
   "version": "1.0.0",
   "description": "C118 Context Final Project",
   "main": "index.js",
+  "proxy": {
+    "/posts": {
+      "target": "http://localhost:5000"
+    },
+    "/comment": {
+      "target": "http://localhost:5000"
+    }
+  },
   "scripts": {
-    "start": "node dev_server.js",
+    "start": "npm-run-all --parallel dev:*",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "node dev_server.js",
     "bundle": "webpack --config webpack.prod.js --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,7 +28,11 @@
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.0.0",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
     "npm": "^5.8.0",
+    "passport": "^0.4.0",
+    "passport-github": "^1.1.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
@@ -36,11 +50,12 @@
     "eslint": "^4.18.2",
     "file-loader": "^1.1.11",
     "image-webpack-loader": "^4.2.0",
+    "npm-run-all": "^4.1.2",
     "postcss-loader": "^2.1.1",
     "react-hot-loader": "^4.0.0",
     "style-loader": "^0.20.3",
     "uglifyjs-webpack-plugin": "^1.2.3",
-    "webpack": "^4.1.1",
+    "webpack": "^4.6.0",
     "webpack-cli": "^2.0.12",
     "webpack-dev-server": "^3.1.1",
     "webpack-merge": "^4.1.2"

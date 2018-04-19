@@ -25,8 +25,8 @@ class UpVote extends Component{
             threadID: this.props.postData.data._id
         }
         
-        axios.post('http://localhost:5000/postVote', submittedData ).then( res => {
-            console.log(res);
+        axios.post('/posts/vote', submittedData ).then( res => {
+            // console.log(res);
             this.setState({
                 value: res.data.rating
             })
@@ -43,7 +43,7 @@ class UpVote extends Component{
 
 
     render(){
-        console.log(this.props)
+        // console.log(this.props)
 
     
         return(

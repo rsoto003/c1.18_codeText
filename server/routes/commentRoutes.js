@@ -3,8 +3,8 @@ const PostModel = require('../models/post');
 
 
 
-
-router.post('/addComment', (req, res) => {
+// Was /addComment
+router.post('/comment/add', (req, res) => {
     // console.log(req)
     PostModel.findById(req.body.threadID , (err, data) => {
         if(err) throw err;
@@ -15,21 +15,21 @@ router.post('/addComment', (req, res) => {
             name: 'Anonymous', 
             'comment': req.body.comment,
             'rating': 0
-        })  
+        });
 
         
         data.save(err=>{
             if(err) throw err;
 
             console.log('added comment')
-        })
+        });
 
         res.send(data);
     } )
 })
 
-
-router.post('/commentVote', (req,res) => {
+// /commentVote
+router.post('/comment/vote', (req,res) => {
     PostModel.findById(req.body.threadID , (err,data)=> {
         console.log(req.body)
         console.log(data)

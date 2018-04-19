@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const PostModel = require('../models/post');
 
-router.post('/postVote', (req,res) => {
+// Was /pastVote
+router.post('/posts/vote', (req,res) => {
     console.log(req.body)
 
     PostModel.findById(req.body.threadID, (err,data) => {
@@ -20,7 +21,8 @@ router.post('/postVote', (req,res) => {
     })
 })
 
-router.post('/uniqueThread', (req, res ) => {
+// Was /uniqueThread
+router.post('/posts/unique-thread', (req, res ) => {
     PostModel.findById( req.body.threadID , (err, data) => {
         if(err) throw err;
 
@@ -30,8 +32,8 @@ router.post('/uniqueThread', (req, res ) => {
     })
 })
 
-
-router.post('/newPost', (req, res, next) => {
+// was /newPosts
+router.post('/posts/new', (req, res, next) => {
 
     const { newTitleState, newDescriptionState, JsbinState } = req.body;
 
@@ -59,14 +61,13 @@ router.post('/newPost', (req, res, next) => {
 
 })
 
-router.get('/', function(req, res, next){
+router.get('/posts', function(req, res, next){
     console.log('got request: field  = '+req.query.field);
     const sortMapping = {
         newest: { 'timestamp': -1},
         oldest: { timestamp: 1},    
         popular: { rating: -1},
         comments: { comments: -1 },
-        hot: {timestamp: -1}
     }
     var sortObj;
     if(req.query.field && sortMapping[req.query.field]){
@@ -88,7 +89,7 @@ router.get('/', function(req, res, next){
     })
 })
 
-router.post('/delete', (req, res) => {
+router.post('/posts/delete', (req, res) => {
     PostModel.findById(req.body.threadID, (err,data) => {
         if(!data){
             console.log(`Cannot find thread ID of: ${req.body.threadID}`)
