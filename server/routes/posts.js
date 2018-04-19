@@ -6,19 +6,36 @@ router.post('/posts/vote', (req,res) => {
     console.log(req.body)
 
     PostModel.findById(req.body.threadID, (err,data) => {
-        console.log(data)
 
-        if (req.body.vote ==='up'){
-            data.rating +=1
+        console.log(req.body.user)
+        if(! data.ratedUsers.find(req.body.user._id)){
+            data.ratedUsers.push({
+                name:req.body.user.name
+            })
+            if (req.body.vote ==='up'){
+                data.rating +=1
+            } else {
+                data.rating -= 1
+            }
+
         } else {
-            data.rating -= 1
+            console.log('THIS IS DATA: '+ data.ratedUsers.id(req.body.user._id))
+            data.ratedUsers.id(req.body.user._id).remove()
+            if (req.body.vote ==='up'){
+                data.rating -=1
+            } else {
+                data.rating += 1
+            }
         }
         data.save(err=>{
-            if(err)throw err;
-            console.log('Post voting: ', req.body.vote)
+            if(err)console.log('ERROR OCCURED: '+ err);
         })
         res.send(data)
+
     })
+
+
+
 })
 
 // Was /uniqueThread
@@ -46,6 +63,7 @@ router.post('/posts/new', (req, res, next) => {
             description: newDescriptionState,
             jsbin: JsbinState,
             comments: [],
+            ratedUsers:[],
             rating: 0
         })
         res.send(postdata);

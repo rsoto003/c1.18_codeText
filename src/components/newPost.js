@@ -132,8 +132,6 @@ class NewPost extends Component{
 
     render(){
 
-        
-
         return (
             <div className="col-md-10 col-sm-12 mt-2 offset-md-2 pl-5" >
                 <div className="text-center" >

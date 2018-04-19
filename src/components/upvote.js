@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import '../assets/css/app.css';
 import axios from 'axios';
+import {connect} from 'react-redux'
 
 class UpVote extends Component{
     constructor(props){
@@ -20,17 +21,23 @@ class UpVote extends Component{
 
 
     axiosCall(vote){
-        const submittedData={
-            vote,
-            threadID: this.props.postData.data._id
-        }
-        
-        axios.post('/posts/vote', submittedData ).then( res => {
-            // console.log(res);
-            this.setState({
-                value: res.data.rating
+        axios.get('http://localhost:5000/profile/data').then(res=>{
+            console.log(res.data)
+            const submittedData={
+                vote,
+                threadID: this.props.postData.data._id,
+                user: res.data
+            }
+            axios.post('/posts/vote', submittedData ).then( res => {
+                // console.log(res);
+                this.setState({
+                    value: res.data.rating
+                })
             })
         })
+
+        
+
     }
 
     handleAddVote(){   
@@ -59,4 +66,10 @@ class UpVote extends Component{
     }
 }
 
-export default UpVote;
+function mapStateToProps(state){
+    return{
+        auth: state.user.auth
+    }
+}
+
+export default connect(mapStateToProps)(UpVote)
