@@ -1,10 +1,6 @@
 const router = require('express').Router();
 
 const authCheck = (req, res, next) => {
-    console.log("This is the request object", req.session);
-    console.log("This is the session stored user", req.user);
-    console.log("Result from req.isAuthenticated", req.isAuthenticated());
-
     if(!req.isAuthenticated()){
         res.redirect('/auth/github')
     } else {
@@ -13,13 +9,10 @@ const authCheck = (req, res, next) => {
 }
 
 router.get('/', authCheck, (req,res)=>{
-    // console.log('helllooooooooooooooooo')
-    console.log(req.user)
     res.send('You are logged in. Here is your stuff ' + req.user )
 })
 
-router.get('/data', authCheck, (req,res)=>{
-    console.log(req.user)
+router.get('/data', (req,res)=>{
     res.send( req.user)
 })
 

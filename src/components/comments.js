@@ -8,7 +8,6 @@ class Comments extends Component{
         super(props);
         this.state={
             commentLength:2,
-            //allCommentsLength: this.props.data.comments.length
         }
         this.pointerStyle={
             cursor:'pointer'

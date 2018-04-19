@@ -53,29 +53,28 @@ class Thread extends Component{
 
     onSubmit(event){
         event.preventDefault()
-        const submittedComment={
-            name:'Anonymous User',
-            comment:this.state.textInput,
-            threadID: this.props.threadID
-        }
+
 
         if (this.validCheck(this.state.textInput)){
 
-            this.setState({
-                textInput:'',
-            })
-            axios.post(`/comment/add`, submittedComment).then( res => {
-                const newData=this.state.data
-                newData.res.comments=res.data.comments
-                this.setState({
-                    data:newData
+
+            axios.get('/profile/data').then(res=>{
+                const submittedComment={
+                    name: res.data.name,
+                    comment:this.state.textInput,
+                    threadID: this.props.threadID
+                }
+                axios.post(`/comment/add`, submittedComment).then( res => {
+                    const newData=this.state.data
+                    newData.res.comments=res.data.comments
+                    this.setState({
+                        data:newData,
+                        textInput:'',
+                    })
+                    console.log(res)
                 })
-                console.log(res)
             })
         }
-
-        // const newCommentState= this.state.comments.slice();
-        // newCommentState.push(submittedComment);
     }
     deletePost(event){
         axios.post(`/posts/delete`, {threadID: this.state.threadID} ).then(res => {

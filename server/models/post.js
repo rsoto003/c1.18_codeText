@@ -6,13 +6,17 @@ const commentSchema = new mongoose.Schema({
     rating: {type: Number, default: 0}
 })
 
-
+const userRatingSchema = new mongoose.Schema({
+    name:{type:String},
+    login:{type:String}
+})
 
 var PostSchema = new mongoose.Schema({
     title: {type: String},
     description: {type: String},
     jsbin: {type: String},
     rating: {type: Number, default: 0},
+    ratedUsers:[userRatingSchema],
     timestamp: {type: Date, default: Date.now},
     comments: [commentSchema],
 }, {collection: 'posts'});
