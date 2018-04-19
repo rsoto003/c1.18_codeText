@@ -122,6 +122,28 @@ router.get('/posts', function(req, res, next){
     })
 })
 
+router.get('/leaderboard', (req, res) => {
+    console.log('leaderboard sorting being checked', req);
+    const leaderboardSorting = {
+         votes: {rating: -1},
+         comments: {__v: -1}
+     }
+     PostModel.find().sort(leaderboardSorting).then(data => {
+         res.send({
+             confirmation: true,
+             results: data
+         })
+     }).catch(error=> {
+         console.log('leaderboard error: ', error);
+         res.send({
+             confirmation: false,
+             error: error
+         })
+     })
+ })
+
+
+
 router.post('/posts/delete', (req, res) => {
     PostModel.findById(req.body.threadID, (err,data) => {
         if(!data){
@@ -138,5 +160,6 @@ router.post('/posts/delete', (req, res) => {
     } )
     
 })
+
 
 module.exports=router
