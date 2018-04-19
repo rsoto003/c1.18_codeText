@@ -18,4 +18,9 @@ router.get('/', authCheck, (req,res)=>{
     res.send('You are logged in. Here is your stuff ' + req.user )
 })
 
-module.exports=router
+router.get('/data', authCheck, (req,res)=>{
+    console.log(req.user)
+    res.send( req.user)
+})
+
+module.exports=router 

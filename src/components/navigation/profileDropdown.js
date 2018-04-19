@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import {Link} from 'react-router-dom'
 import axios from 'axios'
+import { connect } from 'react-redux';
+import {signOut} from '../../actions'
+
+
 class ProfileDropdown extends Component{
     constructor(props){
         super(props)
@@ -43,14 +47,12 @@ class ProfileDropdown extends Component{
         })
     }
 
-    logOff(){
-        axios.get('http://localhost:5000/auth/logout')
-    }
+
 
     authRender(){
         if(this.props.auth){
             return(
-                <button onClick={this.logOff.bind(this)} className="btn btn-danger">Log out</button>
+                <button onClick={this.props.logOff} className="btn btn-danger">Log out</button>
             )
         } else{
             return(
@@ -74,7 +76,7 @@ class ProfileDropdown extends Component{
                 <i style={pointer} className="fas fa-user-circle fa-2x text-white"></i>
                 <div style={this.state.dropdownDisplay} className="dropdown-menu">                    
                     <form style={dropdownItem} className="form-group">
-                    {this.authRender()}
+                        {this.authRender()}
                     </form>
 
                 </div>
@@ -82,5 +84,10 @@ class ProfileDropdown extends Component{
         )
     }
 };
+function mapStateToProps(state){
+    return{
+        auth: state.user.auth
+    }
+}
 
-export default ProfileDropdown
+export default connect(mapStateToProps, {signOut:signOut})(ProfileDropdown)
