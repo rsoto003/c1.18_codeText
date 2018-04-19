@@ -32,7 +32,7 @@ router.post('/posts/unique-thread', (req, res ) => {
     })
 })
 
-// was /newPosts
+// was /newPosts  
 router.post('/posts/new', (req, res, next) => {
 
     const { newTitleState, newDescriptionState, JsbinState } = req.body;
