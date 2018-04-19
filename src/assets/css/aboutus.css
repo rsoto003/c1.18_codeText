@@ -1,5 +1,9 @@
 .team {
-    margin-left: 72%;
+    text-align: center;
+    padding: 3%;
+    font-size: 5rem;
+    font-family: "Bangers", sans-serif;
+    letter-spacing: 5px;
 }
 
 .text {
@@ -7,19 +11,71 @@
 }
 
 .about {
-    /* margin-left: 102%; */
     float: right;
+    width: 50%;
+    box-shadow: 50px 50px black;
 }
 
 .photo-container {
     margin-left: 14%;
+    margin-top: 9%;
 }
 
-.profile-photo {
-    height: 30%;
-    width: 30%;
+.sasha-photo {
+    box-shadow: 50px 50px #FFE3C4;
+    width: 60%;
     margin: 5%;
-    padding: 2%;
+}
+
+.sasha-header {
+    color: #F02F25;
+    font-family: "Bangers", sans-serif;
+    letter-spacing: 5px;
+}
+
+.hanran-photo {
+    box-shadow: 50px 50px #02BBDF;
+    width: 60%;
+    margin: 5%;
+}
+
+.hanran-header {
+    color: #FF9705;
+    font-family: "Bangers", sans-serif; 
+    letter-spacing: 5px;
+}
+
+.ryan-photo {
+    box-shadow: 50px 50px #F02F25;
+    width: 60%;
+    margin: 5%;
+}
+
+.ryan-header {
+    color: #02BBDF;
+    font-family: "Bangers", sans-serif;
+    letter-spacing: 5px; 
+}
+
+.will-photo {
+    box-shadow: 50px 50px #FF9705;
+    width: 60%;
+    margin: 5%;
+}
+
+.will-header {
+    color: #FFE3C4;
+    font-family: "Bangers", sans-serif; 
+    letter-spacing: 5px;
+}
+
+.picture-row-one {
+    margin-top: 30%;
+}
+
+.picture-row-two {
+    margin-top: 1%;
+    margin-bottom: 5%;
 }
 
 /* .photo-text {
@@ -42,4 +98,12 @@
     display: inline-block;
     width: 50%;
     text-align: center;
+}
+
+h2 {
+    margin-top: -4%;
+}
+
+h3 {
+    margin-top: 4%;
 }
