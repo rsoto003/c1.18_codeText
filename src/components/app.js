@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
-import {Route, Redirect} from 'react-router-dom';
+import {Route, Redirect, withRouter} from 'react-router-dom';
 import axios from 'axios';
 import '../assets/css/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {connect} from 'react-redux'
+import {signInCheck} from '../actions'
+
+
 import Navbar from './navigation/navbar';
 import NewPost from './newPost';
 import Sidebar from './sidebar';
@@ -11,6 +15,7 @@ import AllThreads from './allthreads';
 import Leaderboard from './leaderboard';
 import Register from './account/register';
 import AboutUs from './aboutus';
+
 
 
 const UniqueThread = ({ match }) => {
@@ -24,37 +29,14 @@ const UniqueThread = ({ match }) => {
 class App extends Component {
     constructor(props){
         super(props)
-        this.state={
-            auth:false,
-            userData:{}
-        }
     }
-    // componentWillMount(){
-    //     axios.get('http://localhost:5000/auth/check').then(res=>{
-    //         this.setState({
-    //             auth: res.data.authenticated
-    //         })
-    //     })
 
-    //     axios.get('http://localhost:5000/profile/data').then( res=> {
-    //         console.log(res)
-    //         this.setState({ 
-    //             userData: res.data
-    //         })
-    //     })
-    // }
-
-    logOff(){
-        axios.get('http://localhost:5000/auth/logout')
-        this.setState({
-            userData: {}
-        })
-    }
 
     render(){
+        console.log(this.props)
         return(
             <div>
-                <Navbar auth={this.state.auth} logOff={this.logOff.bind(this)}/>
+                <Navbar/>
                 <div className="container-fluid">
                     <div className="row">
                     
@@ -79,4 +61,13 @@ class App extends Component {
     }
 }
 
-export default App;
+function mapStateToProps(state){
+    console.log(state)
+    return{
+        auth: state.user.auth
+    }
+}
+
+export default withRouter(connect(mapStateToProps, {signInCheck:signInCheck})(App));
+
+// export default App;
