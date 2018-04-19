@@ -18,10 +18,8 @@ class UpVote extends Component{
         this.axiosCall = this.axiosCall.bind(this)
     }
 
-
-
     axiosCall(vote){
-        axios.get('http://localhost:5000/profile/data').then(res=>{
+        axios.get('/profile/data').then(res=>{
             const submittedData={
                 vote,
                 threadID: this.props.postData.data._id,
@@ -33,9 +31,6 @@ class UpVote extends Component{
                 })
             })
         })
-
-        
-
     }
 
     handleAddVote(){   
@@ -48,16 +43,11 @@ class UpVote extends Component{
 
 
     render(){
-        // console.log(this.props)
-
-    
         return(
 
             <div className="text-center">                                           
                 <div style={this.pointerStyle} className="" onClick={this.handleAddVote}> <i className="fas fa-angle-up fa-2x"></i></div>                 
-
                 <div >{this.state.value}</div>
-
                 <div style={this.pointerStyle} onClick={this.handleDeleteVote}> <i className="fas fa-angle-down fa-2x"></i> </div>
             </div>
         )
