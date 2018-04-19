@@ -1,15 +1,25 @@
 const mongoose = require('mongoose');
 
-const commentSchema = new mongoose.Schema({
-    name: {type: String},
-    comment: {type: String},
-    rating: {type: Number, default: 0}
-})
-
 const userRatingSchema = new mongoose.Schema({
     name:{type:String},
     login:{type:String}
 })
+
+const commentUserRatingSchema = new mongoose.Schema({
+    name:{type:String},
+    login:{type:String}
+})
+
+const commentSchema = new mongoose.Schema({
+    name: {type: String},
+    comment: {type: String},
+    rating: {type: Number, default: 0},
+    commentRatedUsers:[commentUserRatingSchema]
+})
+
+
+
+
 
 var PostSchema = new mongoose.Schema({
     title: {type: String},

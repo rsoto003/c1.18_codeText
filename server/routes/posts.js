@@ -12,12 +12,10 @@ router.post('/posts/vote', (req,res) => {
         let match=false
         let matchId;
         for (let i =0; i<data.ratedUsers.length; i++){
-            console.log(data.ratedUsers[i].login + 'COMPARED AGAINST' + req.body.user.login)
             if (data.ratedUsers[i].login === req.body.user.login){
                 match=true
                 matchId = data.ratedUsers[i]._id
             }
-            // console.log(match)
         }
 
         if(! match){
