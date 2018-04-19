@@ -1,14 +1,9 @@
 const router = require('express').Router();
 const PostModel = require('../models/post');
 
-// Was /pastVote
 router.post('/posts/vote', (req,res) => {
-    // console.log(req.body)
 
     PostModel.findById(req.body.threadID, (err,data) => {
-        console.log(req.body.user)
-
-        console.log(req.body.user.login)
         let match=false
         let matchId;
         for (let i =0; i<data.ratedUsers.length; i++){
@@ -21,7 +16,8 @@ router.post('/posts/vote', (req,res) => {
         if(! match){
             data.ratedUsers.push({
                 name:req.body.user.name,
-                login: req.body.user.login
+                login: req.body.user.login,
+                vote: req.body.vote
             })
             if (req.body.vote ==='up'){
                 data.rating +=1
@@ -30,13 +26,35 @@ router.post('/posts/vote', (req,res) => {
             }
 
         } else {
-            console.log('THIS IS DATA: '+ data.ratedUsers.id(req.body.user._id))
-            data.ratedUsers.id(matchId).remove()
-            if (req.body.vote ==='up'){
-                data.rating -=1
-            } else {
-                data.rating += 1
-            }
+           if(data.ratedUsers.id(matchId).vote==='up'){
+               if(req.body.vote ==='up'){
+                   data.rating -=1
+                   data.ratedUsers.id(matchId).remove()
+               } else {
+                    data.rating -=2
+                    data.ratedUsers.id(matchId).remove()
+                    data.ratedUsers.push({
+                        name:req.body.user.name,
+                        login: req.body.user.login,
+                        vote: 'down'
+                    })
+               }
+           } else{
+               if(req.body.vote!== 'up'){
+                   data.rating +=1
+                   data.ratedUsers.id(matchId).remove()
+               } else{
+                   data.rating +=2
+                   data.ratedUsers.id(matchId).remove()
+                   data.ratedUsers.push({
+                    name:req.body.user.name,
+                    login: req.body.user.login,
+                    vote: 'up'
+                })
+               }
+           }
+
+
         }
         data.save(err=>{
             if(err)console.log('ERROR OCCURED: '+ err);

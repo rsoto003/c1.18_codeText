@@ -2,12 +2,14 @@ const mongoose = require('mongoose');
 
 const userRatingSchema = new mongoose.Schema({
     name:{type:String},
-    login:{type:String}
+    login:{type:String},
+    vote:{type: String}
 })
 
 const commentUserRatingSchema = new mongoose.Schema({
     name:{type:String},
-    login:{type:String}
+    login:{type:String},
+    vote: {type: String}
 })
 
 const commentSchema = new mongoose.Schema({
