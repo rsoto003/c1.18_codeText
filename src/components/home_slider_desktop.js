@@ -8,20 +8,7 @@ export default () => {
 
     return (
 
-        // <div class="jumbotron full-width-image">
-            
-        //     <img className="d-block" src={banner} alt="coding coops"/>
-        //     <div className="container">
-        //         <h1 className="display-5">Codingcoops is a place to gain and share knowledge of web development.</h1>
-        //         <p className="lead">Codingcoops is a place to gain and share knowledge of web development.</p>
-        //         <hr className="my-4 mb-4"/>
-        //         <Link to="/register" className="btn btn-danger font-weight-bold mr-2" >Log In</Link>  
-        //         <Link to="/home/newest" className="btn btn-danger font-weight-bold">Skip</Link> 
-        //     </div>
-        // </div>
-
-
-
+        
         <div className="carousel slide full-width-image" data-ride="carousel">
             
             <div className="carousel-inner">

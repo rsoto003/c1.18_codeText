@@ -14,8 +14,6 @@ class HomePage extends Component {
             window.addEventListener('resize', this.handleWindowSizeChange);
         }
         
-        // make sure to remove the listener
-        // when the component is not mounted anymore
         componentWillUnmount() {
             window.removeEventListener('resize', this.handleWindowSizeChange);
         }
@@ -38,11 +36,7 @@ class HomePage extends Component {
                 
                 <div>
                     <HomeSliderDesktop/> 
-                    {/* <h4 className="text-center mt-3 font-weight-bold">Join us and begin your adventure here with us today.</h4> 
-                    <div className="text-center font-weight-bold mt-3">
-                    <Link to="/register" className="btn btn-danger font-weight-bold mr-2" >Log In</Link>  
-                    <Link to="/home/newest" className="btn btn-danger font-weight-bold">Skip</Link> 
-                    </div>               */}
+                    
                 </div>
             );
         }
