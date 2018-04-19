@@ -17,13 +17,13 @@ export default () => {
             <div className="picture-row-one row col-md-12">
                 <div className="profile-container">
                     <img className="sasha-photo" src={sasha}/>
-                    <h2 className="sasha-header">Sasha</h2>
+                    <h2 className="developer-name sasha-header">Sasha</h2>
                     <h3>Front End Developer</h3>
                     <a href="https://github.com">My Github</a>
                 </div>
                 <div className="profile-container">
                     <img className="hanran-photo" src={hanran}/>
-                    <h2 className="hanran-header">Hanran</h2>
+                    <h2 className="developer-name hanran-header">Hanran</h2>
                     <h3>Front End Developer</h3>
                     <a href="https://github.com">My Github</a>
                 </div>
@@ -31,13 +31,13 @@ export default () => {
             <div className="picture-row-two row col-md-12">
                 <div className="profile-container">
                     <img className="ryan-photo" src={ryan}/>
-                    <h2 className="ryan-header">Ryan</h2>
+                    <h2 className="developer-name ryan-header">Ryan</h2>
                     <h3>Back End Developer</h3>
                     <a href="https://github.com">My Github</a>
                 </div>
                 <div className="profile-container">
                     <img className="will-photo" src={will}/>
-                    <h2 className="will-header">Will</h2>
+                    <h2 className="developer-name will-header">Will</h2>
                     <h3>Full Stack Developer</h3>
                     <a href="https://github.com">My Github</a>
                 </div>
