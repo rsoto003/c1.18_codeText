@@ -41,6 +41,7 @@ export default () => {
         if(postData[key].title.length > 100){
             postTitle+= '...'
         }
+
         const jsbin_URL = postData[key].jsbin;
         return (
             

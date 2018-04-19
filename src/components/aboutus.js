@@ -8,33 +8,37 @@ import will from './imgs/will.jpg';
 
 export default () => {
     return (
-        <div>
-            <div className="text col-sm-8 mt-3">
+        <div className="offset-2 col-md-10">
+            <div className="text offset-2 col-md-10 mt-3">
                 <h1 className="team">Our Team</h1>
                 <img className="about" src={about}/>
-                <p className="text">We are a team of four developers who made this web application. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat accusamus sint quibusdam repellendus excepturi dolores, autem commodi nihil explicabo ipsum provident. Quos sapiente ex architecto consectetur velit blanditiis ratione fuga repudiandae unde, deleniti ad voluptas. Consequatur consectetur, perferendis fuga obcaecati quo, tempore soluta dolores recusandae quibusdam neque sequi alias asperiores?</p>
+                <p className="text">We are CodingCoOps. A team of four developers who developed this web application together.</p>
             </div>
-            <div className="photo-container">
+            <div className="picture-row-one row col-md-12">
                 <div className="profile-container">
-                    <img className="profile-photo" src={sasha}/>
-                    <h3>Sasha</h3>
+                    <img className="sasha-photo" src={sasha}/>
+                    <h2 className="sasha-header">Sasha</h2>
+                    <h3>Front End Developer</h3>
                     <a href="https://github.com">My Github</a>
                 </div>
                 <div className="profile-container">
-                    <img className="profile-photo" src={hanran}/>
-                    <h3>Hanran</h3>
+                    <img className="hanran-photo" src={hanran}/>
+                    <h2 className="hanran-header">Hanran</h2>
+                    <h3>Front End Developer</h3>
                     <a href="https://github.com">My Github</a>
                 </div>
             </div>
-            <div className="photo-container">
+            <div className="picture-row-two row col-md-12">
                 <div className="profile-container">
-                    <img className="profile-photo" src={ryan}/>
-                    <h3>Ryan</h3>
+                    <img className="ryan-photo" src={ryan}/>
+                    <h2 className="ryan-header">Ryan</h2>
+                    <h3>Back End Developer</h3>
                     <a href="https://github.com">My Github</a>
                 </div>
                 <div className="profile-container">
-                    <img className="profile-photo" src={will}/>
-                    <h3>Will</h3>
+                    <img className="will-photo" src={will}/>
+                    <h2 className="will-header">Will</h2>
+                    <h3>Full Stack Developer</h3>
                     <a href="https://github.com">My Github</a>
                 </div>
             </div>

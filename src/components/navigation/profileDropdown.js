@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import {Link} from 'react-router-dom'
+import axios from 'axios'
+import { connect } from 'react-redux';
+import {signOut} from '../../actions'
+
+
 class ProfileDropdown extends Component{
     constructor(props){
         super(props)
@@ -43,22 +48,34 @@ class ProfileDropdown extends Component{
     }
 
 
+
+    authRender(){
+        if(this.props.auth){
+            return(
+                <button onClick={this.props.signOut} className="btn btn-danger">Log out</button>
+            )
+        } else{
+            return(
+                <a href="http://localhost:5000/auth/github" className="btn btn-dark text-white">
+                    <i className="fab fa-github fa-2x text-white pr-2"></i> Sign in with gitHub!
+                </a>
+            )
+        }
+    }
+
     render(){
         const pointer = {cursor: 'pointer'};
         const dropdownStyle = {right:0, left:'unset'}
         const dropdownItem= {padding: '.25rem 1.5rem', whiteSpace:'noWrap'} 
 
+        
+
         return(
             <div onClick={this.toggleMenuOn} className="dropdown">
                 <i style={pointer} className="fas fa-user-circle fa-2x text-white"></i>
-                <div style={this.state.dropdownDisplay} className="dropdown-menu">
-
+                <div style={this.state.dropdownDisplay} className="dropdown-menu">                    
                     <form style={dropdownItem} className="form-group">
-                        <p>sign in to proceed</p>
-                        <input  type="text" className="form-control mt-2 mb-2" placeholder="username" />
-                        <input type="text" className="form-control mb-2" placeholder="password" />
-
-                        <p><Link to="/register" >Sign up!</Link><button className='btn btn-sm btn-primary float-right' >Submit</button></p>
+                        {this.authRender()}
                     </form>
 
                 </div>
@@ -66,5 +83,10 @@ class ProfileDropdown extends Component{
         )
     }
 };
+function mapStateToProps(state){
+    return{
+        auth: state.user.auth
+    }
+}
 
-export default ProfileDropdown
+export default connect(mapStateToProps, {signOut:signOut})(ProfileDropdown)
