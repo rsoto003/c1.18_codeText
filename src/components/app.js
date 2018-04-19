@@ -31,9 +31,11 @@ class App extends Component {
         super(props)
     }
 
+    componentWillMount(){
+        this.props.signInCheck()
+    }
 
     render(){
-        console.log(this.props)
         return(
             <div>
                 <Navbar/>
@@ -62,12 +64,11 @@ class App extends Component {
 }
 
 function mapStateToProps(state){
-    console.log(state)
     return{
         auth: state.user.auth
     }
 }
 
-export default withRouter(connect(mapStateToProps, {signInCheck:signInCheck})(App));
+export default withRouter(connect(mapStateToProps, {signInCheck})(App));
 
 // export default App;

@@ -52,7 +52,7 @@ class ProfileDropdown extends Component{
     authRender(){
         if(this.props.auth){
             return(
-                <button onClick={this.props.logOff} className="btn btn-danger">Log out</button>
+                <button onClick={this.props.signOut} className="btn btn-danger">Log out</button>
             )
         } else{
             return(
@@ -64,7 +64,6 @@ class ProfileDropdown extends Component{
     }
 
     render(){
-        console.log(this.props)
         const pointer = {cursor: 'pointer'};
         const dropdownStyle = {right:0, left:'unset'}
         const dropdownItem= {padding: '.25rem 1.5rem', whiteSpace:'noWrap'} 
