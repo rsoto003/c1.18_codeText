@@ -18,38 +18,30 @@ class UpvoteComments extends Component{
 
     }
     axiosCall(vote){
-        const submittedData={
-            vote,
-            commentData: this.props.data,
-            threadID : this.props.threadID
-        }
-        
-        axios.post('/comment/vote', submittedData ).then( res => {
-            console.log(res);
-            this.setState({
-                value: res.data.rating
+
+        axios.get('/profile/data').then(res=>{
+            const submittedData={
+                vote,
+                commentData: this.props.data,
+                threadID : this.props.threadID,
+                user: res.data,
+            }
+            axios.post('/comment/vote', submittedData ).then( res => {
+                console.log(res);
+                this.setState({
+                    value: res.data.rating
+                })
             })
         })
     }
 
     handleAddVote(){   
         this.axiosCall('up')
-        this.setState({
-           value: this.state.value + 1
-        });
+
     }
 
     handleDeleteVote(){        
         this.axiosCall('down')
-        this.setState({
-            value: this.state.value - 1
-        });
-
-        if(this.state.value < 1) {
-            this.setState({
-                value: 0   
-            });
-        } 
     }
 
     render(){
