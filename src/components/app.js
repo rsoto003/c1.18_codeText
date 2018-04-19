@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Route, Redirect} from 'react-router-dom';
+import axios from 'axios';
 import '../assets/css/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './navigation/navbar';
@@ -11,16 +12,34 @@ import Leaderboard from './leaderboard';
 import Register from './account/register';
 import AboutUs from './aboutus';
 
+
 const UniqueThread = ({ match }) => {
     return(
         <Thread threadID={match.params.threadID} />
     )
 }
 
-const App = () => {
+
+
+class App extends Component {
+    constructor(props){
+        super(props)
+        this.state={
+            auth:false
+        }
+    }
+    componentWillMount(){
+        axios.get('http://localhost:5000/auth/check').then(res=>{
+            this.setState({
+                auth: res.data.authenticated
+            })
+        })
+    }
+
+    render(){
     return(
         <div>
-            <Navbar/>
+            <Navbar auth={this.state.auth} />
             <div className="container-fluid">
                 <div className="row">
                 
@@ -42,6 +61,7 @@ const App = () => {
             </div>
         </div>
     )
+    }
 }
 
 export default App;

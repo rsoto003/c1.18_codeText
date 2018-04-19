@@ -52,7 +52,6 @@ class MinimizedThread extends Component{
             postTitle+= '...'
         }
         const jsbin_URL = this.props.data.jsbin;
-        debugger;
         return (
             <div className="row pt-5 my-4 border bg-white">
                 <div className="col-md-2 col-sm-2 col-2">
