@@ -61,13 +61,15 @@ router.post('/posts/new', (req, res, next) => {
 
 })
 
+
+
 router.get('/posts', function(req, res, next){
     console.log('got request: field  = '+req.query.field);
     const sortMapping = {
-        newest: { 'timestamp': -1},
+        newest: { timestamp: -1},
         oldest: { timestamp: 1},    
-        popular: { rating: -1},
-        comments: { comments: -1 },
+        popular: { rating: -1}, 
+        comments: { __v: -1 },
     }
     var sortObj;
     if(req.query.field && sortMapping[req.query.field]){
