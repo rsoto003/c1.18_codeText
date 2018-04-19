@@ -3,22 +3,52 @@ const PostModel = require('../models/post');
 
 // Was /pastVote
 router.post('/posts/vote', (req,res) => {
-    console.log(req.body)
+    // console.log(req.body)
 
     PostModel.findById(req.body.threadID, (err,data) => {
-        console.log(data)
+        console.log(req.body.user)
 
-        if (req.body.vote ==='up'){
-            data.rating +=1
+        console.log(req.body.user.login)
+        let match=false
+        let matchId;
+        for (let i =0; i<data.ratedUsers.length; i++){
+            console.log(data.ratedUsers[i].login + 'COMPARED AGAINST' + req.body.user.login)
+            if (data.ratedUsers[i].login === req.body.user.login){
+                match=true
+                matchId = data.ratedUsers[i]._id
+            }
+            // console.log(match)
+        }
+
+        if(! match){
+            data.ratedUsers.push({
+                name:req.body.user.name,
+                login: req.body.user.login
+            })
+            if (req.body.vote ==='up'){
+                data.rating +=1
+            } else {
+                data.rating -= 1
+            }
+
         } else {
-            data.rating -= 1
+            console.log('THIS IS DATA: '+ data.ratedUsers.id(req.body.user._id))
+            data.ratedUsers.id(matchId).remove()
+            if (req.body.vote ==='up'){
+                data.rating -=1
+            } else {
+                data.rating += 1
+            }
         }
         data.save(err=>{
-            if(err)throw err;
-            console.log('Post voting: ', req.body.vote)
+            if(err)console.log('ERROR OCCURED: '+ err);
         })
         res.send(data)
+
     })
+
+
+
 })
 
 // Was /uniqueThread
@@ -46,6 +76,7 @@ router.post('/posts/new', (req, res, next) => {
             description: newDescriptionState,
             jsbin: JsbinState,
             comments: [],
+            ratedUsers:[],
             rating: 0
         })
         res.send(postdata);

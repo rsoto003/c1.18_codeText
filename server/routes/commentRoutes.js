@@ -5,14 +5,13 @@ const PostModel = require('../models/post');
 
 // Was /addComment
 router.post('/comment/add', (req, res) => {
-    // console.log(req)
     PostModel.findById(req.body.threadID , (err, data) => {
         if(err) throw err;
         
-        console.log(data)
+        console.log(req.body.user)
 
         data.comments.push( {
-            name: 'Anonymous', 
+            name: req.body.name, 
             'comment': req.body.comment,
             'rating': 0
         });
