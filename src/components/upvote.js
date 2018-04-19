@@ -22,14 +22,12 @@ class UpVote extends Component{
 
     axiosCall(vote){
         axios.get('http://localhost:5000/profile/data').then(res=>{
-            console.log(res.data)
             const submittedData={
                 vote,
                 threadID: this.props.postData.data._id,
                 user: res.data
             }
             axios.post('/posts/vote', submittedData ).then( res => {
-                // console.log(res);
                 this.setState({
                     value: res.data.rating
                 })

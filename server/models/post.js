@@ -7,7 +7,8 @@ const commentSchema = new mongoose.Schema({
 })
 
 const userRatingSchema = new mongoose.Schema({
-    name:{type:String}
+    name:{type:String},
+    login:{type:String}
 })
 
 var PostSchema = new mongoose.Schema({
