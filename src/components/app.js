@@ -1,15 +1,11 @@
-// import React from 'react';
-// import {Switch, Route, Redirect} from 'react-router-dom';
 
 import React, {Component} from 'react';
 import {Switch, Route, Redirect, withRouter} from 'react-router-dom';
 import axios from 'axios';
 import '../assets/css/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {connect} from 'react-redux'
-import {signInCheck} from '../actions'
-
-
+import {connect} from 'react-redux';
+import {signInCheck} from '../actions';
 import Navbar from './navigation/navbar';
 import NewPost from './newPost';
 import Sidebar from './sidebar';
@@ -28,7 +24,6 @@ const UniqueThread = ({ match }) => {
     )
 }
 
-
 class App extends Component {
     constructor(props){
         super(props)
@@ -46,7 +41,7 @@ class App extends Component {
                     <div className="row">
                     
                     {/* <Sidebar/> */}
-                    
+
                     <Route exact path="/" render={ ()=> (
                         <Redirect to="/home" component={Home} />
                     )} />
@@ -56,16 +51,17 @@ class App extends Component {
                         <Route component={Sidebar}/>
                     </Switch>
                     <Switch>
-                        <Route exact path="/home" component={Home} />
-                        
+                        <Route exact path="/home" component={Home} />                        
                       
                         {/* <Route exact path="/" render={ ()=> (
                         <Redirect to="/home/newest" component={AllThreads} />
                          )} /> */}
+
                         {/* <Route exact path="/home" render={ ()=> (
                             <Redirect to="/home/newest" />
                         )} /> */}
 
+                        <Route path="/home/newest" component={AllThreads} />
                         <Route path="/home/:sort?" component={AllThreads} />
                         <Route path='/newPost' component={NewPost}/>
                         <Route path='/thread/:threadID' component={UniqueThread}  />
