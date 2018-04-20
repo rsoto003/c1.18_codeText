@@ -23,10 +23,8 @@ class HomePage extends Component {
         };
 
         renderSliderOrBackGround = () => {
-        console.log('Window Width: ', this.state.width);
 
         if(this.state.width < 600){
-            console.log('Window Width: ', this.state.width);
             return (                
                 <HomeSliderMobile/>               
             );
@@ -45,7 +43,7 @@ class HomePage extends Component {
     render(){        
        
         return (
-            <div>
+            <div className='w-100'>
                 {this.renderSliderOrBackGround()}                
             </div>
         )
