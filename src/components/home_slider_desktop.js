@@ -5,13 +5,13 @@ import banner from '../assets/images/banner-1.svg';
 import homeSliderDesktop from '../assets/images/home-slider.jpg';
 
 export default () => {
-
+    const overflow={overflow:visible}
     return (
 
         
         <div className="carousel slide full-width-image" data-ride="carousel">
             
-            <div className="carousel-inner">
+            <div style={overflow} className="carousel-inner">
                 <div className="carousel-item active">
                     <img className="d-block w-100 mt-3" src={banner} alt="First slide"/>
                     <div className="carousel-caption d-none d-md-block text-left text-white w-50">
