@@ -138,6 +138,7 @@ class Leaderboard extends Component{
                 </tr>
             )
         })
+        // const commentsUser = this.state.data.map( ( item, index ))
         
 
         return(
