@@ -64,7 +64,7 @@ class MinimizedThread extends Component{
                     <p><small className="text-muted" > {this.props.data.author} - Posted: {Date(this.props.data.timestamp)} </small></p>
                     <p>{postDesc}</p>
                     
-                    <a style={aTag} target="_blank" href={`${this.props.data.jsbin}`}><img style={jsbinStyle} src={jsbinPIC} alt="jsbinPicture"/></a>
+                    {/* <a style={aTag} target="_blank" href={`${this.prop s.data.jsbin}`}><img style={jsbinStyle} src={jsbinPIC} alt="jsbinPicture"/></a> */}
     
                     <Link style={inlineBlock} to={`/thread/${this.props.data._id}`}> <p> View More </p> </Link>
                     <div className="dropdown-divider mt-5"></div>
