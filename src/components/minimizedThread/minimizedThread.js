@@ -60,7 +60,7 @@ class MinimizedThread extends Component{
                 <div className="col-md-10 col-sm-12 col-8 justify-content-start ">
                    
                     <h4>{postTitle}</h4>
-                    <p><small className="text-muted" > {this.props.data.author} Time Posted: {this.props.data.timestamp} </small></p>
+                    <p><small className="text-muted" > {this.props.data.author} - Posted: {Date(this.props.data.timestamp)} </small></p>
                     <p>{postDesc}</p>
                     
                     <a style={aTag} target="_blank" href={`${this.props.data.jsbin}`}><img style={jsbinStyle} src={jsbinPIC} alt="jsbinPicture"/></a>

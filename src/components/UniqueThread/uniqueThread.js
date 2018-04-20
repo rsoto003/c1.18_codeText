@@ -60,7 +60,7 @@ class Thread extends Component{
 
             axios.get('/profile/data').then(res=>{
                 const submittedComment={
-                    name: res.data.name,
+                    user: res.data,
                     comment:this.state.textInput,
                     threadID: this.props.threadID
                 }
@@ -108,7 +108,7 @@ class Thread extends Component{
     }
 
     render(){
-
+        console.log('UNIQUE THREAD STATE: ', this.state)
 
         return(
             
