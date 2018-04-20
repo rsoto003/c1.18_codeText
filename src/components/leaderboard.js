@@ -23,7 +23,7 @@ class Leaderboard extends Component{
                 
             },
             data:[],
-            oldData:[]
+            oldOrder:''
         }
 
         this.upvoteClick=this.upvoteClick.bind(this);
@@ -34,22 +34,31 @@ class Leaderboard extends Component{
         this.Order()
     }
     
-    shouldComponentUpdate(){
-        if(this.state.data !== this.state.oldData)return true
-        else return false
-    }
-    componentWillUpdate(){
+    // shouldComponentUpdate(){
+    //     if(this.state.order !== this.state.oldOrder){
+
+    //         this.setState({
+    //             oldOrder: this.state.order
+    //         })
+    //         return true
+    //     }
+    //     else return false
+    // }
+    componentDidUpdate(){
         this.Order()
     }
     Order = ()=>{
-    
+        if(this.state.order !== this.state.oldOrder){
+
             axios.post('http://localhost:5000/leaderboardSort', {query: this.state.order}).then(res => {
                 console.log(res)
                 this.setState({
                     data: res.data,
-                    oldData:res.data
+                    order: this.state.order,
+                    oldOrder:this.state.order
                 })
-        })
+            })
+        }
     }
        
         // const usersArray=[]
@@ -124,10 +133,12 @@ class Leaderboard extends Component{
             comments: newCommentState,
             order: 'comments'
         })
+        this.forceUpdate()
     }
 
     render(){
-        
+        console.log(this.state.order, this.state.oldOrder)
+
         const upvoteUser =this.state.data.map( (item, index) => {
             return (
                 <tr key={index}>
