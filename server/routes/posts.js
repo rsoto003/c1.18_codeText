@@ -121,12 +121,18 @@ router.get('/posts', function(req, res, next){
         })
     })
 })
-
-router.get('/leaderboard', (req, res) => {
-    console.log('leaderboard sorting being checked', req);
+//sorting leaderboard
+router.get('/leaderboardSort', (req, res, next) => {
+    console.log('leaderboard sorting being checked');
     const leaderboardSorting = {
          votes: {rating: -1},
          comments: {__v: -1}
+     }
+     var leaderboardObj = {};
+     if(req.query.field && leaderboardSorting[req.query.field]){
+         leaderboardObj = leaderboardSorting[req.query.field];
+     } else {
+         leaderboardObj = {};
      }
      PostModel.find().sort(leaderboardSorting).then(data => {
          res.send({
@@ -134,7 +140,7 @@ router.get('/leaderboard', (req, res) => {
              results: data
          })
      }).catch(error=> {
-         console.log('leaderboard error: ', error);
+         console.log('leaderboard error!!!!!!!');
          res.send({
              confirmation: false,
              error: error

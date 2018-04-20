@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import userData from '../data/profiles'
+import userData from '../data/profiles';
 
 
 class Leaderboard extends Component{
@@ -64,6 +64,7 @@ class Leaderboard extends Component{
     }
 
     upvoteClick(){
+        console.log('upvoteClick being checked bro');
         const newUpvoteState = this.state.upvotes;
         newUpvoteState.style= {
             color: '#007bff',
@@ -81,8 +82,10 @@ class Leaderboard extends Component{
         })
 
 
+
     }
     commentClick(){
+        console.log('commentClick being checked');
         const newCommentState = this.state.comments;
         newCommentState.style= {
             color: '#007bff',
