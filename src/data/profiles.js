@@ -38,8 +38,8 @@ export default {
     username7:{
         firstName: 'Parker',
         lastName: 'Is a cool guy',
-        comments: 42,
-        'upvotes': 69
+        comments: 10000000,
+        'upvotes': 10000000000
     },
     username8:{
         firstName: 'Jeff',
