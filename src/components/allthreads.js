@@ -31,10 +31,11 @@ class AllThreads extends Component {
         this.fetchDataFromServer();
     }
     sortThread(object){
-        return this.state.postData;f
+        return this.state.postData;
     } 
 
     render(){
+        console.log(this.state)
         const threads = this.state.postData.map((item, index) => {
             return (
                 <MinimizedThread data={item} key={index}/>
