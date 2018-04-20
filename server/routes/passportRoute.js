@@ -9,6 +9,8 @@ router.get('/check', (req, res)=> {
     } else {
         authenticated = false;
     }
+
+    
     res.send({authenticated});
 });
 

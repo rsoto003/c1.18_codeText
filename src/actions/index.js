@@ -2,7 +2,7 @@ import types from './types';
 import axios from 'axios';
 
 export const signInCheck = () => {
-    const response = axios.get('http://localhost:5000/auth/check')
+    const response = axios.get('/auth/check')
 
     return{
         type: types.SIGN_IN_CHECK,
@@ -12,7 +12,7 @@ export const signInCheck = () => {
 }
 
 export const signOut = () => { 
-    axios.get('http://localhost:5000/auth/logout').then( res => {
+    axios.get('/auth/logout').then( res => {
         return {
             type: types.SIGN_OUT
         }
