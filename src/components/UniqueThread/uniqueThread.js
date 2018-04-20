@@ -138,7 +138,7 @@ class Thread extends Component{
                     <h2>{this.state.title}</h2>
                     <p><small className='text-muted' >Author: no one </small></p>
                     <p>{this.state.description}</p>
-                    <button className="btn btn-danger btn-sm" onClick={this.deletePost.bind(this)}>Delete Post</button>
+                   
                     <div className="dropdown-divider mb-5"></div>
                     <Comments threadID={this.state.threadID} data={this.state.data.res} />
                     {this.authForm()}
