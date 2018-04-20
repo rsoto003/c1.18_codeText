@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios'
 import UpvoteComments from '../upvotecomments';
-import Comments from '../comments'
+import Comments from '../comments';
+import {connect} from 'react-redux'
 
 const textAreaStyle={
     fontSize: '13px',
@@ -107,8 +108,29 @@ class Thread extends Component{
         })
     }
 
+    authForm(){
+        console.log(this.props)
+        if(this.props.auth === false){
+            return (
+                <div className="jumbotron">
+                    <h3 className="display text-center">Sign in to comment!</h3>
+                    <p className="text-center">Sign in with GitHub to get the full CodingCoops experience</p>
+                </div>
+            )
+        } else {
+            return(
+                <form style={formStyle} className="form-group" onSubmit={this.onSubmit} >
+                    <textarea style={textAreaStyle} id="comment" className="form-control" value={this.state.textInput} onChange={this.updateInput} ></textarea>
+                    <div style={this.state.alertStyle} className="alert alert-warning" role="alert"> Cannot leave comment empty! </div>
+
+                    <button className="btn btn-danger btn-sm mt-2" >Add a comment</button>
+                </form>    
+            )
+        }
+    }
+
     render(){
-        console.log('UNIQUE THREAD STATE: ', this.state)
+        
 
         return(
             
@@ -116,19 +138,19 @@ class Thread extends Component{
                     <h2>{this.state.title}</h2>
                     <p><small className='text-muted' >Author: no one </small></p>
                     <p>{this.state.description}</p>
-                    <button className="btn btn-danger btn-sm" onClick={this.deletePost.bind(this)}>Delete Post</button>
-                        <div className="dropdown-divider mb-5"></div>
-                        <Comments threadID={this.state.threadID} data={this.state.data.res} />
-                    <form style={formStyle} className="form-group" onSubmit={this.onSubmit} >
-                        <textarea style={textAreaStyle} id="comment" className="form-control" value={this.state.textInput} onChange={this.updateInput} ></textarea>
-                        <div style={this.state.alertStyle} className="alert alert-warning" role="alert"> Cannot leave comment empty! </div>
-
-                        <button className="btn btn-danger btn-sm mt-2" >Add a comment</button>
-
-                    </form>     
+                   
+                    <div className="dropdown-divider mb-5"></div>
+                    <Comments threadID={this.state.threadID} data={this.state.data.res} />
+                    {this.authForm()}
                 </div>
         )
     }
 };
 
-export default Thread;
+function mapStateToProps(state){
+    return{
+        auth: state.user.auth
+    }
+}
+
+export default connect(mapStateToProps)(Thread);

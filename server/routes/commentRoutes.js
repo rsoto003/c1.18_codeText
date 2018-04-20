@@ -31,26 +31,19 @@ router.post('/comment/vote', (req,res) => {
                 matchId = target.commentRatedUsers[i]._id
             }
         }
-
         if(!match){
             target.commentRatedUsers.push({
                 name: req.body.user.name,
                 login: req.body.user.login,
                 vote: req.body.vote
             })
-            if (req.body.vote==='up'){
-                target.rating +=1;
-            } else {
-                target.rating -=1;
-            }  
+
         } else {
             if(target.commentRatedUsers.id(matchId).vote==='up'){
                 if(req.body.vote ==='up'){
-                    target.rating -=1
                     target.commentRatedUsers.id(matchId).remove() 
                 } else {
                     target.commentRatedUsers.id(matchId).remove() 
-                    target.rating -=2
                     target.commentRatedUsers.push({
                         name: req.body.user.name,
                         login: req.body.user.login,
@@ -59,7 +52,6 @@ router.post('/comment/vote', (req,res) => {
                 }
             } else { 
                 if(req.body.vote !=='up'){
-                    target.rating +=1
                     target.commentRatedUsers.id(matchId).remove()
                 } else {
                     target.commentRatedUsers.id(matchId).remove() 
@@ -68,12 +60,20 @@ router.post('/comment/vote', (req,res) => {
                         login: req.body.user.login,
                         vote: 'up'
                     })
-                    target.rating +=2
                 }
             }
         }
+        console.log(target.commentRatedUsers)
+        let upCount = null;
+        let downCount = null;
+        for( let i =0; i<target.commentRatedUsers.length; i++){
+            if( target.commentRatedUsers[i].vote ==='up' )upCount ++
+            else downCount ++
+        }
+        target.rating = upCount - downCount
+
         data.save(err=>{
-            if(err) throw err;
+            // if(err) throw err;
         })
         res.send(data.comments.id(req.body.commentData._id));
     } )

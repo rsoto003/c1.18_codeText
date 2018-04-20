@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import userData from '../data/profiles'
-
+import userData from '../data/profiles';
+import axios from 'axios';
 
 class Leaderboard extends Component{
     constructor(props){
         super(props)
         this.state={
-            order: 'upvotes',
+            order: 'votes',
             upvotes:{
                 // selected: true,
                 style:{
@@ -21,49 +21,82 @@ class Leaderboard extends Component{
                     cursor: 'pointer'
                 }
                 
-            }
+            },
+            data:[],
+            oldOrder:''
         }
 
         this.upvoteClick=this.upvoteClick.bind(this);
         this.commentClick=this.commentClick.bind(this);
     }
 
-    Order = (orderSelect)=>{
-        const usersArray=[]
-        const users = Object.keys(userData).map( (item, index) => {
-            usersArray.push(userData[item])
-        } )
-        const upvoteArray=usersArray.slice();
-        const output=[];
-        let isOrdered=false;
-           
-        while ( upvoteArray.length !== 0 ){
-            
-            let highest = null;
-            let highestIndex = null;
-            let reorder = false;
-            highest = upvoteArray[0];
-
-            for ( let i =0; i<upvoteArray.length; i++){
-                if ( highest[orderSelect] <= upvoteArray[i][orderSelect] ){
-                    highest = upvoteArray[i];
-                    reorder = true;
-                    highestIndex = i;
-                }
-            }
-            if (reorder === false){
-                upvoteArray.splice(0,1)
-            } else {
-                upvoteArray.splice(highestIndex,1)
-            }
-            
-            output.push(highest)
-    
-        }
-        return output
+    componentWillMount(){
+        this.Order()
     }
+    
+    // shouldComponentUpdate(){
+    //     if(this.state.order !== this.state.oldOrder){
+
+    //         this.setState({
+    //             oldOrder: this.state.order
+    //         })
+    //         return true
+    //     }
+    //     else return false
+    // }
+    componentDidUpdate(){
+        this.Order()
+    }
+    Order = ()=>{
+        if(this.state.order !== this.state.oldOrder){
+
+            axios.post('http://localhost:5000/leaderboardSort', {query: this.state.order}).then(res => {
+                console.log(res)
+                this.setState({
+                    data: res.data,
+                    order: this.state.order,
+                    oldOrder:this.state.order
+                })
+            })
+        }
+    }
+       
+        // const usersArray=[]
+        // const users = Object.keys(userData).map( (item, index) => {
+        //     usersArray.push(userData[item])
+        // } )
+        // const upvoteArray=usersArray.slice();
+        // const output=[];
+        // let isOrdered=false;
+           
+        // while ( upvoteArray.length !== 0 ){
+            
+        //     let highest = null;
+        //     let highestIndex = null;
+        //     let reorder = false;
+        //     highest = upvoteArray[0];
+
+        //     for ( let i =0; i<upvoteArray.length; i++){
+        //         if ( highest[orderSelect] <= upvoteArray[i][orderSelect] ){
+        //             highest = upvoteArray[i];
+        //             reorder = true;
+        //             highestIndex = i;
+        //         }
+        //     }
+        //     if (reorder === false){
+        //         upvoteArray.splice(0,1)
+        //     } else {
+        //         upvoteArray.splice(highestIndex,1)
+        //     }
+            
+        //     output.push(highest)
+    
+        // }
+        // return output
+    // }
 
     upvoteClick(){
+        console.log('upvoteClick being checked bro');
         const newUpvoteState = this.state.upvotes;
         newUpvoteState.style= {
             color: '#007bff',
@@ -77,12 +110,14 @@ class Leaderboard extends Component{
         this.setState({
             upvotes: newUpvoteState,
             comments: newCommentState,
-            order: 'upvotes'
+            order: 'votes'
         })
+
 
 
     }
     commentClick(){
+        console.log('commentClick being checked');
         const newCommentState = this.state.comments;
         newCommentState.style= {
             color: '#007bff',
@@ -98,21 +133,24 @@ class Leaderboard extends Component{
             comments: newCommentState,
             order: 'comments'
         })
+        this.forceUpdate()
     }
 
     render(){
+        console.log(this.state.order, this.state.oldOrder)
 
-        
-        const upvoteUser =this.Order(this.state.order).map( (item, index) => {
+        const upvoteUser =this.state.data.map( (item, index) => {
             return (
                 <tr key={index}>
-                    <th scope="row" >{index+1}</th>
-                    <td>{item.firstName} {item.lastName}</td>
-                    <td>{item.upvotes}</td>
-                    <td>{item.comments}</td>
+                    <th scope="row" ></th>
+                    <td>{item.title} </td>
+                    <td>{item.rating}</td>
+                    <td>{item.__v}</td>
                 </tr>
             )
         })
+        // const commentsUser = this.state.data.map( ( item, index ))
+        
 
         return(
             <div className="col-sm-9 col-md-10 mt-4 offset-md-2" >

@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import {signOut} from '../../actions'
 
 
+
 class ProfileDropdown extends Component{
     constructor(props){
         super(props)
@@ -16,10 +17,14 @@ class ProfileDropdown extends Component{
                 right:0,
                 left:'unset'
             },
+            userData:{
+
+            }
         }
         this.toggleMenuOn = this.toggleMenuOn.bind(this);
         this.componentClickCheck = this.componentClickCheck.bind(this)
     }
+
 
     componentDidUpdate(){
         if ( this.state.toggle ){
@@ -38,15 +43,21 @@ class ProfileDropdown extends Component{
         }
     }
 
+    componentWillMount(){
+        axios.get('/profile/data').then(res=>{
+            console.log(res)
+            this.setState({
+                userData: res.data
+            })
+        })
+    }
+
     toggleMenuOn(){
-        // const newToggleState = this.state.toggle ? false : true;
-        // const newDropdownDisplay = this.state.toggle ? {display: 'none'} : {display: 'block'}
         this.setState({
             toggle: true,
             dropdownDisplay: {...this.state.dropdownDisplay, display:'block'}
         })
     }
-
 
 
     authRender(){
@@ -56,26 +67,51 @@ class ProfileDropdown extends Component{
             )
         } else{
             return(
-                <a href="http://localhost:5000/auth/github" className="btn btn-dark text-white">
+                <a href="/auth/github" className="btn btn-dark text-white">
                     <i className="fab fa-github fa-2x text-white pr-2"></i> Sign in with gitHub!
                 </a>
             )
         }
     }
+    authProfilePic(){
+        const pointer = {cursor: 'pointer'};
+        const picCircle = {
+            width: '2em',
+            height: '2em',
+            cursor:'pointer',
+            borderRadius: '50%',
+            backgroundImage: `url(${this.state.userData.avatar_url})`,
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            display: 'inlineBlock',
+            verticalAlign: '-.125em',
+            boxSizing: 'borderBox'
+        }
+        if(this.props.auth){
+            return(
+                <div style={picCircle}></div>
+            )
+        } else{
+            return(
+                <div className="btn btn-primary">Sign in</div>
+            )
+        }
+    }
 
     render(){
-        const pointer = {cursor: 'pointer'};
+
+
+        console.log(this.state)
         const dropdownStyle = {right:0, left:'unset'}
         const dropdownItem= {padding: '.25rem 1.5rem', whiteSpace:'noWrap'} 
-
-        
-
         return(
+            
             <div onClick={this.toggleMenuOn} className="dropdown">
-                <i style={pointer} className="fas fa-user-circle fa-2x text-white"></i>
+                {this.authProfilePic()}
                 <div style={this.state.dropdownDisplay} className="dropdown-menu">                    
                     <form style={dropdownItem} className="form-group">
                         {this.authRender()}
+                        
                     </form>
 
                 </div>

@@ -1,0 +1,32 @@
+.carousel-caption{
+    margin-left: -200px !important;
+    top: 99px;
+}
+
+.mobile-bg{
+    background-image: linear-gradient(-140deg, #b7e8fc 15%, #02BBDF 70%);
+    height: 100vh;
+}
+
+.full-width-image{
+    position: relative;    
+    background-image: linear-gradient(-140deg, #b7e8fc 15%, #02BBDF 70%);
+    height: 100vh;
+ }
+ 
+ .full-width-image img {
+   width: 100% !important;
+ }
+
+ .carousel-caption > h5 {
+     width: 73% !important;
+ }
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+   
+
+}

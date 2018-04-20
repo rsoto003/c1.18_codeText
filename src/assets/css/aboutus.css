@@ -8,12 +8,15 @@
 
 .text {
     margin: 0 auto;
+    font-size: 2rem;
 }
 
 .about {
     float: right;
+    position: relative;
+    margin-left: 10%;
     width: 50%;
-    box-shadow: 50px 50px black;
+    box-shadow: 70px 70px black;
 }
 
 .photo-container {
@@ -22,9 +25,14 @@
 }
 
 .sasha-photo {
-    box-shadow: 50px 50px #02BBDF;
+    box-shadow: 70px 70px #02BBDF;
     width: 60%;
     margin: 5%;
+}
+
+
+.github_link {
+    font-size: 24px;
 }
 
 .sasha-header {
@@ -34,7 +42,7 @@
 }
 
 .hanran-photo {
-    box-shadow: 50px 50px #FFE3C4;
+    box-shadow: 70px 70px #FFE3C4;
     width: 60%;
     margin: 5%;
 }
@@ -46,7 +54,7 @@
 }
 
 .ryan-photo {
-    box-shadow: 50px 50px #FF9705;
+    box-shadow: 70px 70px #FF9705;
     width: 60%;
     margin: 5%;
 }
@@ -58,7 +66,7 @@
 }
 
 .will-photo {
-    box-shadow: 50px 50px #F02F25;
+    box-shadow: 70px 70px #F02F25;
     width: 60%;
     margin: 5%;
 }
@@ -70,7 +78,7 @@
 }
 
 .picture-row-one {
-    margin-top: 30%;
+    margin-top: 10%;
 }
 
 .picture-row-two {
@@ -102,19 +110,21 @@
 
 h2 {
     margin-top: -4%;
+    font-size: 3rem;
 }
 
 h3 {
     margin-top: 4%;
+    font-size: 2rem;
 }
 
-/* For mobile phones: */
+/* For mobile phones:
 [class*="col-"] {
     width: 100%;
 }
 @media only screen and (min-width: 600px) {
     /* For tablets: */
-    .col-s-1 {width: 8.33%;}
+    /* .col-s-1 {width: 8.33%;}
     .col-s-2 {width: 16.66%;}
     .col-s-3 {width: 25%;}
     .col-s-4 {width: 33.33%;}
@@ -129,7 +139,7 @@ h3 {
 }
 @media only screen and (min-width: 768px) {
     /* For desktop: */
-    .col-1 {width: 8.33%;}
+    /* .col-1 {width: 8.33%;}
     .col-2 {width: 16.66%;}
     .col-3 {width: 25%;}
     .col-4 {width: 33.33%;}
@@ -141,14 +151,57 @@ h3 {
     .col-10 {width: 83.33%;}
     .col-11 {width: 91.66%;}
     .col-12 {width: 100%;}
-}
+/* }   */
 
 @media screen and (max-width: 1050px) {
-    /* .will-header {
-        font-weight: bold;
-    } */
     .developer-name {
         position: relative;
         left: 15%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .team {
+        font-size: 3rem;
+        padding: 0%;
+    }
+    .about {
+        box-shadow: 20px 20px black;
+        margin-left: 2%;
+    }
+    p {
+        font-size: 14px;
+    }
+    .picture-row-one {
+        margin-top: 8%;
+    }
+    .developer-name {
+        font-size: 1rem;
+    }
+    .sasha-photo {
+        box-shadow: 20px 20px #02BBDF;
+        width: 60%;
+        margin: 5%;
+    }
+    .hanran-photo {
+        box-shadow: 20px 20px #FFE3C4;
+        width: 60%;
+        margin: 5%;
+    }
+    .ryan-photo {
+        box-shadow: 20px 20px #FF9705;
+        width: 60%;
+        margin: 5%;
+    }
+    .will-photo {
+        box-shadow: 20px 20px #F02F25;
+        width: 60%;
+        margin: 5%;
+    }
+    h3 {
+        font-size: 12px;
+    }
+    .github_link {
+        font-size: 12px;
     }
 }

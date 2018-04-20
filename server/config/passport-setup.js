@@ -6,7 +6,7 @@ const User = require('../models/users')
 passport.use(new GitHubStrategy({
     clientID: 'a92e4125b337edb86197',
     clientSecret: '592abb03ff862e09c389c59109769ed2850bb46a',
-    callbackURL: "http://localhost:5000/auth/callback"
+    callbackURL: "http://codingcoops.com/auth/callback"
     },(accessToken, refreshToken, profile, done) => {
         console.log(profile)
         //check if user already exists
