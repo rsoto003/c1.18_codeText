@@ -126,9 +126,12 @@ class NewPost extends Component{
             return(
                 <div className="jumbotron">
                     <h1 className="text-center">You need to be signed in to post a question !</h1>
-                    <a href="http://localhost:5000/auth/github" className="btn btn-dark text-white">
-                        <i className="fab fa-github fa-2x text-white pr-2"></i> Sign in with gitHub!
-                    </a>
+                        <p className="text-center mt-5 ">
+                            <a href="http://localhost:5000/auth/github" className="btn btn-dark text-white">
+                                <i className="fab fa-github fa-2x text-white pr-2"></i> Sign in with gitHub!
+                            </a>
+                        </p>
+
                 </div>
             )
         }
