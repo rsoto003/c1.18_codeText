@@ -53,15 +53,6 @@ class App extends Component {
                     <Switch>
                         <Route exact path="/home" component={Home} />                        
                       
-                        {/* <Route exact path="/" render={ ()=> (
-                        <Redirect to="/home/newest" component={AllThreads} />
-                         )} /> */}
-
-                        {/* <Route exact path="/home" render={ ()=> (
-                            <Redirect to="/home/newest" />
-                        )} /> */}
-
-                        <Route path="/home/newest" component={AllThreads} />
                         <Route path="/home/:sort?" component={AllThreads} />
                         <Route path='/newPost' component={NewPost}/>
                         <Route path='/thread/:threadID' component={UniqueThread}  />
