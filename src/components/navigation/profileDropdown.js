@@ -67,7 +67,7 @@ class ProfileDropdown extends Component{
             )
         } else{
             return(
-                <a href="http://localhost:5000/auth/github" className="btn btn-dark text-white">
+                <a href="/auth/github" className="btn btn-dark text-white">
                     <i className="fab fa-github fa-2x text-white pr-2"></i> Sign in with gitHub!
                 </a>
             )
