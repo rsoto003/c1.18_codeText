@@ -1,12 +1,11 @@
+
 import React, {Component} from 'react';
-import {Route, Redirect, withRouter} from 'react-router-dom';
+import {Switch, Route, Redirect, withRouter} from 'react-router-dom';
 import axios from 'axios';
 import '../assets/css/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {connect} from 'react-redux'
-import {signInCheck} from '../actions'
-
-
+import {connect} from 'react-redux';
+import {signInCheck} from '../actions';
 import Navbar from './navigation/navbar';
 import NewPost from './newPost';
 import Sidebar from './sidebar';
@@ -15,6 +14,7 @@ import AllThreads from './allthreads';
 import Leaderboard from './leaderboard';
 import Register from './account/register';
 import AboutUs from './aboutus';
+import Home from './home';
 
 
 
@@ -23,8 +23,6 @@ const UniqueThread = ({ match }) => {
         <Thread threadID={match.params.threadID} />
     )
 }
-
-
 
 class App extends Component {
     constructor(props){
@@ -42,20 +40,36 @@ class App extends Component {
                 <div className="container-fluid">
                     <div className="row">
                     
-                        <Sidebar/>
-                        
-                        <Route exact path="/" render={ ()=> (
-                            <Redirect to="/home/newest" component={AllThreads} />
-                        )} />
-                        <Route exact path="/home" render={ ()=> (
+                    {/* <Sidebar/> */}
+
+                    <Route exact path="/" render={ ()=> (
+                        <Redirect to="/home" component={Home} />
+                    )} />
+                    
+                    <Switch>
+                        <Route exact path="/home" />
+                        <Route component={Sidebar}/>
+                    </Switch>
+                    <Switch>
+                        <Route exact path="/home" component={Home} />                        
+                      
+                        {/* <Route exact path="/" render={ ()=> (
+                        <Redirect to="/home/newest" component={AllThreads} />
+                         )} /> */}
+
+                        {/* <Route exact path="/home" render={ ()=> (
                             <Redirect to="/home/newest" />
-                        )} />
+                        )} /> */}
+
+                        <Route path="/home/newest" component={AllThreads} />
                         <Route path="/home/:sort?" component={AllThreads} />
                         <Route path='/newPost' component={NewPost}/>
                         <Route path='/thread/:threadID' component={UniqueThread}  />
                         <Route path='/leaderboard' component={Leaderboard} />
                         <Route path="/register" component={Register}/>
                         <Route path="/aboutus" component={AboutUs}/>
+                    </Switch>                    
+                    
                     </div>
                 </div>
             </div>

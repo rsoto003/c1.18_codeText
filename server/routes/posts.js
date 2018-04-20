@@ -32,16 +32,45 @@ router.post('/posts/vote', (req,res) => {
             }
 
         } else {
-            console.log('THIS IS DATA: '+ data.ratedUsers.id(req.body.user._id))
-            data.ratedUsers.id(matchId).remove()
-            if (req.body.vote ==='up'){
-                data.rating -=1
-            } else {
-                data.rating += 1
-            }
+           if(data.ratedUsers.id(matchId).vote==='up'){
+               if(req.body.vote ==='up'){
+                   data.rating -=1
+                   data.ratedUsers.id(matchId).remove()
+               } else {
+                    data.rating -=2
+                    data.ratedUsers.id(matchId).remove()
+                    data.ratedUsers.push({
+                        name:req.body.user.name,
+                        login: req.body.user.login,
+                        vote: 'down'
+                    })
+               }
+           } else{
+               if(req.body.vote!== 'up'){
+                   data.rating +=1
+                   data.ratedUsers.id(matchId).remove()
+               } else{
+                   data.rating +=2
+                   data.ratedUsers.id(matchId).remove()
+                   data.ratedUsers.push({
+                    name:req.body.user.name,
+                    login: req.body.user.login,
+                    vote: 'up'
+                })
+               }
+           }
         }
+        console.log(data)
+        let upCount=null;
+        let downCount=null;
+        for( let i =0; i<data.ratedUsers.length; i++){
+            if(data.ratedUsers[i].vote==='up') upCount++
+            else downCount++
+        }
+        data.rating = upCount - downCount
+
         data.save(err=>{
-            if(err)console.log('ERROR OCCURED: '+ err);
+            // if(err)console.log('ERROR OCCURED: '+ err);
         })
         res.send(data)
 
