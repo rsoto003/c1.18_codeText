@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MinimizedThread from './minimizedThread/minimizedThread';
 import FilterFeed from './filterFeed';
 import axios from 'axios';
+import jsbinPIC from '../assets/images/jsbin.png'; 
 
 class AllThreads extends Component {
     constructor(props){
@@ -44,7 +45,7 @@ class AllThreads extends Component {
             )
         });
         return (
-            <div className="col-sm-12 col-md-10 mt-md-4 offset-sm-0 offset-md-2  pl-sm-0 pl-md-5 pr-sm-5 pr-md-0 ">
+            <div className="col-sm-12 col-md-10 mt-md-4 offset-sm-0 offset-md-2 pl-sm-0 pl-md-5 pr-sm-5">
                 {/* <div className="row justify-content-end">
                     <FilterFeed/>                 
                 </div> */}
