@@ -95,7 +95,7 @@ router.post('/posts/unique-thread', (req, res ) => {
 router.post('/posts/new', (req, res, next) => {
 
     const {name, newTitleState, newDescriptionState, JsbinState } = req.body;
-
+    console.log(req.body.name)
     if( newTitleState.length===0 || newDescriptionState.length===0 ){
         console.log('Invalid post data!: ', req.body)
         res.send('ERROR. INVALID POST DATA')

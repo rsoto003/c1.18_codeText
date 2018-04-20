@@ -107,14 +107,15 @@ class NewPost extends Component{
             console.log('sending the payload')
 
             axios.get('/profile/data').then(res=>{
+                console.log(res);
+
                 const submittedData = {
-                    user: res.data,
+                    name: res.data.name,
                     newTitleState: this.state.titleInput,
                     newDescriptionState: this.state.descriptionInput,
                     JsbinState: this.state.JSBINLink
                 }
                 axios.post('/posts/new', submittedData).then(res =>{
-                    console.log(res);
                     this.props.history.push('/home/newest');
                 })
             })

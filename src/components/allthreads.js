@@ -31,7 +31,7 @@ class AllThreads extends Component {
         this.fetchDataFromServer();
     }
     sortThread(object){
-        return this.state.postData;f
+        return this.state.postData;
     } 
 
     render(){
