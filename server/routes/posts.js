@@ -25,19 +25,12 @@ router.post('/posts/vote', (req,res) => {
                 name:req.body.user.name,
                 login: req.body.user.login
             })
-            if (req.body.vote ==='up'){
-                data.rating +=1
-            } else {
-                data.rating -= 1
-            }
 
         } else {
            if(data.ratedUsers.id(matchId).vote==='up'){
                if(req.body.vote ==='up'){
-                   data.rating -=1
                    data.ratedUsers.id(matchId).remove()
                } else {
-                    data.rating -=2
                     data.ratedUsers.id(matchId).remove()
                     data.ratedUsers.push({
                         name:req.body.user.name,
@@ -47,10 +40,8 @@ router.post('/posts/vote', (req,res) => {
                }
            } else{
                if(req.body.vote!== 'up'){
-                   data.rating +=1
                    data.ratedUsers.id(matchId).remove()
                } else{
-                   data.rating +=2
                    data.ratedUsers.id(matchId).remove()
                    data.ratedUsers.push({
                     name:req.body.user.name,

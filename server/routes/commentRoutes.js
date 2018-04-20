@@ -37,11 +37,7 @@ router.post('/comment/vote', (req,res) => {
                 login: req.body.user.login,
                 vote: req.body.vote
             })
-            if (req.body.vote==='up'){
-                target.rating +=1;
-            } else {
-                target.rating -=1;
-            }  
+
         } else {
             if(target.commentRatedUsers.id(matchId).vote==='up'){
                 if(req.body.vote ==='up'){
