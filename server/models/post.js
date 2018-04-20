@@ -24,6 +24,7 @@ const commentSchema = new mongoose.Schema({
 
 
 var PostSchema = new mongoose.Schema({
+    author: {type:String},
     title: {type: String},
     description: {type: String},
     jsbin: {type: String},
