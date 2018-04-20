@@ -5,7 +5,7 @@ import banner from '../assets/images/banner-1.svg';
 import homeSliderDesktop from '../assets/images/home-slider.jpg';
 
 export default () => {
-    const overflow={overflow:visible}
+    const overflow={overflow:"visible"}
     return (
 
         
