@@ -151,32 +151,27 @@ router.get('/posts', function(req, res, next){
     })
 })
 //sorting leaderboard
-router.get('/leaderboardSort', (req, res, next) => {
+router.post('/leaderboardSort', (req, res, next) => {
     console.log('leaderboard sorting being checked');
     const leaderboardSorting = {
          votes: {rating: -1},
          comments: {__v: -1}
      }
      var leaderboardObj = {};
-     if(req.query.field && leaderboardSorting[req.query.field]){
-         leaderboardObj = leaderboardSorting[req.query.field];
+     console.log(req.body)
+     if(req.body.query && leaderboardSorting[req.body.query]){
+
+         leaderboardObj = leaderboardSorting[req.body.query];
+
      } else {
          leaderboardObj = {};
      }
-     PostModel.find().sort(leaderboardSorting).then(data => {
-         res.send({
-             confirmation: true,
-             results: data
-         })
-     }).catch(error=> {
-         console.log('leaderboard error!!!!!!!');
-         res.send({
-             confirmation: false,
-             error: error
-         })
-     })
- })
+     console.log('PASSED LEADERBOARD SORTING')
 
+     PostModel.find().sort(leaderboardSorting[req.body.query]).then(data => {
+         res.send(data);
+    })
+})
 
 
 router.post('/posts/delete', (req, res) => {

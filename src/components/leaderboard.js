@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import userData from '../data/profiles';
-
+import axios from 'axios';
 
 class Leaderboard extends Component{
     constructor(props){
         super(props)
         this.state={
-            order: 'upvotes',
+            order: 'votes',
             upvotes:{
                 // selected: true,
                 style:{
@@ -30,7 +30,16 @@ class Leaderboard extends Component{
 
     
 
-    Order = (orderSelect)=>{
+    Order = ()=>{
+    
+            axios.post('http://localhost:5000/leaderboardSort', {query: this.state.order}).then(res => {
+                
+                console.log(res);
+               
+            
+        })
+    }
+       
         // const usersArray=[]
         // const users = Object.keys(userData).map( (item, index) => {
         //     usersArray.push(userData[item])
@@ -63,10 +72,7 @@ class Leaderboard extends Component{
     
         // }
         // return output
-        axios.get('/leaderboardSort', {query:orderSelect}).then(res => {
-            console.log(res);
-        })
-    }
+    // }
 
     upvoteClick(){
         console.log('upvoteClick being checked bro');
@@ -83,7 +89,7 @@ class Leaderboard extends Component{
         this.setState({
             upvotes: newUpvoteState,
             comments: newCommentState,
-            order: 'upvotes'
+            order: 'votes'
         })
 
 
@@ -109,18 +115,18 @@ class Leaderboard extends Component{
     }
 
     render(){
-
+        this.Order();
         
-        const upvoteUser =this.Order(this.state.order).map( (item, index) => {
-            return (
-                <tr key={index}>
-                    <th scope="row" >{index+1}</th>
-                    <td>{item.firstName} {item.lastName}</td>
-                    <td>{item.upvotes}</td>
-                    <td>{item.comments}</td>
-                </tr>
-            )
-        })
+        // const upvoteUser =this.Order(this.state.order).map( (item, index) => {
+        //     return (
+        //         <tr key={index}>
+        //             <th scope="row" >{index+1}</th>
+        //             <td>{item.firstName} {item.lastName}</td>
+        //             <td>{item.upvotes}</td>
+        //             <td>{item.comments}</td>
+        //         </tr>
+        //     )
+        // })
 
         return(
             <div className="col-sm-9 col-md-10 mt-4 offset-md-2" >
@@ -135,7 +141,7 @@ class Leaderboard extends Component{
                         </tr>
                     </thead>
                     <tbody>
-                        {upvoteUser}
+                        {/* {upvoteUser} */}
                     </tbody>
                 </table>
             </div>
