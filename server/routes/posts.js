@@ -53,11 +53,18 @@ router.post('/posts/vote', (req,res) => {
                 })
                }
            }
-
-
         }
+        console.log(data)
+        let upCount=null;
+        let downCount=null;
+        for( let i =0; i<data.ratedUsers.length; i++){
+            if(data.ratedUsers[i].vote==='up') upCount++
+            else downCount++
+        }
+        data.rating = upCount - downCount
+
         data.save(err=>{
-            if(err)console.log('ERROR OCCURED: '+ err);
+            // if(err)console.log('ERROR OCCURED: '+ err);
         })
         res.send(data)
 
