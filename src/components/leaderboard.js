@@ -21,22 +21,34 @@ class Leaderboard extends Component{
                     cursor: 'pointer'
                 }
                 
-            }
+            },
+            data:[],
+            oldData:[]
         }
 
         this.upvoteClick=this.upvoteClick.bind(this);
         this.commentClick=this.commentClick.bind(this);
     }
 
+    componentWillMount(){
+        this.Order()
+    }
     
-
+    shouldComponentUpdate(){
+        if(this.state.data !== this.state.oldData)return true
+        else return false
+    }
+    componentWillUpdate(){
+        this.Order()
+    }
     Order = ()=>{
     
             axios.post('http://localhost:5000/leaderboardSort', {query: this.state.order}).then(res => {
-                
-                console.log(res);
-               
-            
+                console.log(res)
+                this.setState({
+                    data: res.data,
+                    oldData:res.data
+                })
         })
     }
        
@@ -115,18 +127,18 @@ class Leaderboard extends Component{
     }
 
     render(){
-        this.Order();
         
-        // const upvoteUser =this.Order(this.state.order).map( (item, index) => {
-        //     return (
-        //         <tr key={index}>
-        //             <th scope="row" >{index+1}</th>
-        //             <td>{item.firstName} {item.lastName}</td>
-        //             <td>{item.upvotes}</td>
-        //             <td>{item.comments}</td>
-        //         </tr>
-        //     )
-        // })
+        const upvoteUser =this.state.data.map( (item, index) => {
+            return (
+                <tr key={index}>
+                    <th scope="row" ></th>
+                    <td>{item.title} </td>
+                    <td>{item.rating}</td>
+                    <td>{item.__v}</td>
+                </tr>
+            )
+        })
+        
 
         return(
             <div className="col-sm-9 col-md-10 mt-4 offset-md-2" >
@@ -141,7 +153,7 @@ class Leaderboard extends Component{
                         </tr>
                     </thead>
                     <tbody>
-                        {/* {upvoteUser} */}
+                        {upvoteUser}
                     </tbody>
                 </table>
             </div>
