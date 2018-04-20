@@ -36,7 +36,7 @@ class AllThreads extends Component {
     } 
 
     render(){
-        
+        console.log(this.props)
         const threads = this.state.postData.map((item, index) => {
             return (
                 <MinimizedThread data={item} key={index}/>
