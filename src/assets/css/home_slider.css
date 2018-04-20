@@ -9,7 +9,6 @@
 }
 
 .full-width-image{
-    width: 100vw;
     position: relative;    
     background-image: linear-gradient(-140deg, #b7e8fc 15%, #02BBDF 70%);
     height: 100vh;

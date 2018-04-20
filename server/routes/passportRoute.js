@@ -31,7 +31,7 @@ router.get('/logout', (req,res)=>{
 router.get('/callback',passport.authenticate('github') , (req,res) => {
         // res.send(req.user)
         console.log('it worked!**********')
-        res.redirect('/')
+        res.redirect('/home/newest')
     }
 );
 

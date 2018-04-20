@@ -115,7 +115,7 @@ class NewPost extends Component{
                 }
                 axios.post('/posts/new', submittedData).then(res =>{
                     console.log(res);
-                    this.props.history.push('/');
+                    this.props.history.push('/home/newest');
                 })
             })
         }
