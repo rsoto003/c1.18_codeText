@@ -108,7 +108,7 @@ class Thread extends Component{
     }
 
     render(){
-
+        console.log('UNIQUE THREAD STATE: ', this.state)
 
         return(
             
