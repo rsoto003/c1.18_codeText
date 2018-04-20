@@ -11,7 +11,7 @@
 .new-bg{
     background-color: #202020 !important;
 }
-/* Side bar and lists */
+/* Side bar and lists begin*/
 .sidebar {
     position: fixed !important;
     top: 83px;
@@ -50,6 +50,7 @@ ul.nav > li > a.text-new-color1:focus {
     color: #ffffff;
     background-color: #0299b6;
 }
+/* Side bar and lists end*/
 
 @media only screen and (max-width: 600px) {
    

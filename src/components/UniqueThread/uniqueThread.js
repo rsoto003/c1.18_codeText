@@ -108,6 +108,7 @@ class Thread extends Component{
     }
 
     render(){
+        
 
         return(
             
