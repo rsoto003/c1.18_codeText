@@ -21,7 +21,7 @@ export default () => {
 
                         <hr className="my-4 mb-4"/>
                         <h4 className="text-dark font-weight-bold mb-4">Join us and begin your adventure here with us today.</h4>
-                        <Link to="/register" className="btn btn-danger font-weight-bold mr-2" >Log In</Link>  
+                        <Link to="/auth/github" className="btn btn-danger font-weight-bold mr-2" >Log In</Link>  
                         <Link to="/home/newest" className="btn btn-danger font-weight-bold">Skip</Link>
                     </div>
                 </div>                
