@@ -28,39 +28,44 @@ class Leaderboard extends Component{
         this.commentClick=this.commentClick.bind(this);
     }
 
-    Order = (orderSelect)=>{
-        const usersArray=[]
-        const users = Object.keys(userData).map( (item, index) => {
-            usersArray.push(userData[item])
-        } )
-        const upvoteArray=usersArray.slice();
-        const output=[];
-        let isOrdered=false;
-           
-        while ( upvoteArray.length !== 0 ){
-            
-            let highest = null;
-            let highestIndex = null;
-            let reorder = false;
-            highest = upvoteArray[0];
-
-            for ( let i =0; i<upvoteArray.length; i++){
-                if ( highest[orderSelect] <= upvoteArray[i][orderSelect] ){
-                    highest = upvoteArray[i];
-                    reorder = true;
-                    highestIndex = i;
-                }
-            }
-            if (reorder === false){
-                upvoteArray.splice(0,1)
-            } else {
-                upvoteArray.splice(highestIndex,1)
-            }
-            
-            output.push(highest)
     
-        }
-        return output
+
+    Order = (orderSelect)=>{
+        // const usersArray=[]
+        // const users = Object.keys(userData).map( (item, index) => {
+        //     usersArray.push(userData[item])
+        // } )
+        // const upvoteArray=usersArray.slice();
+        // const output=[];
+        // let isOrdered=false;
+           
+        // while ( upvoteArray.length !== 0 ){
+            
+        //     let highest = null;
+        //     let highestIndex = null;
+        //     let reorder = false;
+        //     highest = upvoteArray[0];
+
+        //     for ( let i =0; i<upvoteArray.length; i++){
+        //         if ( highest[orderSelect] <= upvoteArray[i][orderSelect] ){
+        //             highest = upvoteArray[i];
+        //             reorder = true;
+        //             highestIndex = i;
+        //         }
+        //     }
+        //     if (reorder === false){
+        //         upvoteArray.splice(0,1)
+        //     } else {
+        //         upvoteArray.splice(highestIndex,1)
+        //     }
+            
+        //     output.push(highest)
+    
+        // }
+        // return output
+        axios.get('/leaderboardSort', {query:orderSelect}).then(res => {
+            console.log(res);
+        })
     }
 
     upvoteClick(){
