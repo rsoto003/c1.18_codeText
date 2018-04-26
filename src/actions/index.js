@@ -12,9 +12,9 @@ export const signInCheck = () => {
 }
 
 export const signOut = () => { 
-    axios.get('/auth/logout').then( res => {
+    axios.get('/auth/logout')
+    console.log('something')
         return {
             type: types.SIGN_OUT
         }
-    })
 }
