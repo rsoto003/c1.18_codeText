@@ -12,6 +12,9 @@
     },
     "/auth": {
       "target": "http://localhost:5000"
+    },
+    "/profile:": {
+      "target": "http://localhost:5000"
     }
   },
   "scripts": {
