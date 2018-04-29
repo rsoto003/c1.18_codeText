@@ -10,7 +10,6 @@ class UpVote extends Component{
         this.state= {
             value: this.props.postData.data.rating
         }
-        this.pointerStyle= !this.props.auth ? {cursor:'unset'} :{cursor:'pointer'}
         this.handleAddVote = this.handleAddVote.bind(this);
         this.handleDownVote = this.handleDownVote.bind(this);
         this.axiosCall = this.axiosCall.bind(this)
@@ -41,15 +40,16 @@ class UpVote extends Component{
 
 // #d3d3d37a
     render(){
+        const pointerStyle= !this.props.auth ? {cursor:'unset'} :{cursor:'pointer'}
         const authGray = !this.props.auth ? {color:'#d3d3d37a'} : {color: 'unset'}
         const authAddVote = !this.props.auth ? null : this.handleAddVote
         const authDownVote = !this.props.auth ? null : this.handleDownVote
         return(
 
             <div className="text-center">                                           
-                <div style={this.pointerStyle} onClick={authAddVote}> <i style={authGray} className="fas fa-angle-up fa-2x"></i></div>                 
+                <div style={pointerStyle} onClick={authAddVote}> <i style={authGray} className="fas fa-angle-up fa-2x"></i></div>                 
                 <div >{this.state.value}</div>
-                <div style={this.pointerStyle} onClick={authDownVote}> <i style={authGray} className="fas fa-angle-down fa-2x"></i> </div>
+                <div style={pointerStyle} onClick={authDownVote}> <i style={authGray} className="fas fa-angle-down fa-2x"></i> </div>
             </div>
         )
     }

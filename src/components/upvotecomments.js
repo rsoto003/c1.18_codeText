@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import '../assets/css/upvotecomment.css';
 import axios from 'axios';
+import {connect} from 'react-redux';
 
 class UpvoteComments extends Component{
     constructor(props){
@@ -8,9 +9,6 @@ class UpvoteComments extends Component{
 
         this.state= {
             value: this.props.data.rating
-        }
-        this.pointerStyle={
-            cursor:'pointer'
         }
         this.handleAddVote = this.handleAddVote.bind(this);
         this.handleDeleteVote = this.handleDeleteVote.bind(this);
@@ -45,17 +43,27 @@ class UpvoteComments extends Component{
     }
 
     render(){
+        const pointerStyle= !this.props.auth ? {cursor:'unset'} :{cursor:'pointer'}
+        const authGray = !this.props.auth ? {color:'#d3d3d37a'} : {color: 'unset'}
+        const authAddVote = !this.props.auth ? null : this.handleAddVote
+        const authDownVote = !this.props.auth ? null : this.handleDownVote
         return(
 
             <div className="text-center vote-container mb-3 mt-2">                                            
-                <div style={this.pointerStyle} className="addVote fa-1x" onClick={this.handleAddVote}> <i className="fas fa-angle-up"></i></div>                 
+                <div style={pointerStyle} className="addVote fa-1x" onClick={authAddVote}> <i style={authGray} className="fas fa-angle-up"></i></div>                 
 
                 <div className="voteNum">{this.state.value}</div>
 
-                <div style={this.pointerStyle} className="deleteVote fa-1x" onClick={this.handleDeleteVote}> <i className="fas fa-angle-down"></i></div>
+                <div style={pointerStyle} className="deleteVote fa-1x" onClick={authDownVote}> <i style={authGray} className="fas fa-angle-down"></i></div>
             </div>
         )
     }
 }
 
-export default UpvoteComments;
+function mapStateToProps(state){
+    return{
+        auth: state.user.auth
+    }
+}
+
+export default connect(mapStateToProps)(UpvoteComments);
