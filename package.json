@@ -4,18 +4,11 @@
   "description": "C118 Context Final Project",
   "main": "index.js",
   "proxy": {
-    "/posts": {
-      "target": "http://localhost:5000"
-    },
-    "/comment": {
-      "target": "http://localhost:5000"
-    },
-    "/auth": {
-      "target": "http://localhost:5000"
-    },
-    "/profile:": {
-      "target": "http://localhost:5000"
-    }
+    "/posts": "http://localhost:5000",
+    "/posts/**":"http://localhost:5000",
+    "/comment/**": "http://localhost:5000",
+    "/auth/**": "http://localhost:5000",
+    "/profile/**": "http://localhost:5000"
   },
   "scripts": {
     "start": "npm-run-all --parallel dev:*",
