@@ -11,7 +11,7 @@ export default (state = DEFAULT_STATE, action) => {
 
             return {...state, auth: action.payload.data.authenticated}
         case types.SIGN_OUT:
-            return {...state, auth:false}
+            // return {...state, auth:action.payload.data.false}
         default:
             return state
     }

@@ -63,7 +63,6 @@ router.post('/comment/vote', (req,res) => {
                 }
             }
         }
-        console.log(target.commentRatedUsers)
         let upCount = null;
         let downCount = null;
         for( let i =0; i<target.commentRatedUsers.length; i++){

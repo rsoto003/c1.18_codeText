@@ -13,7 +13,6 @@ router.get('/', authCheck, (req,res)=>{
 })
 
 router.get('/data', (req,res)=>{
-    console.log('hello')
     res.send( req.user)
 })
 

@@ -1,23 +1,45 @@
 const router = require('express').Router();
 const PostModel = require('../models/post');
 
-// Was /pastVote
+const isAuth = (req,res,next)=>{
+    if(req.isAuthenticated()){
+        next();
+    } else {
+        res.send('user is not authenticated');
+    }
+}
+
+router.post('/posts/voteData', isAuth, (req,res)=>{
+    let match=false;
+    let vote;
+    PostModel.findById(req.body.threadID, (err,data) => {
+        if(err)throw err;
+
+        for (let i =0; i<data.ratedUsers.length; i++){
+            if(data.ratedUsers[i].login === req.user.login){
+                match = true
+                vote = data.ratedUsers[i].vote
+            }
+        }
+        if(match){
+        }
+        res.send(vote)
+
+    })
+
+})
+
 router.post('/posts/vote', (req,res) => {
-    // console.log(req.body)
 
     PostModel.findById(req.body.threadID, (err,data) => {
-        console.log(req.body.user)
 
-        console.log(req.body.user.login)
         let match=false
         let matchId;
         for (let i =0; i<data.ratedUsers.length; i++){
-            console.log(data.ratedUsers[i].login + 'COMPARED AGAINST' + req.body.user.login)
             if (data.ratedUsers[i].login === req.body.user.login){
                 match=true
                 matchId = data.ratedUsers[i]._id
             }
-            // console.log(match)
         }
 
         if(! match){
@@ -52,7 +74,6 @@ router.post('/posts/vote', (req,res) => {
                }
            }
         }
-        console.log(data)
         let upCount=null;
         let downCount=null;
         for( let i =0; i<data.ratedUsers.length; i++){
@@ -62,7 +83,6 @@ router.post('/posts/vote', (req,res) => {
         data.rating = upCount - downCount
 
         data.save(err=>{
-            // if(err)console.log('ERROR OCCURED: '+ err);
         })
         res.send(data)
 
@@ -78,7 +98,6 @@ router.post('/posts/unique-thread', (req, res ) => {
         if(err) throw err;
 
         res.send(data);
-        // console.log(data);
     
     })
 })
@@ -87,9 +106,7 @@ router.post('/posts/unique-thread', (req, res ) => {
 router.post('/posts/new', (req, res, next) => {
 
     const {name, newTitleState, newDescriptionState, JsbinState } = req.body;
-    console.log(req.body.name)
     if( newTitleState.length===0 || newDescriptionState.length===0 ){
-        console.log('Invalid post data!: ', req.body)
         res.send('ERROR. INVALID POST DATA')
     } else {
         const postdata = new PostModel({
@@ -102,7 +119,6 @@ router.post('/posts/new', (req, res, next) => {
             rating: 0
         })
         res.send(postdata);
-        console.log('this is the postdata: ', postdata);
         postdata.save((err, post) => {
             if(err){
                 return next(err)
@@ -117,7 +133,6 @@ router.post('/posts/new', (req, res, next) => {
 
 
 router.get('/posts', function(req, res, next){
-    console.log('got request: field  = '+req.query.field);
     const sortMapping = {
         newest: { timestamp: -1},
         oldest: { timestamp: 1},    
@@ -136,7 +151,6 @@ router.get('/posts', function(req, res, next){
             results: data
         })
     }).catch(error=> {
-        console.log(error);
         res.send({
             confirmation: false,
             error: error
@@ -145,13 +159,11 @@ router.get('/posts', function(req, res, next){
 })
 //sorting leaderboard
 router.post('/leaderboardSort', (req, res, next) => {
-    console.log('leaderboard sorting being checked');
     const leaderboardSorting = {
          votes: {rating: -1},
          comments: {__v: -1}
      }
      var leaderboardObj = {};
-     console.log(req.body)
      if(req.body.query && leaderboardSorting[req.body.query]){
 
          leaderboardObj = leaderboardSorting[req.body.query];
@@ -159,7 +171,6 @@ router.post('/leaderboardSort', (req, res, next) => {
      } else {
          leaderboardObj = {};
      }
-     console.log('PASSED LEADERBOARD SORTING')
 
      PostModel.find().sort(leaderboardSorting[req.body.query]).then(data => {
          res.send(data);
@@ -170,13 +181,10 @@ router.post('/leaderboardSort', (req, res, next) => {
 router.post('/posts/delete', (req, res) => {
     PostModel.findById(req.body.threadID, (err,data) => {
         if(!data){
-            console.log(`Cannot find thread ID of: ${req.body.threadID}`)
             res.send(null)
         }else {
             data.remove( err => {
                 if (err) throw err;
-    
-                console.log(`Deleting post with ID of: ${req.body.threadID}`)
             } )
         }
 

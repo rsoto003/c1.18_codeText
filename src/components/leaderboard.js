@@ -51,7 +51,6 @@ class Leaderboard extends Component{
         if(this.state.order !== this.state.oldOrder){
 
             axios.post('http://localhost:5000/leaderboardSort', {query: this.state.order}).then(res => {
-                console.log(res)
                 this.setState({
                     data: res.data,
                     order: this.state.order,
@@ -96,7 +95,6 @@ class Leaderboard extends Component{
     // }
 
     upvoteClick(){
-        console.log('upvoteClick being checked bro');
         const newUpvoteState = this.state.upvotes;
         newUpvoteState.style= {
             color: '#007bff',
@@ -117,7 +115,6 @@ class Leaderboard extends Component{
 
     }
     commentClick(){
-        console.log('commentClick being checked');
         const newCommentState = this.state.comments;
         newCommentState.style= {
             color: '#007bff',
@@ -137,7 +134,6 @@ class Leaderboard extends Component{
     }
 
     render(){
-        console.log(this.state.order, this.state.oldOrder)
 
         const upvoteUser =this.state.data.map( (item, index) => {
             return (
