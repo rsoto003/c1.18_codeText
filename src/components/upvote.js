@@ -8,14 +8,35 @@ class UpVote extends Component{
         super(props);
 
         this.state= {
-            value: this.props.postData.data.rating
+            value: this.props.postData.data.rating,
+            up: {color:'black'},
+            down: 'unset'
         }
         this.handleAddVote = this.handleAddVote.bind(this);
         this.handleDownVote = this.handleDownVote.bind(this);
-        this.axiosCall = this.axiosCall.bind(this)
+        this.axiosVoteCall = this.axiosVoteCall.bind(this);
+        this.axiosDataCall = this.axiosDataCall.bind(this);
     }
 
-    axiosCall(vote){
+    componentWillMount(){
+        this.axiosDataCall()
+    }
+
+
+    axiosDataCall(){
+        axios.post('/posts/voteData', {threadID: this.props.postData.data._id}).then(res =>{
+            console.log(res);
+            if(res.data==='up'){
+                console.log('its up')
+                this.setState({
+                    up: {color: 'yellow'}
+                })
+                // this.forceUpdate()
+            }
+        })
+    }
+
+    axiosVoteCall(vote){
         axios.get('/profile/data').then(res=>{
             const submittedData={
                 vote,
@@ -31,25 +52,27 @@ class UpVote extends Component{
     }
 
     handleAddVote(){   
-        this.axiosCall('up')
+        this.axiosVoteCall('up')
     }
 
     handleDownVote(){        
-        this.axiosCall('down')
+        this.axiosVoteCall('down')
     }
 
-// #d3d3d37a
     render(){
+        console.log(this.state)
         const pointerStyle= !this.props.auth ? {cursor:'unset'} :{cursor:'pointer'}
-        const authGray = !this.props.auth ? {color:'#d3d3d37a'} : {color: 'unset'}
+        const upColor = !this.props.auth ? {color:'#d3d3d37a'} : this.state.up
+        const downColor = !this.props.auth ? {color:'#d3d3d37a'} : {color: this.state.down}
+
         const authAddVote = !this.props.auth ? null : this.handleAddVote
         const authDownVote = !this.props.auth ? null : this.handleDownVote
         return(
 
             <div className="text-center">                                           
-                <div style={pointerStyle} onClick={authAddVote}> <i style={authGray} className="fas fa-angle-up fa-2x"></i></div>                 
+                <div style={pointerStyle} onClick={authAddVote}> <i style={upColor} className="fas fa-angle-up fa-2x"></i></div>                 
                 <div >{this.state.value}</div>
-                <div style={pointerStyle} onClick={authDownVote}> <i style={authGray} className="fas fa-angle-down fa-2x"></i> </div>
+                <div style={pointerStyle} onClick={authDownVote}> <i style={downColor} className="fas fa-angle-down fa-2x"></i> </div>
             </div>
         )
     }

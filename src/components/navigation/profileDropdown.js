@@ -45,7 +45,6 @@ class ProfileDropdown extends Component{
 
     componentWillMount(){
         axios.get('/profile/data').then(res=>{
-            console.log(res)
             this.setState({
                 userData: res.data
             })
@@ -101,7 +100,6 @@ class ProfileDropdown extends Component{
     render(){
 
 
-        console.log(this.state)
         const dropdownStyle = {right:0, left:'unset'}
         const dropdownItem= {padding: '.25rem 1.5rem', whiteSpace:'noWrap'} 
         return(

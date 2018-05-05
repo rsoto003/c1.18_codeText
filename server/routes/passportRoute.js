@@ -22,17 +22,15 @@ router.get('/error', (req,res)=>{
 });
 
 router.get('/logout', (req,res)=>{
-    console.log('logging out')
     req.logout()
     req.session.destroy( () => {
-        res.redirect('/');  
+        res.redirect('/home/newest');  
     } )
 });
 
 
 router.get('/callback',passport.authenticate('github') , (req,res) => {
         // res.send(req.user)
-        console.log('it worked!**********')
         res.redirect('/home/newest')
     }
 );
