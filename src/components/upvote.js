@@ -10,7 +10,7 @@ class UpVote extends Component{
         this.state= {
             value: this.props.postData.data.rating,
             up: {color:'black'},
-            down: 'unset'
+            down: {color:'black'}
         }
         this.handleAddVote = this.handleAddVote.bind(this);
         this.handleDownVote = this.handleDownVote.bind(this);
@@ -18,10 +18,9 @@ class UpVote extends Component{
         this.axiosDataCall = this.axiosDataCall.bind(this);
     }
 
-    componentWillMount(){
+    componentWillReceiveProps(){
         this.axiosDataCall()
     }
-
 
     axiosDataCall(){
         axios.post('/posts/voteData', {threadID: this.props.postData.data._id}).then(res =>{
@@ -64,15 +63,13 @@ class UpVote extends Component{
         const pointerStyle= !this.props.auth ? {cursor:'unset'} :{cursor:'pointer'}
         const upColor = !this.props.auth ? {color:'#d3d3d37a'} : this.state.up
         const downColor = !this.props.auth ? {color:'#d3d3d37a'} : {color: this.state.down}
-
         const authAddVote = !this.props.auth ? null : this.handleAddVote
         const authDownVote = !this.props.auth ? null : this.handleDownVote
         return(
-
             <div className="text-center">                                           
-                <div style={pointerStyle} onClick={authAddVote}> <i style={upColor} className="fas fa-angle-up fa-2x"></i></div>                 
+                <div style={{...upColor, ...pointerStyle}} onClick={authAddVote}> <i className="fas fa-angle-up fa-2x"></i></div>                 
                 <div >{this.state.value}</div>
-                <div style={pointerStyle} onClick={authDownVote}> <i style={downColor} className="fas fa-angle-down fa-2x"></i> </div>
+                <div style={{...downColor, ...pointerStyle}} onClick={authDownVote}> <i className="fas fa-angle-down fa-2x"></i> </div>
             </div>
         )
     }
