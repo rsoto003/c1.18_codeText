@@ -24,14 +24,23 @@ class UpVote extends Component{
 
     axiosDataCall(){
         axios.post('/posts/voteData', {threadID: this.props.postData.data._id}).then(res =>{
-            console.log(res);
-            if(res.data==='up'){
-                console.log('its up')
+            if(res.data === 'up'){
                 this.setState({
-                    up: {color: 'yellow'}
+                    up: {color: 'yellow'},
+                    down:{color:'black'}
                 })
-                // this.forceUpdate()
+            }else if(res.data === 'down' ){
+                this.setState({
+                    up:{color:'black'},
+                    down:{color:'red'}
+                })
+            } else if (!res.data){
+                this.setState({
+                    up:{color:'black'},
+                    down:{color: 'black'}
+                })
             }
+            this.forceUpdate()
         })
     }
 
@@ -46,8 +55,10 @@ class UpVote extends Component{
                 this.setState({
                     value: res.data.rating
                 })
+                this.axiosDataCall()
             })
         })
+
     }
 
     handleAddVote(){   
@@ -59,10 +70,9 @@ class UpVote extends Component{
     }
 
     render(){
-        console.log(this.state)
         const pointerStyle= !this.props.auth ? {cursor:'unset'} :{cursor:'pointer'}
         const upColor = !this.props.auth ? {color:'#d3d3d37a'} : this.state.up
-        const downColor = !this.props.auth ? {color:'#d3d3d37a'} : {color: this.state.down}
+        const downColor = !this.props.auth ? {color:'#d3d3d37a'} : this.state.down
         const authAddVote = !this.props.auth ? null : this.handleAddVote
         const authDownVote = !this.props.auth ? null : this.handleDownVote
         return(

@@ -22,8 +22,10 @@ router.post('/posts/voteData', isAuth, (req,res)=>{
             }
         }
         if(match){
+            res.send(vote)
+        }else{
+            res.send(null)
         }
-        res.send(vote)
 
     })
 
@@ -81,7 +83,6 @@ router.post('/posts/vote', (req,res) => {
             else downCount++
         }
         data.rating = upCount - downCount
-
         data.save(err=>{
         })
         res.send(data)
