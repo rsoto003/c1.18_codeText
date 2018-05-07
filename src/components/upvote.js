@@ -18,6 +18,10 @@ class UpVote extends Component{
         this.axiosDataCall = this.axiosDataCall.bind(this);
     }
 
+    componentWillMount(){
+        this.axiosDataCall()
+    }
+
     componentWillReceiveProps(){
         this.axiosDataCall()
     }

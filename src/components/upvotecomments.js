@@ -8,15 +8,20 @@ class UpvoteComments extends Component{
         super(props);
 
         this.state= {
-            value: this.props.data.rating
+            value: this.props.data.rating,
+            up: {color: 'unset'},
+            down: {color: 'unset'}
         }
         this.handleAddVote = this.handleAddVote.bind(this);
-        this.handleDeleteVote = this.handleDeleteVote.bind(this);
-        this.axiosCall = this.axiosCall.bind(this);
-
+        this.handleDownVote = this.handleDownVote.bind(this);
+        this.axiosVoteCall = this.axiosVoteCall.bind(this);
     }
-    axiosCall(vote){
 
+    componentWillMount(){
+        this.axiosDataCall()
+    }
+
+    axiosVoteCall(vote){
         axios.get('/profile/data').then(res=>{
             const submittedData={
                 vote,
@@ -25,6 +30,7 @@ class UpvoteComments extends Component{
                 user: res.data,
             }
             axios.post('/comment/vote', submittedData ).then( res => {
+                console.log(res.data.rating)
                 this.setState({
                     value: res.data.rating
                 })
@@ -32,13 +38,25 @@ class UpvoteComments extends Component{
         })
     }
 
-    handleAddVote(){   
-        this.axiosCall('up')
-
+    axiosDataCall(){
+        axios.post('/comment/voteData', this.props ).then(res => {
+            console.log(res)
+            if(res.data ==='up'){
+                console.log('its up!')
+            } else if (res.data ==='down'){
+                console.log('its down!')
+            } else {
+                console.log ('no voting here!')
+            }
+        })
     }
 
-    handleDeleteVote(){        
-        this.axiosCall('down')
+    handleAddVote(){   
+        this.axiosVoteCall('up')
+    }
+
+    handleDownVote(){        
+        this.axiosVoteCall('down')
     }
 
     render(){
