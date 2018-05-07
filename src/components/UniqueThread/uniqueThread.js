@@ -48,7 +48,6 @@ class Thread extends Component{
                 jsbin:res.data.jsbin
                 })
                 
-            console.log(res);
         })
     }
 
@@ -72,7 +71,6 @@ class Thread extends Component{
                         data:newData,
                         textInput:'',
                     })
-                    console.log(res)
                 })
             })
         }
@@ -80,7 +78,6 @@ class Thread extends Component{
     deletePost(event){
         axios.post(`/posts/delete`, {threadID: this.state.threadID} ).then(res => {
             if(!res.data){
-                console.log('already deleted')
             }
         })
     }
@@ -109,7 +106,6 @@ class Thread extends Component{
     }
 
     authForm(){
-        console.log(this.props)
         if(this.props.auth === false){
             return (
                 <div className="jumbotron">

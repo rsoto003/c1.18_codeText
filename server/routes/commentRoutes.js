@@ -16,7 +16,6 @@ router.post('/comment/voteData', isAuth, (req, res) => {
         let match=false;
         let vote=null;
         for(let i =0; i<target.commentRatedUsers.length; i++){
-            console.log( target.commentRatedUsers[i])
             if(req.user.login === target.commentRatedUsers[i].login){
                 match=true;
                 vote = target.commentRatedUsers[i].vote
