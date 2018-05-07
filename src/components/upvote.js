@@ -18,10 +18,6 @@ class UpVote extends Component{
         this.axiosDataCall = this.axiosDataCall.bind(this);
     }
 
-    componentWillMount(){
-        this.axiosDataCall()
-    }
-
     componentWillReceiveProps(){
         this.axiosDataCall()
     }
@@ -30,13 +26,13 @@ class UpVote extends Component{
         axios.post('/posts/voteData', {threadID: this.props.postData.data._id}).then(res =>{
             if(res.data === 'up'){
                 this.setState({
-                    up: {color: 'yellow'},
+                    up: {color: '#fdc70c'},
                     down:{color:'black'}
                 })
             }else if(res.data === 'down' ){
                 this.setState({
                     up:{color:'black'},
-                    down:{color:'red'}
+                    down:{color:'#ee3427'}
                 })
             } else if (!res.data){
                 this.setState({
