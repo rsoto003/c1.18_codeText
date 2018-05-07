@@ -102,18 +102,14 @@ class NewPost extends Component{
 
         const displays = title.display.display + description.display.display + jsbin.display;
         if (displays == "nonenonenone"){
-
-            axios.get('/profile/data').then(res=>{
-
-                const submittedData = {
-                    name: res.data.name,
-                    newTitleState: this.state.titleInput,
-                    newDescriptionState: this.state.descriptionInput,
-                    JsbinState: this.state.JSBINLink
-                }
-                axios.post('/posts/new', submittedData).then(res =>{
-                    this.props.history.push('/home/newest');
-                })
+            const submittedData = {
+                name: res.data.name,
+                newTitleState: this.state.titleInput,
+                newDescriptionState: this.state.descriptionInput,
+                JsbinState: this.state.JSBINLink
+            }
+            axios.post('/posts/new', submittedData).then(res =>{
+                this.props.history.push('/home/newest');
             })
         }
     }

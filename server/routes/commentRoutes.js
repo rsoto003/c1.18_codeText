@@ -30,7 +30,7 @@ router.post('/comment/voteData', isAuth, (req, res) => {
     })
 })
 
-router.post('/comment/add', (req, res) => {
+router.post('/comment/add', isAuth, (req, res) => {
     PostModel.findById(req.body.threadID , (err, data) => {
         if(err) throw err;
         data.comments.push( {
