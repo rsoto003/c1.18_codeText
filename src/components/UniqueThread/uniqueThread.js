@@ -17,7 +17,6 @@ const iframeStyle={
     height: '400px'
 }
 
-
 class Thread extends Component{
     constructor(props){
         super(props)
@@ -57,22 +56,20 @@ class Thread extends Component{
 
         if (this.validCheck(this.state.textInput)){
 
-
-            axios.get('/profile/data').then(res=>{
-                const submittedComment={
-                    user: res.data,
-                    comment:this.state.textInput,
-                    threadID: this.props.threadID
+            const submittedComment={
+                user: res.data,
+                comment:this.state.textInput,
+                threadID: this.props.threadID
                 }
-                axios.post(`/comment/add`, submittedComment).then( res => {
-                    const newData=this.state.data
-                    newData.res.comments=res.data.comments
-                    this.setState({
-                        data:newData,
-                        textInput:'',
-                    })
+            axios.post(`/comment/add`, submittedComment).then( res => {
+                const newData=this.state.data
+                newData.res.comments=res.data.comments
+                this.setState({
+                    data:newData,
+                    textInput:'',
                 })
             })
+        
         }
     }
     deletePost(event){

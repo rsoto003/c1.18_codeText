@@ -104,14 +104,14 @@ router.post('/posts/unique-thread', (req, res ) => {
 })
 
 // was /newPosts  
-router.post('/posts/new', (req, res, next) => {
+router.post('/posts/new', isAuth, (req, res, next) => {
 
     const {name, newTitleState, newDescriptionState, JsbinState } = req.body;
     if( newTitleState.length===0 || newDescriptionState.length===0 ){
         res.send('ERROR. INVALID POST DATA')
     } else {
         const postdata = new PostModel({
-            author: name,
+            author: req.user.name,
             title: newTitleState,
             description: newDescriptionState,
             jsbin: JsbinState,
