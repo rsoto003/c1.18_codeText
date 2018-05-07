@@ -5,7 +5,7 @@
   "main": "index.js",
   "proxy": {
     "/posts": "http://localhost:5000",
-    "/posts/**":"http://localhost:5000",
+    "/posts/**": "http://localhost:5000",
     "/comment/**": "http://localhost:5000",
     "/auth/**": "http://localhost:5000",
     "/profile/**": "http://localhost:5000"

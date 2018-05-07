@@ -8,14 +8,28 @@ class UpvoteComments extends Component{
         super(props);
 
         this.state= {
-            value: this.props.data.rating
+            value: this.props.data.rating,
+            up: {color: 'black'},
+            down: {color: 'black'}
         }
         this.handleAddVote = this.handleAddVote.bind(this);
-        this.handleDeleteVote = this.handleDeleteVote.bind(this);
-        this.axiosCall = this.axiosCall.bind(this);
-
+        this.handleDownVote = this.handleDownVote.bind(this);
+        this.axiosVoteCall = this.axiosVoteCall.bind(this);
     }
-    axiosCall(vote){
+
+    componentDidUpdate(lastProps, lastState){
+        if(this.state.value!==lastState.value){
+            this.axiosDataCall()
+        }
+    }
+
+    componentWillMount(){
+        this.axiosDataCall()
+    }
+
+
+    axiosVoteCall(vote){
+        this.axiosDataCall()
 
         axios.get('/profile/data').then(res=>{
             const submittedData={
@@ -32,28 +46,50 @@ class UpvoteComments extends Component{
         })
     }
 
-    handleAddVote(){   
-        this.axiosCall('up')
-
+    axiosDataCall(){
+        axios.post('/comment/voteData', this.props ).then(res => {
+            if(res.data ==='up'){
+                this.setState({
+                    up: {color: '#fdc70c'},
+                    down: {color: 'black'}
+                })
+            } else if (res.data ==='down'){
+                this.setState({
+                    up:{color: 'black'},
+                    down: {color:'#ee3427'}
+                })
+            } else {
+                this.setState({
+                    up: {color: 'black'},
+                    down: {color: 'black'}
+                })
+            }
+        })
     }
 
-    handleDeleteVote(){        
-        this.axiosCall('down')
+    handleAddVote(){   
+        this.axiosVoteCall('up')
+    }
+
+    handleDownVote(){        
+        this.axiosVoteCall('down')
     }
 
     render(){
         const pointerStyle= !this.props.auth ? {cursor:'unset'} :{cursor:'pointer'}
-        const authGray = !this.props.auth ? {color:'#d3d3d37a'} : {color: 'unset'}
+        const upColor = !this.props.auth ? {color:'#d3d3d37a'} : this.state.up
+        const downColor = !this.props.auth ? {color:'#d3d3d37a'} : this.state.down
+
         const authAddVote = !this.props.auth ? null : this.handleAddVote
         const authDownVote = !this.props.auth ? null : this.handleDownVote
         return(
 
             <div className="text-center vote-container mb-3 mt-2">                                            
-                <div style={pointerStyle} className="addVote fa-1x" onClick={authAddVote}> <i style={authGray} className="fas fa-angle-up"></i></div>                 
+                <div style={{...pointerStyle, ...upColor}} className="addVote fa-1x" onClick={authAddVote}> <i className="fas fa-angle-up"></i></div>                 
 
                 <div className="voteNum">{this.state.value}</div>
 
-                <div style={pointerStyle} className="deleteVote fa-1x" onClick={authDownVote}> <i style={authGray} className="fas fa-angle-down"></i></div>
+                <div style={{...pointerStyle, ...downColor}} className="deleteVote fa-1x" onClick={authDownVote}> <i className="fas fa-angle-down"></i></div>
             </div>
         )
     }

@@ -1,8 +1,35 @@
 const router = require('express').Router();
 const PostModel = require('../models/post');
 
+const isAuth = (req,res,next)=>{
+    if(req.isAuthenticated()){
+        next();
+    } else {
+        res.send('user is not authenticated');
+    }
+}
 
+router.post('/comment/voteData', isAuth, (req, res) => {
+    PostModel.findById(req.body.threadID, (err, data)=>{
+        const target = data.comments.id(req.body.data._id)
 
+        let match=false;
+        let vote=null;
+        for(let i =0; i<target.commentRatedUsers.length; i++){
+            console.log( target.commentRatedUsers[i])
+            if(req.user.login === target.commentRatedUsers[i].login){
+                match=true;
+                vote = target.commentRatedUsers[i].vote
+            }
+        }
+        if(match){
+            res.send(vote)
+        } else{
+            res.send(null)
+        }
+
+    })
+})
 
 router.post('/comment/add', (req, res) => {
     PostModel.findById(req.body.threadID , (err, data) => {
