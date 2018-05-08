@@ -1,13 +1,3 @@
-
-/* .navbar {
-    color: #FFFFFF;
-    background-color: #CC3333;
-} */
-
-/* .sidebar {
-    padding-left: 10px;
-} */
-
 .new-bg{
     background-color: #202020 !important;
 }
@@ -16,43 +6,25 @@
     position: fixed !important;
     top: 83px;
     bottom: 0;
-    left: 0;
     z-index: 1000;
     padding: 20px;
     overflow-x: hidden;
     overflow-y: auto;
-    border-right: 1px solid #eee;
     padding-top: 38px;
 }
 
-ul.nav > li > a.text-new-color2 {
-    color: #464646;
+
+.sidebar > *{
+    color: black
 }
 
-ul.nav > li > a.text-new-color2:hover {
+.sidebar > *:hover {
     color: #02BBDF;
 }
-ul.nav > li > a.text-new-color2:focus {
-    color: #02BBDF;
-}
 
-ul.nav > li > a.text-new-color1 { 
-    color: #ffffff;
-    background-color: #02BBDF;
-    
-} 
-
-ul.nav > li > a.text-new-color1:hover {
-    color: #ffffff;
-    background-color: #0299b6;
-}
-ul.nav > li > a.text-new-color1:focus {
-    color: #ffffff;
-    background-color: #0299b6;
-}
-/* Side bar and lists end*/
+/* Side bar and lists end
 
 @media only screen and (max-width: 600px) {
    
 
-}
+} */
