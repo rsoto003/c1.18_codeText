@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ProfileDropdown from './profileDropdown';
 import logo from '../../assets/images/logo-new.svg';
-// import '../../assets/css/app.css';
 
 export default ()=> {
 
