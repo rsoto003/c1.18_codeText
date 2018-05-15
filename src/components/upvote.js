@@ -22,6 +22,7 @@ class UpVote extends Component{
         this.axiosDataCall()
     }
 
+
     axiosDataCall(){
         axios.post('/posts/voteData', {threadID: this.props.postData.data._id}).then(res =>{
             if(res.data === 'up'){
@@ -45,18 +46,16 @@ class UpVote extends Component{
     }
 
     axiosVoteCall(vote){
-        axios.get('/profile/data').then(res=>{
-            const submittedData={
-                vote,
-                threadID: this.props.postData.data._id,
-                user: res.data
-            }
-            axios.post('/posts/vote', submittedData ).then( res => {
-                this.setState({
-                    value: res.data.rating
-                })
-                this.axiosDataCall()
+        const submittedData={
+            vote,
+            threadID: this.props.postData.data._id,
+        }
+        axios.post('/posts/vote', submittedData ).then( res => {
+            console.log(res.data.rating)
+            this.setState({
+                value: res.data.rating
             })
+            this.axiosDataCall()
         })
 
     }

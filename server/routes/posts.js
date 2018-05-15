@@ -31,14 +31,14 @@ router.post('/posts/voteData', isAuth, (req,res)=>{
 
 })
 
-router.post('/posts/vote', (req,res) => {
+router.post('/posts/vote', isAuth, (req,res) => {
 
     PostModel.findById(req.body.threadID, (err,data) => {
 
         let match=false
         let matchId;
         for (let i =0; i<data.ratedUsers.length; i++){
-            if (data.ratedUsers[i].login === req.body.user.login){
+            if (data.ratedUsers[i].login === req.user.login){
                 match=true
                 matchId = data.ratedUsers[i]._id
             }
@@ -46,8 +46,8 @@ router.post('/posts/vote', (req,res) => {
 
         if(! match){
             data.ratedUsers.push({
-                name:req.body.user.name,
-                login: req.body.user.login,
+                name:req.user.name,
+                login: req.user.login,
                 vote: req.body.vote
             })
 
@@ -58,21 +58,22 @@ router.post('/posts/vote', (req,res) => {
                } else {
                     data.ratedUsers.id(matchId).remove()
                     data.ratedUsers.push({
-                        name:req.body.user.name,
-                        login: req.body.user.login,
+                        name:req.user.name,
+                        login: req.user.login,
                         vote: 'down'
                     })
                }
            } else{
-               if(req.body.vote!== 'up'){
+               if(req.body.vote=== 'down'){
                    data.ratedUsers.id(matchId).remove()
                } else{
                    data.ratedUsers.id(matchId).remove()
                    data.ratedUsers.push({
-                    name:req.body.user.name,
-                    login: req.body.user.login,
+                    name:req.user.name,
+                    login: req.user.login,
                     vote: 'up'
                 })
+
                }
            }
         }
