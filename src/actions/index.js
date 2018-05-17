@@ -17,3 +17,15 @@ export const signOut = () => {
             type: types.SIGN_OUT
         }
 }
+
+export const sidebarOn = () => {
+    return{
+        type: types.SIDEBAR_ON
+    }
+}
+
+export const sidebarOff = () => {
+    return{
+        type: types.SIDEBAR_OFF
+    }
+}

@@ -57,7 +57,7 @@ class MinimizedThread extends Component{
                 <div className="col-md-2 col-sm-2 col-2">
                     <UpVote postData={this.props} />
                 </div>
-                <div className="col-md-10 col-sm-12 col-8 justify-content-start ">
+                <div className="col-md-10 col-sm-10 col-8 justify-content-start ">
                    
                     <h4>{postTitle}</h4>
                     <p><small className="text-muted" > {this.props.data.author} - Posted: {Date(this.props.data.timestamp)} </small></p>
