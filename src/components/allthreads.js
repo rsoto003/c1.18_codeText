@@ -41,12 +41,12 @@ class AllThreads extends Component {
             )
         });
         return (
-            <div className="col-sm-12 col-md-10 mt-md-4 offset-sm-0 offset-md-2 pl-md-5 ">
+            <div className="col-sm-10 col-md-10 mt-md-4 offset-2 pl-md-5 ">
                 {/* <div className="row justify-content-end">
                     <FilterFeed/>                 
                 </div> */}
                 <div className="row">                    
-                    <div className="col-sm-12 col-md-10">{threads}</div>
+                    <div className="col-10">{threads}</div>
                     {/* <div className="col-1-sm d-none d-sm-block"></div> */}
                 </div>
             </div>
