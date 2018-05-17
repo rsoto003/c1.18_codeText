@@ -3,7 +3,7 @@
     .sidebar{
         transform: translateX(-100%);
         transition: .5s;
-        width:50%;
+        width:35%;
         top: 0px;
         z-index:1030;
         background-color:#fff;

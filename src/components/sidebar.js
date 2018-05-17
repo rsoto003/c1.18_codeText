@@ -14,7 +14,7 @@ class Sidebar extends Component{
 		this.closeSidebar = this.closeSidebar.bind(this)
 	}
 	componentWillReceiveProps(nextProps){
-		if(nextProps.sidebar && window.innerWidth > 768){
+		if(nextProps.sidebar && window.innerWidth < 768){
 			this.setState({
 				expand: {transform: "translateX(0)"},
 				backdrop: {display:'block'}

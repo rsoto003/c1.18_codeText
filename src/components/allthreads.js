@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import MinimizedThread from './minimizedThread/minimizedThread';
 import FilterFeed from './filterFeed';
 import axios from 'axios';
-
+import '../assets/css/app.css'
 class AllThreads extends Component {
     constructor(props){
         super(props);
@@ -41,12 +41,12 @@ class AllThreads extends Component {
             )
         });
         return (
-            <div className="col-sm-10 col-md-10 mt-md-4 offset-2 pl-md-5 ">
+            <div className="col-sm-12 col-md-10 mt-md-4 offset-md-2 pl-md-5 ">
                 {/* <div className="row justify-content-end">
-                    <FilterFeed/>                 
+                    <FilterFeed/>
                 </div> */}
                 <div className="row">                    
-                    <div className="col-10">{threads}</div>
+                    <div className="col-md-10 col-12 thread-mobile">{threads}</div>
                     {/* <div className="col-1-sm d-none d-sm-block"></div> */}
                 </div>
             </div>

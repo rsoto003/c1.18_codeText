@@ -6,7 +6,7 @@ import ProfileDropdown from './profileDropdown';
 import logo from '../../assets/images/logo-new.svg';
 
 const navBar= (props) => {
-    return (  
+    return(
         <nav className="navbar navbar-dark sticky-top new-bg">
             <Link to="/home/newest" className="nav d-none d-md-block" ><img className="w-100" src={logo} alt="codingcoops logo"/></Link>    
             <div onClick={props.sidebarOn} className="d-block d-md-none ">
