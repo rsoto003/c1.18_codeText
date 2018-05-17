@@ -8,8 +8,8 @@ import logo from '../../assets/images/logo-new.svg';
 const navBar= (props) => {
     return (  
         <nav className="navbar navbar-dark sticky-top new-bg">
-            <Link to="/home/newest" className="nav d-none d-sm-block" ><img className="w-100" src={logo} alt="codingcoops logo"/></Link>    
-            <div onClick={props.sidebarOn} className="d-block d-sm-none ">
+            <Link to="/home/newest" className="nav d-none d-md-block" ><img className="w-100" src={logo} alt="codingcoops logo"/></Link>    
+            <div onClick={props.sidebarOn} className="d-block d-md-none ">
                 <i className="fas fa-bars text-white"></i>
             </div>
             {/* hiding this stuff for presentation */}

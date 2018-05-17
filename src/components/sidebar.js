@@ -8,13 +8,13 @@ class Sidebar extends Component{
 	constructor(props){
 		super(props);
 			this.state={
-				expand: {transform:'-100%'},
+				expand: {transform:'0%'},
 				backdrop: {display:'none'}
 			}
 		this.closeSidebar = this.closeSidebar.bind(this)
 	}
 	componentWillReceiveProps(nextProps){
-		if(nextProps.sidebar){
+		if(nextProps.sidebar && window.innerWidth > 768){
 			this.setState({
 				expand: {transform: "translateX(0)"},
 				backdrop: {display:'block'}
@@ -32,7 +32,7 @@ class Sidebar extends Component{
 	render(){
 		return (
 			<div>
-				<nav style={this.state.expand} className="sidebar col-md-2 nav nav-pills flex-column">
+				<nav style={this.state.expand} className="sidebar col-sm-2 nav nav-pills flex-column">
 					<NavLink onClick={this.closeSidebar} className="nav-link font-weight-bold" to="/newPost" activeClassName="active">Post a question!</NavLink>
 					<NavLink onClick={this.closeSidebar} className="nav-link font-weight-bold" to="/home/popular" activeClassName="active" >Popular</NavLink>
 					<NavLink onClick={this.closeSidebar} className="nav-link font-weight-bold" to="/home/comments" activeClassName="active">Comments</NavLink>
