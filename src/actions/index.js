@@ -23,3 +23,9 @@ export const sidebarOn = () => {
         type: types.SIDEBAR_ON
     }
 }
+
+export const sidebarOff = () => {
+    return{
+        type: types.SIDEBAR_OFF
+    }
+}
