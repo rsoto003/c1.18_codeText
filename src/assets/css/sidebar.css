@@ -1,3 +1,9 @@
 .sidebar-container {
     background-color: lightgray;
 }
+
+@media only screen and (max-width: 992px){
+    .sidebar{
+        transform: translateX(-100%)
+    }
+}
