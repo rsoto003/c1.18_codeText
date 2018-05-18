@@ -13,6 +13,20 @@ class Sidebar extends Component{
 			}
 		this.closeSidebar = this.closeSidebar.bind(this)
 	}
+	componentWillMount(){
+		window.addEventListener('resize', this.sidebarCheck.bind(this))
+	}
+	sidebarCheck(){
+		if(window.innerWidth < 768){
+			console.log('lol')
+			this.setState({
+				expand: {transform: "translateX(0)"},
+				backdrop: {display:'block'}
+			})
+		}
+	}
+
+
 	componentWillReceiveProps(nextProps){
 		if(nextProps.sidebar && window.innerWidth < 768){
 			this.setState({
@@ -23,11 +37,14 @@ class Sidebar extends Component{
 	}
 
 	closeSidebar(){
-		this.props.sidebarOff()
-		this.setState({
-			expand:{transform: 'translateX(-100%)'},
-			backdrop: {display:'none'}
-		})
+		if(window.innerWidth < 768){
+			this.props.sidebarOff()
+			this.setState({
+				expand:{transform: 'translateX(-100%)'},
+				backdrop: {display:'none'}
+			})
+		}
+
 	}
 	render(){
 		return (
