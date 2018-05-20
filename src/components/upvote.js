@@ -16,14 +16,34 @@ class UpVote extends Component{
         this.handleDownVote = this.handleDownVote.bind(this);
         this.axiosVoteCall = this.axiosVoteCall.bind(this);
         this.axiosDataCall = this.axiosDataCall.bind(this);
+        this.getValue = this.getValue.bind(this);
     }
 
+    componentWillUpdate(lastProps, lastState){
+        if(this.state.value!==lastState.value){
+            console.log(lastState.value+ " : "+ this.state.value)
+        }
+    }
+
+
     componentWillReceiveProps(){
+        // this.getValue.bind(this)()
+
         this.axiosDataCall()
     }
 
+    getValue(){
+        axios.post('/posts/voteNum',{threadID: this.props.postData.data._id}).then(res=>{
+            this.setState({
+                value:res.data.rating
+            })
+
+        })
+
+    }
 
     axiosDataCall(){
+        this.getValue()
         axios.post('/posts/voteData', {threadID: this.props.postData.data._id}).then(res =>{
             if(res.data === 'up'){
                 this.setState({
@@ -41,9 +61,8 @@ class UpVote extends Component{
                     down:{color: 'black'}
                 })
             }
-            this.forceUpdate()
         })
-    }
+    }   
 
     axiosVoteCall(vote){
         const submittedData={

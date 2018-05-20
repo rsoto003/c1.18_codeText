@@ -103,7 +103,7 @@ class NewPost extends Component{
         const displays = title.display.display + description.display.display + jsbin.display;
         if (displays == "nonenonenone"){
             const submittedData = {
-                name: res.data.name,
+                // name: req.user.name,
                 newTitleState: this.state.titleInput,
                 newDescriptionState: this.state.descriptionInput,
                 JsbinState: this.state.JSBINLink

@@ -9,6 +9,13 @@ const isAuth = (req,res,next)=>{
     }
 }
 
+router.post('/posts/voteNum', (req,res)=>{
+    PostModel.findById(req.body.threadID, (err,data)=>{
+        if(err)throw err;
+        res.send(data)
+    })
+})
+
 router.post('/posts/voteData', isAuth, (req,res)=>{
     let match=false;
     let vote;

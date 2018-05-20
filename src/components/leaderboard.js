@@ -8,14 +8,12 @@ class Leaderboard extends Component{
         this.state={
             order: 'votes',
             upvotes:{
-                // selected: true,
                 style:{
                     color: '#007bff',
                     cursor: 'pointer'
                 }
             },
             comments:{
-                // selected: false,
                 style:{
                     color: 'black',
                     cursor: 'pointer'
@@ -34,20 +32,10 @@ class Leaderboard extends Component{
         this.Order()
     }
     
-    // shouldComponentUpdate(){
-    //     if(this.state.order !== this.state.oldOrder){
-
-    //         this.setState({
-    //             oldOrder: this.state.order
-    //         })
-    //         return true
-    //     }
-    //     else return false
-    // }
     componentDidUpdate(){
         this.Order()
     }
-    Order = ()=>{
+    Order(){
         if(this.state.order !== this.state.oldOrder){
 
             axios.post('http://localhost:5000/leaderboardSort', {query: this.state.order}).then(res => {
@@ -59,40 +47,6 @@ class Leaderboard extends Component{
             })
         }
     }
-       
-        // const usersArray=[]
-        // const users = Object.keys(userData).map( (item, index) => {
-        //     usersArray.push(userData[item])
-        // } )
-        // const upvoteArray=usersArray.slice();
-        // const output=[];
-        // let isOrdered=false;
-           
-        // while ( upvoteArray.length !== 0 ){
-            
-        //     let highest = null;
-        //     let highestIndex = null;
-        //     let reorder = false;
-        //     highest = upvoteArray[0];
-
-        //     for ( let i =0; i<upvoteArray.length; i++){
-        //         if ( highest[orderSelect] <= upvoteArray[i][orderSelect] ){
-        //             highest = upvoteArray[i];
-        //             reorder = true;
-        //             highestIndex = i;
-        //         }
-        //     }
-        //     if (reorder === false){
-        //         upvoteArray.splice(0,1)
-        //     } else {
-        //         upvoteArray.splice(highestIndex,1)
-        //     }
-            
-        //     output.push(highest)
-    
-        // }
-        // return output
-    // }
 
     upvoteClick(){
         const newUpvoteState = this.state.upvotes;
@@ -144,9 +98,7 @@ class Leaderboard extends Component{
                     <td>{item.__v}</td>
                 </tr>
             )
-        })
-        // const commentsUser = this.state.data.map( ( item, index ))
-        
+        })        
 
         return(
             <div className="col-sm-9 col-md-10 mt-4 offset-md-2" >
