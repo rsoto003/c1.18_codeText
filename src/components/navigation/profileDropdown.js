@@ -62,7 +62,11 @@ class ProfileDropdown extends Component{
     authRender(){
         if(this.props.auth){
             return(
-                <button onClick={this.props.signOut} className="btn btn-danger">Log out</button>
+                <div>
+                    <Link to="/profile"><button className="btn btn-primary">My profile</button></Link>
+                    <button onClick={this.props.signOut} className="btn btn-danger">Log out</button>
+                </div>
+
             )
         } else{
             return(
