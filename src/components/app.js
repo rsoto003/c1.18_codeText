@@ -53,7 +53,7 @@ class App extends Component {
                     </Switch>
                     <Switch>
                         <Route exact path="/home" component={Home} />                        
-                        <Route path="/profile" component={Profile} ></Route>
+                        <Route path="/profile" component={Profile} />
                         <Route path="/home/:sort?" component={AllThreads} />
                         <Route path='/newPost' component={NewPost}/>
                         <Route path='/thread/:threadID' component={UniqueThread}  />
