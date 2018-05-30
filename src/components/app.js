@@ -15,6 +15,7 @@ import Leaderboard from './leaderboard';
 import Register from './account/register';
 import AboutUs from './aboutus';
 import Home from './home';
+import Profile from './profile'
 
 
 
@@ -52,7 +53,7 @@ class App extends Component {
                     </Switch>
                     <Switch>
                         <Route exact path="/home" component={Home} />                        
-                      
+                        <Route path="/profile" component={Profile} ></Route>
                         <Route path="/home/:sort?" component={AllThreads} />
                         <Route path='/newPost' component={NewPost}/>
                         <Route path='/thread/:threadID' component={UniqueThread}  />
